@@ -443,6 +443,9 @@ align-items: center;
         max-width: 75px;
         font-size: 10px;
     }
+    .image-showcase {
+        width: 80%;
+    }
   }
 
 /* animation */
