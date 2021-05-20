@@ -41,7 +41,8 @@
 
 <body>
     <!-- WA Floating Button -->
-    <a href="https://api.whatsapp.com/send?phone=6285890355892&amp;text=Hi%20SuperKiosk." class="float-wa">
+    <a href="https://api.whatsapp.com/send?phone=6285890355892&amp;text=Halo%20SuperKiok,%20saya%20tertarik%20menjadi%20merchant."
+        class="float-wa">
         <i class="fa fa-circle icon-notif"></i>
         <i class="fa fa-whatsapp my-float"></i>
     </a>
@@ -61,7 +62,7 @@
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div class="ms-auto navbar-nav">
                         <a class="mylink nav-link active" aria-current="page" href="#">Home</a>
-                        <a class="mylink nav-link" href="#">Tentang SuperKiosk</a>
+                        <a class="mylink nav-link" href="https://www.super-kiosk.com/">Tentang SuperKiosk</a>
                     </div>
                 </div>
             </div>
@@ -143,7 +144,7 @@
                                         <img src="img/icon_jaminan.png" alt="">
                                     </div>
                                     <div class="point-info">
-                                        <h5>Jaminan Konten</h5>
+                                        <h5>Jaminan Komitmen</h5>
                                         <p>
                                             Jaminan sebagai bentuk komitmen Anda menjalankan bisnis. Komitmen
                                             mulai dari
@@ -179,7 +180,7 @@
                                         <img src="img/icon_resiko.png" alt="">
                                     </div>
                                     <div class="point-info">
-                                        <h5>Nol Resiko</h5>
+                                        <h5>Nol Risiko</h5>
                                         <p>
                                             Jaminan komitmen akan dikembalikan utuh ketika Anda memutuskan
                                             untuk berhenti kerjasama dengan SuperKiosk.
@@ -808,7 +809,25 @@
             pagination: {
                 el: ".swiper-pagination",
                 clickable: true,
+
             },
+            breakpoints: {
+                // when window width is >= 320px
+                320: {
+                    slidesPerView: 1,
+                    spaceBetween: 20
+                },
+                // when window width is >= 480px
+                480: {
+                    slidesPerView: 1,
+                    spaceBetween: 30
+                },
+                // when window width is >= 640px
+                640: {
+                    slidesPerView: 3,
+                    spaceBetween: 40
+                }
+            }
         });
         var swiper = new Swiper(".testimonialSwiper", {
             slidesPerView: 2,
