@@ -1,0 +1,20 @@
+{
+	"name": "rajawali-guard-services",
+	"version": "1.0.0",
+	"main": "index.js",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/arayhan/rajawali-guard-services.git"
+	},
+	"author": "rayhanprima99@gmail.com",
+	"license": "MIT",
+	"description": "this project is using tailwindcss, you can see the documentation through this link : https://tailwindcss.com/",
+	"bugs": {
+		"url": "https://github.com/arayhan/rajawali-guard-services/issues"
+	},
+	"homepage": "https://github.com/arayhan/rajawali-guard-services#readme",
+	"scripts": {
+		"watch:tailwind": "tailwind -i ./assets/css/style.css -o ./assets/css/style.dist.css --watch",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	}
+}

@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    html, body { @apply font-primary; scroll-behavior: smooth; }
+    button { @apply focus:outline-none ring-0 border-0; }
+}
+
+@layer components {
+    .backdrop { @apply absolute left-0 top-0 invisible opacity-0 w-screen h-screen bg-black z-10 transition-all lg:hidden; }
+    .backdrop.active { @apply visible opacity-50 lg:hidden; }
+
+    .rgs-container { @apply max-w-screen-xl mx-auto px-5; }
+    .rgs-button { @apply bg-primary-500 text-white py-3 px-12 border-2 border-primary rounded-md transition-all hover:bg-primary-600; }
+    .rgs-button.outline { @apply bg-transparent text-primary hover:bg-primary-600 hover:text-white; }
+
+    header { @apply fixed z-20 top-0 w-full shadow-lg bg-primary py-6; }
+    header .header-nav { @apply hidden lg:block; }
+    header .header-nav-items { @apply flex items-center text-sm space-x-6 text-white; }
+    header .header-nav-item { @apply inline-block py-3 border-b-2 border-transparent transition-all text-center hover:border-white; }
+    header .header-sidenav { @apply absolute right-0 top-0 z-20 w-64 h-screen shadow-md transform translate-x-full transition-all bg-white text-sm shadow-md py-6 lg:hidden; }
+    header .header-sidenav.active { @apply translate-x-0 lg:hidden; }
+    header .header-sidenav-item { @apply block px-6 py-5 hover:bg-gray-100; }
+    header .header-sidenav-button { @apply inline-block text-3xl text-white lg:hidden; }
+
+    .sdm .sdm-banner { height: 450px; }
+    .sdm .sdm-list { list-style-image: url('../img/sdm-list-style-image.png') }
+    
+    #layanan .brosur-list li { @apply flex items-center; }
+    #layanan .brosur-list li:before { 
+        content: '';
+        width: 20px;
+        height: 20px;
+        margin-right: 10px;
+        padding-right: 15px;
+        display: inline-block;
+        background-image: url('../img/check-icon.png');
+        background-size: cover;
+    }
+}
+

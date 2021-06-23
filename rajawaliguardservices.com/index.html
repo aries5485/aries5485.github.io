@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rajawali Guard Services</title>
+    <link rel="shortcut icon" href="./assets/img/icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="./assets/css/fonts.css">
+    <link rel="stylesheet" href="./assets/css/style.dist.css">
+</head>
+
+<body>
+    <header>
+        <div class="rgs-container">
+            <div class="flex items-center justify-between">
+                <a href="#">
+                    <img class="w-36" src="./assets/img/logo.png" alt="Rajawali Guard Services">
+                </a>
+                <nav class="header-nav">
+                    <ul class="header-nav-items">
+                        <li><a class="header-nav-item" href="#">Beranda</a></li>
+                        <li><a class="header-nav-item" href="#tentang-kami">Tentang Kami</a></li>
+                        <li><a class="header-nav-item" href="#sdm">SDM</a></li>
+                        <li><a class="header-nav-item" href="#security-training">Security Training</a></li>
+                        <li><a class="header-nav-item" href="#layanan">Layanan</a></li>
+                        <li><a class="header-nav-item" href="#pendaftaran">Pendaftaran</a></li>
+                        <li><a class="header-nav-item" href="#manajemen">Manajemen</a></li>
+                        <li><a class="header-nav-item" href="#kontak">Kontak</a></li>
+                    </ul>
+                </nav>
+                <div id="headerBackdrop" class="backdrop"></div>
+                <nav id="headerSidenav" class="header-sidenav">
+                    <ul>
+                        <li><a class="header-sidenav-item" href="#">Beranda</a></li>
+                        <li><a class="header-sidenav-item" href="#tentang-kami">Tentang Kami</a></li>
+                        <li><a class="header-sidenav-item" href="#sdm">SDM</a></li>
+                        <li><a class="header-sidenav-item" href="#security-training">Security Training</a></li>
+                        <li><a class="header-sidenav-item" href="#layanan">Layanan</a></li>
+                        <li><a class="header-sidenav-item" href="#pendaftaran">Pendaftaran</a></li>
+                        <li><a class="header-sidenav-item" href="#manajemen">Manajemen</a></li>
+                        <li><a class="header-sidenav-item" href="#kontak">Kontak</a></li>
+                    </ul>
+                </nav>
+                <button id="headerSidenavButton" class="header-sidenav-button">
+                    <svg stroke="currentColor" fill="none" stroke-width="0" viewBox="0 0 24 24" height="1em" width="1em"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+    <section class="relative mt-16 py-6">
+        <img class="w-full" src="./assets/img/banner.png" alt="RGS Banner">
+        <div
+            class="absolute right-10 bottom-10 md:bottom-1/2 transform md:translate-y-1/2 bg-black bg-opacity-60 text-base md:text-3xl text-white p-5 md:p-10 leading-relaxed text-left md:text-left w-2/3">
+            Pelayanan prima untuk <strong class="text-primary">menjaga</strong> dan <strong>mengamankan</strong> aset
+            pengguna jasa </div>
+    </section>
+    <section id="tentang-kami" class="py-10 space-y-10 lg:py-20">
+        <div class="rgs-container">
+            <div class="flex items-center space-x-6">
+                <img class="hidden lg:block" src="./assets/img/about-desktop.png" alt="">
+                <div>
+                    <div class="text-primary font-semibold mb-6">Tentang Kami</div>
+                    <div class="text-primary font-bold mb-3 text-3xl">PT. ARYA SHAKTI UTAMA</div>
+                    <div class="space-y-3">
+                        <p>PT Arya Sakti Utama adalah perusahaan swasta nasional yang bergerak dibidang Jasa Pengamanan
+                            yang meliputi Penyedia Jasa Tenaga Pengamanan (Guard Services) dan Penyedia Jasa Pelatihan
+                            Keamanan (Security Training).</p>
+                        <p>Perusahaan kami memegang teguh komitmen untuk memberikan pelayanan yang terbaik kepada setiap
+                            pelanggan jasa. Tenaga Security kami akan menjalankan tugas untuk memberikan pelayanan
+                            sesuai kebutuhan pengguna jasa secara profesional, terintegrasi dan konsisten. </p>
+                        <p>PT Arya Shakti Utama berdiri berdasarkan Akta No. 13 Notaris Monika Yulianti Hadiwidjaja
+                            S.H., M.Kn. dan Akta Perubahan No 10 Notaris Monika Yulianti Hadiwidjaja S.H., M.Kn. dengan
+                            pengesahan dari Menkumham No. AHU-0017188.AH.01.01.Tahun 2020 Surat Ijin Operasional (SIO)
+                            berdasarkan Surat Keputusan Kapolri. Anggota Asosiasi Badan Usaha Jasa Pengamanan Indonesia
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="h-80 overflow-hidden lg:hidden">
+            <img class="block w-full h-full object-cover" src="./assets/img/about-mobile.png" alt="">
+        </div>
+        <div class="rgs-container">
+            <div class="space-x-2 mb-3">
+                <button id="aboutVisiButton" class="rgs-button outline">VISI</button>
+                <button id="aboutMisiButton" class="rgs-button">MISI</button>
+            </div>
+            <div class="border-2 border-gray-300 bg-gray-100 p-6 rounded-md">
+                <div id="aboutVisi" class="list-decimal list-outside ml-3 hidden">
+                    <p>Menjadi perusahaan jasa pengamanan yang unggul, profesional, berkualitas dan berintegras.</p>
+                </div>
+                <ol id="aboutMisi" class="list-decimal list-outside ml-3">
+                    <li>Misi menyiapkan dan menyediakan personel Satpam yang tangguh dan profesional.</li>
+                    <li>Melaksanakan pendidikan personel Satpam secara profesional </li>
+                    <li>Memperlakukan personel Satpam secara manusiawi sebagai aset perusahaan</li>
+                    <li>Mengutamakan kepuasan dan kepercayaan pengguna jasa Satpam</li>
+                </ol>
+            </div>
+        </div>
+    </section>
+    <section class="sektor-bisnis py-20 bg-gray-100">
+        <div class="rgs-container">
+            <h1 class="text-xl font-semibold mb-16 text-primary text-center">SEKTOR BISNIS YANG MENJADI OBJEK PENGAMANAN
+            </h1>
+            <div class="flex justify-center flex-wrap">
+                <div class="flex flex-col items-center w-60 p-4">
+                    <img class="mb-3" src="./assets/img/sektor-bisnis/icon-1.png" alt="">
+                    <div class="text-center text-primary">PERBANKAN</div>
+                </div>
+                <div class="flex flex-col items-center w-60 p-4">
+                    <img class="mb-3" src="./assets/img/sektor-bisnis/icon-2.png" alt="">
+                    <div class="text-center text-primary">PERUSAHAAN PERKEBUNAN</div>
+                </div>
+                <div class="flex flex-col items-center w-60 p-4">
+                    <img class="mb-3" src="./assets/img/sektor-bisnis/icon-3.png" alt="">
+                    <div class="text-center text-primary">PERHOTELAN</div>
+                </div>
+                <div class="flex flex-col items-center w-60 p-4">
+                    <img class="mb-3" src="./assets/img/sektor-bisnis/icon-4.png" alt="">
+                    <div class="text-center text-primary">PERUSAHAAN PERTAMBANGAN</div>
+                </div>
+                <div class="flex flex-col items-center w-60 p-4">
+                    <img class="mb-3" src="./assets/img/sektor-bisnis/icon-5.png" alt="">
+                    <div class="text-center text-primary">KAWASAN INDUSTRI MANUFAKTUR</div>
+                </div>
+                <div class="flex flex-col items-center w-60 p-4">
+                    <img class="mb-3" src="./assets/img/sektor-bisnis/icon-6.png" alt="">
+                    <div class="text-center text-primary">PERUMAHAN / APARTEMEN</div>
+                </div>
+                <div class="flex flex-col items-center w-60 p-4">
+                    <img class="mb-3" src="./assets/img/sektor-bisnis/icon-7.png" alt="">
+                    <div class="text-center text-primary">INDUSTRI PENERBANGAN (AVIATION SECURITY) & TRANSPORTASI
+                        LAINNYA</div>
+                </div>
+                <div class="flex flex-col items-center w-60 p-4">
+                    <img class="mb-3" src="./assets/img/sektor-bisnis/icon-8.png" alt="">
+                    <div class="text-center text-primary">PERORANGAN</div>
+                </div>
+                <div class="flex flex-col items-center w-60 p-4">
+                    <img class="mb-3" src="./assets/img/sektor-bisnis/icon-9.png" alt="">
+                    <div class="text-center text-primary">KAWASAN PERBELANJAAN</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="sdm" class="sdm mb-20">
+        <div class="sdm-banner relative overflow-hidden py-16 flex justify-center items-end">
+            <img class="absolute top-0 left-0 w-full h-full object-cover" src="./assets/img/sdm.png" alt="">
+            <div class="relative text-white text-xl bg-black bg-opacity-50 py-8 px-12 font-semibold">Sumber Daya Manusia
+                Rajawali Guard Services</div>
+        </div>
+        <div class="rgs-container">
+            <p class="max-w-screen-md mx-auto text-center pt-20 mb-24">Perusahaan kami sangat mementingkan kualitas
+                dalam memberikan pelayanan kepada pengguna jasa dan oleh karena itu kami sangat memperhatikan dan
+                mengikuti tahapan management SDM didalam membentuk tenaga Satpam.</p>
+            <ul class="sdm-list list-outside ml-12 grid md:grid-cols-2 gap-12">
+                <li class="pl-2">
+                    <h1 class="relative -top-2 text-lg text-primary font-semibold">Perekrutan</h1>
+                    <div class="text-sm leading-relaxed">Perusahaan kami sangat mementingkan kualitas dalam memberikan
+                        pelayanan kepada pengguna jasa dan oleh karena itu kami sangat memperhatikan dan mengikuti
+                        tahapan management SDM didalam membentuk tenaga Satpam.</div>
+                </li>
+                <li class="pl-2">
+                    <h1 class="relative -top-2 text-lg text-primary font-semibold">Pendidikan</h1>
+                    <div class="text-sm leading-relaxed">
+                        <ul class="list-outside list-disc pl-4 space-y-1">
+                            <li>Mengikuit pelatihan Satpam (Gada Pratama, Gada Madya dan Gada Utama)</li>
+                            <li>Sertifikasi Kompetensi Satpam</li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="pl-2">
+                    <h1 class="relative -top-2 text-lg text-primary font-semibold">Pembinaan & Pelatihan</h1>
+                    <div class="text-sm leading-relaxed">
+                        <ul class="list-outside list-disc pl-4 space-y-1">
+                            <li>Pengasuhan (Kebersamaan dan Conseling)</li>
+                            <li>Kesiapsiagaan (Pelatihan Penyegaran dan Patroli Rutin ke Lokasi)</li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="pl-2">
+                    <h1 class="relative -top-2 text-lg text-primary font-semibold">Evaluasi Kinerja</h1>
+                    <div class="text-sm leading-relaxed">
+                        <ul class="list-outside list-disc pl-4 space-y-1">
+                            <li>Uji Kompetensi (Uji Bela Diri dan Review Sertifikasi Kompetensi)</li>
+                            <li>Penilaian Kinerja (Kehadiran, Disiplin, Pemenuhan Target, Laporan Kerja, komplain
+                                Pengguna Jasa)</li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="pl-2">
+                    <h1 class="relative -top-2 text-lg text-primary font-semibold">Performance Petugas Satpam</h1>
+                    <div class="text-sm leading-relaxed">
+                        <ul class="list-outside list-disc pl-4 space-y-1">
+                            <li>Kualitas Pribadi (Dedikasi, Jujur, Loyal, Berwibawa, Tanggung Jawab)</li>
+                            <li>Kualitas Performance (Postur, Kebersihan, Kesehatan dan Kekuatan)</li>
+                            <li>Kualitas Kinerja</li>
+                            <li>Kualitas Penampilan</li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="pl-2">
+                    <h1 class="relative -top-2 text-lg text-primary font-semibold">Reward and Punishment</h1>
+                    <div class="text-sm leading-relaxed">
+                        <ul class="list-outside list-disc pl-4 space-y-1">
+                            <li>Penghargaan (Bonus, Penghargaan, Kenaikan Pangkat, Beasiswa utk anak)</li>
+                            <li>Sanksi (Peringatan Lisan, SP1 s/d SP3, Skorsing dan PHK)</li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+            <p class="max-w-screen-lg mx-auto text-center pt-20 mb-28">Dengan melaksanakan tahapan management SDM
+                tersebut, perusahaan kami dapat menjaga kualitas, kompetensi dan profesionalitas dari tenaga Satpam yang
+                ditugaskan pada pengguna jasa.</p>
+        </div>
+    </section>
+    <section class="bg-primary py-20">
+        <div class="rgs-container flex flex-col space-y-8">
+            <div class="flex flex-col items-start text-white">
+                <h1 class="mb-6 text-xl font-semibold">Jasa Layanan Kami</h1>
+                <p class="md:w-2/3">Kami mempunyai beberapa Produk Unggulan Pengamanan, baik itu untuk perusahaan maupun
+                    untuk pribadi. Dengan motto "Your Comfort and safety is our responsibility" dan dikelola oleh tenaga
+                    profesional yang ahli di bidang pengamanan serta berbagai macam kompetensi yang dimiliki semaksimal
+                    mungkin kami akan menjaga kepercayaan yang diberikan, dengan menunjukkan pelayanan terbaik bagi
+                    setiap klien kami.</p>
+            </div>
+            <div class="flex flex-col-reverse md:flex-row items-center justify-end text-white md:text-right">
+                <div class="mt-6 md:mt-0 md:mr-6 md:w-2/3">
+                    <h1 class="mb-6 text-xl font-semibold">Jasa Penyedia Tenaga Pengamanan</h1>
+                    <p>Menghadirkan Personel yang berkualitas, mengetahui dengan benar tugas serta tanggung jawabnya
+                        sebagai tenaga keamanan, mempunyai loyalitas yang tinggi dan "Mampu melihat apa yang orang lain
+                        tidak lihat".</p>
+                </div>
+                <img class="w-64" src="./assets/img/service/service-icon-1.png" alt="">
+            </div>
+            <div class="flex flex-col md:flex-row items-center justify-start text-white">
+                <img class="w-64" src="./assets/img/service/service-icon-2.png" alt="">
+                <div class="mt-6 md:mt-0 md:ml-6 md:w-2/3">
+                    <h1 class="mb-6 text-xl font-semibold">Jasa Pendidikan dan Pelatihan</h1>
+                    <p>Pendidikan dan Pelatihan disesuaikan dengan Kurikulum dari Mabes Polri Gada Pratama, Madya, dan
+                        Utama. Namun demikian, kami juga memberikan pelatihan yang bersifat khusus guna memenuhi
+                        kebutuhan klien apapun jenis bidang usahanya.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="security-training">
+        <div class="relative">
+            <img class="w-full h-96 md:h-auto object-cover" src="./assets/img/services-type-banner.png" alt="">
+            <div
+                class="absolute bottom-32 max-10 left-1/2 transform -translate-x-1/2 max-auto block w-3/4 md:w-auto md:inline-block bg-black bg-opacity-50 px-10 py-5 text-xl leading-loose text-white font-semibold text-center">
+                <p>Jenis Pelatihan Keamanan</p>
+                <p>(SECURITY TRAINING)</p>
+            </div>
+        </div>
+        <div class="rgs-container relative -top-24">
+            <div class="grid sm:grid-cols-3 gap-5 md:gap-10 mb-10">
+                <div class="flex flex-col items-center shadow-lg pb-7 pt-5 px-10 rounded-lg bg-white">
+                    <img src="./assets/img/GP.png" alt="">
+                    <div class="text-center font-semibold">
+                        <p>Pelatihan Gada Pratama</p>
+                        <p>(232 JAM PELAJARAN)</p>
+                    </div>
+                </div>
+                <div class="flex flex-col items-center shadow-lg pb-7 pt-5 px-10 rounded-lg bg-white">
+                    <img src="./assets/img/GM.png" alt="">
+                    <div class="text-center font-semibold">
+                        <p>Pelatihan Gada Madya</p>
+                        <p>(160 JAM PELAJARAN)</p>
+                    </div>
+                </div>
+                <div class="flex flex-col items-center shadow-lg pb-7 pt-5 px-10 rounded-lg bg-white">
+                    <img src="./assets/img/GU.png" alt="">
+                    <div class="text-center font-semibold">
+                        <p>Pelatihan Gada Utama</p>
+                        <p>(100 JAM PELAJARAN)</p>
+                    </div>
+                </div>
+            </div>
+            <div class="leading-relaxed text-gray-700 space-y-5">
+                <p>Pelatihan dilaksanakan sesuai dengan kurikulum sebagaimana telah ditetapkan dalam Peraturan
+                    Kepolisian RI dengan instruktur yang qualified/berkualitas dan memiliki dedikasi tinggi serta
+                    kompetensi yang sesuai dengan bidang tugasnya. Pelatihan diselenggarakan oleh perusahan kami yang
+                    diawali oleh personel yang profesional dan telah berpengalaman dalam menlalankan pendidikan
+                    pembentukan.</p>
+                <p>Pelatihan Gada Pratama dan Gada Madya dilaksanakan di Bogor dengan fasilitas yang lengkap untuk
+                    pembentukan Satpam, sedangkan untuk Pelatihan Gada Utama dilaksanakan di Jakarta dengan fasilitas
+                    yang disesuaikan untuk tingkat manajer Satpam.</p>
+            </div>
+        </div>
+    </section>
+    <section id="layanan" class="-mt-5 mb-20">
+        <div class="rgs-container mb-8">
+            <div class="text-center text-primary font-semibold text-xl">
+                <p>Pelatihan SATPAM Gada Pratama 2021 - 2022</p>
+                <p class="uppercase">rajawali guard services</p>
+            </div>
+        </div>
+        <div class="relative">
+            <img class="h-96 md:h-auto w-full object-cover" src="./assets/img/img-brosur1.png" alt="">
+            <div class="absolute top-10 w-full flex items-center justify-center space-x-12">
+                <img class="w-12 md:w-20" src="./assets/img/logo_RGS.png" alt="">
+                <img class="w-20 md:w-28" src="./assets/img/logo-abujpn.png" alt="">
+                <img class="w-16 md:w-24" src="./assets/img/logo-polda.png" alt="">
+            </div>
+            <div class="absolute bottom-0 transform translate-y-1/2 w-full flex items-center justify-center">
+                <img class="w-28 md:w-40" src="./assets/img/img-siapKerja.png" alt="">
+            </div>
+        </div>
+        <div class="rgs-container mt-28">
+            <div class="mb-8 md:flex">
+                <img class="mb-8 md:mb-0 w-full md:w-1/2 mr-10 object-cover rounded-xl"
+                    src="./assets/img/brosur-image.png" alt="">
+                <div class="space-y-8">
+                    <div>
+                        <div class="text-primary font-semibold text-lg mb-3">Fasilitas yang diterima Peserta diklat
+                            satpam </div>
+                        <ul class="brosur-list space-y-3 text-gray-500 text-sm md:text-base">
+                            <li>Makan pagi, siang, dan malam, serta snack</li>
+                            <li>KTA Satpam & Ijazah Gada Pratama</li>
+                            <li>Materi dan Modul Pelatihan PIN Gada Pratma</li>
+                            <li>Kaos Rajawali Guard Services</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <div class="text-primary font-semibold text-lg mb-3">Materi Pelatihan</div>
+                        <ul class="brosur-list space-y-3 text-gray-500 text-sm md:text-base">
+                            <li>Gada Pratama sesuai Peraturan Kapolri</li>
+                            <li>Tupoksi Satpam Turjawali</li>
+                            <li>Drill Tongkat Borgol</li>
+                            <li>Etika Profesi</li>
+                            <li>TPTKP</li>
+                            <li>Penangkapan & Penggeledahan PBB & PPM,dll</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="text-primary font-semibold text-lg mb-3">Persyaratan</div>
+                <ul class="brosur-list grid md:grid-cols-2 gap-2 text-gray-500 text-sm md:text-base">
+                    <li>Tinggi Badan minimal 160 cm(pria) dan 155 cm(wanita)</li>
+                    <li>Fotocopy KTP (2 lembar)</li>
+                    <li>Passfoto berwarna ukuran 2x3, 3x4. 4x6 ( masing-masing 4 Lembar) background merah.</li>
+                    <li>Berpendidikan minimal SMA sederajat (fotocopy IjazahTerlegalisir 1 lembar)</li>
+                    <li>Surat Rekomendasi dari perusahaan tempat bekerja (jika masih bekerja di perusahaan)</li>
+                    <li>Fotocopy Surat Keterangan Catatan Kepolisian (SKCK) 1 Lembar</li>
+                    <li>Surat keterangan sehat dari dokter</li>
+                    <li>Surat Keterangan bebas narkoba.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <section id="pendaftaran" class="relative">
+        <img class="absolute left-0 top:0 w-full h-full object-cover opacity-30" src="./assets/img/img-brosur2.png"
+            alt="">
+        <div class="relative rgs-container px-0 md:px-10 grid md:grid-cols-2">
+            <div class="space-y-8 px-8 md:px-0 py-16">
+                <div class="text-primary">
+                    <div class="font-semibold text-lg mb-3">Tempat Pelatihan</div>
+                    <p>Pusdik Karya Nyata Cinagara, Bogor</p>
+                </div>
+                <div class="text-primary">
+                    <div class="font-semibold text-lg mb-3">Tanggal Pendaftaran</div>
+                    <p> Tanggal 3 Mei 2021 <br> Rencana Pelatihan dimulai: <br> Juni 2021 </p>
+                </div>
+                <div class="text-primary">
+                    <div class="font-semibold text-lg mb-3">Rencana Pelatihan</div>
+                    <p>Juni 2021</p>
+                </div>
+            </div>
+            <div class="bg-primary py-16 px-5 md:px-10 text-white space-y-8">
+                <div>
+                    <div class="font-semibold text-lg mb-3">Informasi & Pendaftaran:</div>
+                    <table class="text-sm md:text-base break-all md:break-normal">
+                        <tr>
+                            <td class="pr-8">Sumardjo</td>
+                            <td>08129588508</td>
+                        </tr>
+                        <tr>
+                            <td class="pr-8">Santy</td>
+                            <td>081311420919</td>
+                        </tr>
+                    </table>
+                </div>
+                <div>
+                    <div class="font-semibold text-lg mb-3">Tempat Pendaftaran Offline</div>
+                    <p class="text-sm md:text-base break-all md:break-normal"> RAJAWALI GUARD SERVICES <br> Komplek
+                        Gading Bukit Indah Blok D No 18<br> Jl. Bukit Gading Raya,Kelapa Gading Permai,Jakarta Utara
+                        14240<br> Tlp : (021) 4515845 </p>
+                </div>
+                <div>
+                    <div class="font-semibold text-lg mb-3">Pendaftaran Online</div>
+                    <p class="text-sm md:text-base break-all md:break-normal">Silahkan unduh Formulir Pendaftaran dengan
+                        menekan tombol di bawah ini. Isikan Formulir dengan baik dan benar, lalu email ke <span
+                            class="text-yellow-400">rgs-corporate@rajawaliguardservices.com</span> beserta Soft Copy
+                        dokumen-dokumen lain yang diminta.</p>
+                </div>
+                <a class="bg-white block w-full rounded-md font-bold text-lg shadow-md text-primary text-center p-8 hover:bg-gray-100 transition-all duration-200"
+                    href="http://www.africau.edu/images/default/sample.pdf"> UNDUH FORMULIR </a>
+            </div>
+        </div>
+    </section>
+    <section id="manajemen" class="relative overflow-hidden">
+        <img class="w-full lg:hidden h-96 object-cover" src="./assets/img/manajemen-perusahaan-mobile.png" alt="">
+        <img class="absolute hidden lg:inline-block right-0 transform translate-x-1/4 top-1/2 -translate-y-1/2 h-5/6"
+            src="./assets/img/manajemen-perusahaan.png" alt="">
+        <div class="rgs-container">
+            <div class="py-8 lg:py-16">
+                <div class="font-bold text-primary text-lg mb-8">Manajemen Perusahaan</div>
+                <div class="space-y-6">
+                    <div class="space-y-3">
+                        <div class="font-bold text-lg">MARSMA TNI (PURN) IR BR PURBA, MSc</div>
+                        <div class="text-sm">Direktur Utama</div>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="font-bold text-lg">MARSMA TNI (PURN) DR AGUS MULYADI, SH,MH</div>
+                        <div class="text-sm">Direktur Umum & SDM</div>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="font-bold text-lg">MARSMA TNI (PURN) SYAHRUDIN DAMANIk,SH,MH</div>
+                        <div class="text-sm">Direktur Keuangan & Marketing</div>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="font-bold text-lg">LETKOL (PURN) SUMARDJO , SH, MH, MM</div>
+                        <div class="text-sm">Kepala Divisi Jasa Pengamanan</div>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="font-bold text-lg">IRJEN POL (PURN) EDWARD ARITONANG</div>
+                        <div class="font-bold text-lg">MARSDA TNI (PURN) SUPOMO</div>
+                        <div class="text-sm">Tenaga Ahli</div>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="font-bold text-lg">AKBP DRS. SUTOYO, MH</div>
+                        <div class="text-sm">Manajer Operasional</div>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="font-bold text-lg">AKBP (PURN) Agustine</div>
+                        <div class="text-sm">Manajer Diklat</div>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="font-bold text-lg">Letkol (PURN) Budrie.G. SH</div>
+                        <div class="text-sm">Komandan Satpam</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer id="kontak">
+        <div class="relative bg-gradient-to-r from-black via-black to-transparent text-white text-sm py-16">
+            <img style="z-index: -1;" class="absolute right-0 top-0 w-full object-cover h-full"
+                src="./assets/img/footer.png" alt="">
+            <div class="rgs-container grid md:grid-cols-3">
+                <div class="col-span-2">
+                    <img class="w-40 mb-5" src="./assets/img/logo.png" alt="">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="space-y-6">
+                            <div>
+                                <div class="font-bold mb-2 text-lg">PT. ARYA SHAKTI UTAMA</div>
+                                <p> PT. ARYA SHAKTI UTAMA adalah perusahaan Nasional yang bergerak dalam bidang usaha
+                                    Jasa Keamanan. Didirikan pada tahun 2020, kami bertekad untuk menjadi perusahaan
+                                    yang terkemuka dibidang keamanan serta berpartisipasi dalam mendukung kemajuan
+                                    bisnis klien kami. </p>
+                            </div>
+                            <div>
+                                <div class="font-bold mb-2 text-lg">Head Office</div>
+                                <p> KOMPLEKS GADING BUKIT INDAH BLOK D NO.18 <br> Jalan Bukit Gading Raya Kelapa Gading
+                                    Permai Kelapa Gading Barat, Kelapa Gading - Jakarta Utara DKI Jakarta - Indonesia
+                                    14240 <br> Telp. +6221 4515845 <br>
+                                </p>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="mb-3">
+                                <span class="pr-6"><i class="fas fa-envelope"></i></span>
+                                <span>corporate@pt-aristama.com</span>
+                            </div>
+                            <table>
+                                <tr>
+                                    <td class="pr-6"><i class="fas fa-phone-alt"></i></td>
+                                    <td class="pr-6">Damanik</td>
+                                    <td>0817731048</td>
+                                </tr>
+                                <tr>
+                                    <td class="pr-6"><i class="fas fa-phone-alt"></i></td>
+                                    <td class="pr-6">BR Purba</td>
+                                    <td>0816779552</td>
+                                </tr>
+                                <tr>
+                                    <td class="pr-6"><i class="fas fa-phone-alt"></i></td>
+                                    <td class="pr-6">Sumardjo</td>
+                                    <td>08129588508</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bg-gray-800 p-6 font-semibold text-center text-white"> PT. ARYA SHAKTI UTAMA 2021 </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="./assets/js/index.js"></script>
+</body>
+
+</html>
