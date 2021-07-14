@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20.002" viewBox="0 0 20 20.002">
+  <defs>
+    <clipPath id="clip-path">
+      <path id="Path_197" data-name="Path 197" d="M19.67,8.051,10.732.23A1.114,1.114,0,0,0,9.279.246L.31,8.468A.948.948,0,0,0,.267,9.83l.225.234a.98.98,0,0,0,1.346.1l.67-.6v9.428a.976.976,0,0,0,.976.976h3.5a.975.975,0,0,0,.976-.976V11.21a1.36,1.36,0,0,1,1.36-1.36h1.739a1.36,1.36,0,0,1,1.36,1.36v7.785a.922.922,0,0,0,.916.975h3.7a.975.975,0,0,0,.976-.975v-9.3l.414.363c.228.2.707.04,1.069-.359l.254-.279A.953.953,0,0,0,19.67,8.051Z" transform="translate(0.001 0.032)" fill="#fe9407"/>
+    </clipPath>
+    <linearGradient id="linear-gradient" x1="0.388" y1="0.267" x2="0.592" y2="0.944" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#e6e6e6"/>
+      <stop offset="1" stop-color="#fff"/>
+    </linearGradient>
+  </defs>
+  <g id="icon-home-active" transform="translate(0.001 0.032)">
+    <g id="Group_253" data-name="Group 253" transform="translate(-0.001 -0.032)" clip-path="url(#clip-path)">
+      <rect id="Rectangle_332" data-name="Rectangle 332" width="20" height="20" transform="translate(0 0.001)" fill="#fe9407"/>
+      <path id="Path_196" data-name="Path 196" d="M0-120.41v17.96a11.837,11.837,0,0,1,10.68-4.32c9.76,1.28,12.779-10.112,10.2-14.84C15.84-130.85,0-120.41,0-120.41Z" transform="translate(0 120.411)" fill="url(#linear-gradient)" style="mix-blend-mode: multiply;isolation: isolate"/>
+    </g>
+  </g>
+</svg>

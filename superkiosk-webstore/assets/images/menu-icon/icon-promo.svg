@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="19.157" viewBox="0 0 20 19.157">
+  <defs>
+    <clipPath id="clip-path">
+      <path id="Path_203" data-name="Path 203" d="M11.735,17.292a.311.311,0,0,0-.271-.157.318.318,0,0,0-.276.163L8.256,22.626a.312.312,0,0,0,.547.3L11.74,17.6A.307.307,0,0,0,11.735,17.292ZM9.513,18.8a1.52,1.52,0,0,0-1.537-1.7,1.629,1.629,0,0,0-1.6,1.791,1.568,1.568,0,0,0,1.555,1.722A1.628,1.628,0,0,0,9.513,18.8ZM7.958,19.884c-.388,0-.589-.432-.589-1.03,0-.571.185-1.027.58-1.027.412,0,.571.45.571,1.027C8.52,19.5,8.335,19.884,7.958,19.884Zm4.128-.414a1.631,1.631,0,0,0-1.6,1.793,1.578,1.578,0,0,0,1.555,1.722,1.628,1.628,0,0,0,1.581-1.819A1.521,1.521,0,0,0,12.086,19.47Zm-.018,2.785c-.386,0-.589-.43-.58-1.028,0-.571.174-1.03.58-1.03s.562.45.562,1.03C12.631,21.869,12.445,22.255,12.068,22.255Zm6.489-4.924c-.311-.959.112-2.3-.467-3.1s-2-.814-2.8-1.4-1.239-1.923-2.2-2.234c-.926-.3-2.066.518-3.091.518S7.832,10.3,6.908,10.6c-.957.311-1.4,1.654-2.2,2.234s-2.216.6-2.8,1.4-.157,2.139-.467,3.1C1.142,18.255,0,19.086,0,20.112s1.142,1.857,1.442,2.781c.31.957-.115,2.3.467,3.1s2,.816,2.8,1.4,1.239,1.925,2.2,2.236c.924.3,2.066-.518,3.092-.518s2.165.819,3.091.518c.957-.31,1.4-1.653,2.2-2.234s2.216-.595,2.8-1.4.156-2.139.467-3.1c.3-.924,1.442-1.758,1.442-2.781S18.857,18.255,18.558,17.331ZM10,27.157a7.046,7.046,0,1,1,7.045-7.045A7.046,7.046,0,0,1,10,27.157Zm0-13.193a6.148,6.148,0,1,0,6.147,6.148A6.156,6.156,0,0,0,10,13.964Zm0,11.292a5.143,5.143,0,1,1,5.144-5.144A5.15,5.15,0,0,1,10,25.256Z" transform="translate(0 -10.533)" fill="none"/>
+    </clipPath>
+    <linearGradient id="linear-gradient" x1="0.492" y1="1.195" x2="0.497" y2="0.787" gradientUnits="objectBoundingBox">
+      <stop offset="0.001" stop-color="#e6e6e6"/>
+      <stop offset="0.08" stop-color="#cbe1e7"/>
+      <stop offset="0.259" stop-color="#93d7eb"/>
+      <stop offset="0.434" stop-color="#64cfed"/>
+      <stop offset="0.599" stop-color="#40c9f0"/>
+      <stop offset="0.753" stop-color="#26c4f1"/>
+      <stop offset="0.891" stop-color="#16c1f2"/>
+      <stop offset="1" stop-color="#11c1f3"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-2" x1="0.388" y1="0.267" x2="0.592" y2="0.944" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#e6e6e6"/>
+      <stop offset="1" stop-color="#fff"/>
+    </linearGradient>
+  </defs>
+  <g id="icon-promo" transform="translate(0 -10.533)">
+    <g id="Group_272" data-name="Group 272" transform="translate(0 10.533)" clip-path="url(#clip-path)">
+      <rect id="Rectangle_336" data-name="Rectangle 336" width="20" height="20" transform="translate(0 -0.421)" fill="url(#linear-gradient)"/>
+      <path id="Path_202" data-name="Path 202" d="M0-120.41v17.96a11.837,11.837,0,0,1,10.68-4.32c9.76,1.28,12.779-10.112,10.2-14.84C15.84-130.85,0-120.41,0-120.41Z" transform="translate(0 119.989)" fill="url(#linear-gradient-2)" style="mix-blend-mode: multiply;isolation: isolate"/>
+    </g>
+  </g>
+</svg>

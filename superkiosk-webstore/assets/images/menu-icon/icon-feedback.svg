@@ -1,0 +1,25 @@
+<svg id="icon-hubungi" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20" viewBox="0 0 20 20">
+  <defs>
+    <clipPath id="clip-path">
+      <path id="Path_219" data-name="Path 219" d="M18,0H2A1.991,1.991,0,0,0,.01,2L0,20l4-4H18a2,2,0,0,0,2-2V2a2,2,0,0,0-2-2ZM11,12H9V10h2Zm0-4H9V4h2Zm0,0" fill="none"/>
+    </clipPath>
+    <linearGradient id="linear-gradient" x1="0.492" y1="1.195" x2="0.497" y2="0.787" gradientUnits="objectBoundingBox">
+      <stop offset="0.001" stop-color="#e6e6e6"/>
+      <stop offset="0.08" stop-color="#cbe1e7"/>
+      <stop offset="0.259" stop-color="#93d7eb"/>
+      <stop offset="0.434" stop-color="#64cfed"/>
+      <stop offset="0.599" stop-color="#40c9f0"/>
+      <stop offset="0.753" stop-color="#26c4f1"/>
+      <stop offset="0.891" stop-color="#16c1f2"/>
+      <stop offset="1" stop-color="#11c1f3"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-2" x1="0.388" y1="0.267" x2="0.592" y2="0.944" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#e6e6e6"/>
+      <stop offset="1" stop-color="#fff"/>
+    </linearGradient>
+  </defs>
+  <g id="Group_280" data-name="Group 280" clip-path="url(#clip-path)">
+    <rect id="Rectangle_344" data-name="Rectangle 344" width="20" height="20" fill="url(#linear-gradient)"/>
+    <path id="Path_218" data-name="Path 218" d="M0-120.41v17.96a11.837,11.837,0,0,1,10.68-4.32c9.76,1.28,12.779-10.112,10.2-14.84C15.84-130.85,0-120.41,0-120.41Z" transform="translate(0 120.41)" fill="url(#linear-gradient-2)" style="mix-blend-mode: multiply;isolation: isolate"/>
+  </g>
+</svg>
