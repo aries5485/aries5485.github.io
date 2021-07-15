@@ -41,35 +41,12 @@
                 <div class="cart-qty-num">99+</div>
             </div>
         </div>
-        <!-- Navbar Search-->
-        <!-- <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-            <div class="input-group">
-                <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..."
-                    aria-describedby="btnNavbarSearch" />
-                <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i
-                        class="fas fa-search"></i></button>
-            </div>
-        </form> -->
-        <!-- Navbar-->
-        <!-- <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
-                    aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
-                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="#!">Settings</a></li>
-                    <li><a class="dropdown-item" href="#!">Activity Log</a></li>
-                    <li>
-                        <hr class="dropdown-divider" />
-                    </li>
-                    <li><a class="dropdown-item" href="#!">Logout</a></li>
-                </ul>
-            </li>
-        </ul> -->
     </nav>
     <div id="layoutSidenav">
         <div id="layoutSidenav_nav">
             <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                 <div class="sb-sidenav-menu">
+
                     <!-- Logged User -->
                     <div class="sidemenu-avatar-container">
                         <div class="sidemenu-info-user">
@@ -95,45 +72,42 @@
                             <img src="assets/images/img-profile.png">
                         </a>
                         <button class="btn btn-dark btn-logout" type="submit">Logout</button>
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360.5 77.327">
-                            <path id="header-wave" data-name="header-wave"
-                                d="M-1279.5-2098.336H-1640v-50.971c.061.045,6.536,4.743,20.057,9.4,12.448,4.289,33.559,9.4,63.435,9.4a310.567,310.567,0,0,0,41.3-2.908c31.77-4.286,60.428-12.9,88.143-21.231,18.176-5.464,35.343-10.624,53.037-14.536,9.5-2.1,18.26-3.641,26.775-4.709a219.338,219.338,0,0,1,27.539-1.774,196.758,196.758,0,0,1,40.214,4.1v73.223Z"
-                                transform="translate(1640 2175.663)" fill="#fff" />
-                        </svg>
+                        <div class="header-wave"></div>
                     </div>
-                    <!-- Public User -->
-                    <!-- <div class="logo-header-menu">
-                        <p>
-                            Selamat Datang di<br />
-                            <span>SuperKiosk</span>
-                        </p>
-                        <h6>Belanja Jaman Now</h6>
+                    <!-- end of Logged User -->
 
-                        <div class="menu-header-wave">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360.5 77.327">
-                                <path id="header-wave" data-name="header-wave"
-                                    d="M-1279.5-2098.336H-1640v-50.971c.061.045,6.536,4.743,20.057,9.4,12.448,4.289,33.559,9.4,63.435,9.4a310.567,310.567,0,0,0,41.3-2.908c31.77-4.286,60.428-12.9,88.143-21.231,18.176-5.464,35.343-10.624,53.037-14.536,9.5-2.1,18.26-3.641,26.775-4.709a219.338,219.338,0,0,1,27.539-1.774,196.758,196.758,0,0,1,40.214,4.1v73.223Z"
-                                    transform="translate(1640 2175.663)" fill="#fff" />
-                            </svg>
+                    <!-- Public User -->
+                    <!-- <div id="public-state">
+                        <div class="logo-header-menu">
+                            <p>
+                                Selamat Datang di<br />
+                                <span>SuperKiosk</span>
+                            </p>
+                            <h6>Belanja Jaman Now</h6>
+                            <div>
+                                <div class="header-wave" style="z-index: 2;bottom: -139px;height: 100%;"></div>
+                            </div>
+                        </div>
+                        <div class="login-box-menu">
+                            <p>
+                                Silahkan login untuk dapat mulai belanja dan menikmati promo yang tersedia
+                            </p>
+                            <a href="#app/login" menu-close>
+                                <button class="btn fw-bold btn-grad-blue btn-rounded text-white w-100" type="submit"
+                                    style="font-size: 0.8em;">Login</button>
+                            </a>
                         </div>
                     </div> -->
-                    <!-- <div class="login-box-menu">
-                        <p>
-                            Silahkan login untuk dapat mulai belanja dan menikmati promo yang tersedia
-                        </p>
-                        <a href="#app/login" menu-close>
-                            <button class="btn fw-bold btn-grad-blue btn-rounded text-white w-100" type="submit"
-                                style="font-size: 0.8em;">Login</button>
-                        </a>
-                    </div> -->
+                    <!-- end of Public User -->
+
                     <div class="list-group list-group-flush">
                         <a class="align-items-center d-flex list-group-item list-group-item-action list-group-item-light p-3"
-                            href="#!">
+                            href="index.html">
                             <img src="assets/images/menu-icon/icon-home.svg" alt="">
                             Beranda
                         </a>
                         <a class="align-items-center d-flex list-group-item list-group-item-action list-group-item-light p-3"
-                            href="#!">
+                            href="shop.html">
                             <img src="assets/images/menu-icon/icon-shop.svg" alt="">
                             Belanja
                         </a>
@@ -280,7 +254,7 @@
 
                     </div>
                 </div>
-                <!-- end ofPromo -->
+                <!-- end of Promo -->
 
                 <!-- TOPUP & TAGIHAN -->
                 <div style="clear: both;"></div>
@@ -450,6 +424,101 @@
                     </div>
                 </div>
                 <!-- end of Produk Pilihan -->
+
+                <!-- Kategori Produk -->
+                <div class="sub-section" style="background-color: white;padding-bottom: 0;">
+                    <div class="sub-section-header">
+                        <div class="sub-section-title">kategori</div>
+                    </div>
+                    <div class="cat-box-square">
+                        <div class="cat-box-square-col">
+                            <div class="cat-box-square-item">
+                                <img src="assets/images/bahan-masakan&kue.jpg" alt="">
+                                <div class="cat-box-title">Bahan Masakan & Kue</div>
+                            </div>
+                        </div>
+                        <div class="cat-box-square-col">
+                            <div class="cat-box-square-item">
+                                <img src="assets/images/beras&gula.jpg" alt="">
+                                <div class="cat-box-title">Beras & Gula</div>
+                            </div>
+                        </div>
+                        <div class="cat-box-square-col">
+                            <div class="cat-box-square-item">
+                                <img src="assets/images/camilan.jpg" alt="">
+                                <div class="cat-box-title">Camilan</div>
+                            </div>
+                        </div>
+                        <div class="cat-box-square-col">
+                            <div class="cat-box-square-item">
+                                <img src="assets/images/kebersihan&perawatan-rumah.jpg" alt="">
+                                <div class="cat-box-title">Kebersihan & Perawatan Rumah</div>
+                            </div>
+                        </div>
+                        <div class="cat-box-square-col">
+                            <div class="cat-box-square-item">
+                                <img src="assets/images/keperluan-bayi.jpg" alt="">
+                                <div class="cat-box-title">Keperluan Bayi</div>
+                            </div>
+                        </div>
+                        <div class="cat-box-square-col">
+                            <div class="cat-box-square-item">
+                                <img src="assets/images/keperluan-dapur.jpg" alt="">
+                                <div class="cat-box-title">Keperluan Dapur</div>
+                            </div>
+                        </div>
+                        <div class="cat-box-square-col">
+                            <div class="cat-box-square-item">
+                                <img src="assets/images/keperluan-pria.jpg" alt="">
+                                <div class="cat-box-title">Keperluan Pria</div>
+                            </div>
+                        </div>
+                        <div class="cat-box-square-col">
+                            <div class="cat-box-square-item">
+                                <img src="assets/images/keperluan-wanita.jpg" alt="">
+                                <div class="cat-box-title">Keperluan Wanita</div>
+                            </div>
+                        </div>
+                        <div class="cat-box-square-col">
+                            <div class="cat-box-square-item">
+                                <img src="assets/images/kesehatan.jpg" alt="">
+                                <div class="cat-box-title">Kesehatan</div>
+                            </div>
+                        </div>
+                        <div class="cat-box-square-col">
+                            <div class="cat-box-square-item">
+                                <img src="assets/images/makanan-instan.jpg" alt="">
+                                <div class="cat-box-title">Makanan Instan</div>
+                            </div>
+                        </div>
+                        <div class="cat-box-square-col">
+                            <div class="cat-box-square-item">
+                                <img src="assets/images/minuman-ringan.jpg" alt="">
+                                <div class="cat-box-title">Minuman Ringan</div>
+                            </div>
+                        </div>
+                        <div class="cat-box-square-col">
+                            <div class="cat-box-square-item">
+                                <img src="assets/images/perawatan-tubuh.jpg" alt="">
+                                <div class="cat-box-title">Perawatan Tubuh</div>
+                            </div>
+                        </div>
+                        <div class="cat-box-square-col">
+                            <div class="cat-box-square-item">
+                                <img src="assets/images/sabun&shampoo.jpg" alt="">
+                                <div class="cat-box-title">Sabun & Shampoo</div>
+                            </div>
+                        </div>
+                        <div class="cat-box-square-col">
+                            <div class="cat-box-square-item">
+                                <img src="assets/images/susu.jpg" alt="">
+                                <div class="cat-box-title">Susu</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="clear: both;height: 10px;"></div>
+                </div>
+                <!-- end of Kategori Produk -->
 
             </main>
         </div>
