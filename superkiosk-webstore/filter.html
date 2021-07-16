@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Filter Produk - SuperKiosk Webstore</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <link href="css/styles.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/custom.css">
+    <link rel="stylesheet" href="assets/font-awesome/css/all.css">
+</head>
+
+<body class="sb-nav-fixed">
+    <nav class="bg-dark grad-blue navbar navbar-dark navbar-expand sb-topnav">
+        <!-- Sidebar Toggle-->
+        <div class="align-items-center d-flex">
+            <button class="btn btn-link text-light" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
+            <!-- Navbar Brand-->
+            <a class="navbar-brand" href="#!">Filter Produk</a>
+        </div>
+        <div class="align-items-center d-flex justify-content-between" style="width: 80px;margin-right: 28px;">
+            <i class="bi bi-heart-fill text-light"></i>
+            <div class="position-relative">
+                <i class="bi bi-bell-fill text-light"></i>
+                <div class="notif-icon"><i class="bi bi-dot"></i></div>
+            </div>
+            <div class="position-relative">
+                <i class="bi bi-cart-fill text-light"></i>
+                <div class="cart-qty-num">99+</div>
+            </div>
+        </div>
+    </nav>
+    <div id="layoutSidenav">
+        <div id="layoutSidenav_nav">
+            <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                <div class="sb-sidenav-menu">
+
+                    <!-- Logged User -->
+                    <div class="sidemenu-avatar-container">
+                        <div class="sidemenu-info-user">
+                            <p class="username-info">Devi Rana Calista</p>
+                            <div style="display: flex;">
+                                <div class="user-quick-info">
+                                    <img src="assets/images/menu-icon/icon-saldodompet.svg" alt="">
+                                    <div class="user-quick-info-text">
+                                        <p>Saldo SuperKiosk</p>
+                                        <h3>Rp 750.000</h3>
+                                    </div>
+                                </div>
+                                <div class="user-quick-info">
+                                    <img src="assets/images/menu-icon/icon-superpoinuser.svg" alt="">
+                                    <div class="user-quick-info-text">
+                                        <p>Super Poin</p>
+                                        <h3>5.250 Pts</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <a menu-close href="profile.html" class="ava-pic">
+                            <img src="assets/images/img-profile.png">
+                        </a>
+                        <button class="btn btn-dark btn-logout" type="submit">Logout</button>
+                        <div class="header-wave"></div>
+                    </div>
+                    <!-- end of Logged User -->
+
+                    <!-- Public User -->
+                    <!-- <div id="public-state">
+                        <div class="logo-header-menu">
+                            <p>
+                                Selamat Datang di<br />
+                                <span>SuperKiosk</span>
+                            </p>
+                            <h6>Belanja Jaman Now</h6>
+                            <div>
+                                <div class="header-wave" style="z-index: 2;bottom: -139px;height: 100%;"></div>
+                            </div>
+                        </div>
+                        <div class="login-box-menu">
+                            <p>
+                                Silahkan login untuk dapat mulai belanja dan menikmati promo yang tersedia
+                            </p>
+                            <a href="#app/login" menu-close>
+                                <button class="btn fw-bold btn-grad-blue btn-rounded text-white w-100" type="submit"
+                                    style="font-size: 0.8em;">Login</button>
+                            </a>
+                        </div>
+                    </div> -->
+                    <!-- end of Public User -->
+
+                    <div class="list-group list-group-flush">
+                        <a class="align-items-center d-flex list-group-item list-group-item-action list-group-item-light p-3"
+                            href="index.html">
+                            <img src="assets/images/menu-icon/icon-home.svg" alt="">
+                            Beranda
+                        </a>
+                        <a class="align-items-center d-flex list-group-item list-group-item-action list-group-item-light p-3"
+                            href="shop.html">
+                            <img src="assets/images/menu-icon/icon-shop.svg" alt="">
+                            Belanja
+                        </a>
+                        <a class="align-items-center d-flex list-group-item list-group-item-action list-group-item-light p-3"
+                            href="#!">
+                            <img src="assets/images/menu-icon/icon-favourite.svg" alt="">
+                            Favorit
+                        </a>
+                        <a class="align-items-center d-flex list-group-item list-group-item-action list-group-item-light p-3"
+                            href="#!">
+                            <img src="assets/images/menu-icon/icon-promo.svg" alt="">Berita & Promo</a>
+                        <a class="align-items-center d-flex list-group-item list-group-item-action list-group-item-light p-3"
+                            href="#!">
+                            <img src="assets/images/menu-icon/icon-notifications.svg" alt="">Notifikasi
+                            <div class="notif-icon-side">99+</div>
+                        </a>
+                        <a class="align-items-center d-flex list-group-item list-group-item-action list-group-item-light p-3"
+                            href="#!">
+                            <img src="assets/images/menu-icon/icon-transactions.svg" alt="">Order Saya</a>
+                        <a class="align-items-center d-flex list-group-item list-group-item-action list-group-item-light p-3"
+                            href="#!">
+                            <img src="assets/images/menu-icon/icon-transactions_history.svg" alt="">Transaksi Saya</a>
+                        <a class="align-items-center d-flex list-group-item list-group-item-action list-group-item-light p-3"
+                            href="#!">
+                            <img src="assets/images/menu-icon/icon-bills_history.svg" alt="">Pembelian &
+                            Pembayaran</a>
+                        <a class="align-items-center d-flex list-group-item list-group-item-action list-group-item-light p-3"
+                            href="#!">
+                            <img src="assets/images/menu-icon/icon-topup.svg" alt="">Topup Saldo</a>
+                        <a class="align-items-center d-flex list-group-item list-group-item-action list-group-item-light p-3"
+                            href="#!">
+                            <img src="assets/images/menu-icon/icon-points.svg" alt="">Super Poin</a>
+                        <a class="align-items-center d-flex list-group-item list-group-item-action list-group-item-light p-3"
+                            href="#!">
+                            <img src="assets/images/menu-icon/icon-about.svg" alt="">Tentang
+                            SuperKiosk</a>
+                        <a class="align-items-center d-flex list-group-item list-group-item-action list-group-item-light p-3"
+                            href="#!">
+                            <img src="assets/images/menu-icon/icon-feedback.svg" alt="">Hubungi Kami</a>
+                    </div>
+                    <div class="sidemenu-footer">
+                        <img src="assets/images/sidemenu-footer.png" alt="">
+                        <p>Versi 69</p>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <div id="layoutSidenav_content" style="background-color: #ececec;">
+            <main>
+                <p class="mb-1 p-2 pb-0 sub-section-title">Kategori</p>
+                <div class="container p-4 pt-0 pb-0">
+                    <div class="row row-cols-2">
+                        <div class="col p-0 mb-2">
+                            <div class="cat-filter-box me-2">
+                                <div class="d-flex">
+                                    <label class="form-check-label form-check-inline" for="flexRadioDefault1">
+                                        <div class="d-flex">
+                                            <img class="me-2 filter-img" src="assets/images/bahan-masakan&kue.jpg"
+                                                alt="">
+                                            <p class="filter-text">Bahan Masakan & Kue</p>
+                                        </div>
+                                    </label>
+                                    <input class="filter-radio" type="radio" name="flexRadioDefault"
+                                        id="flexRadioDefault1">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col p-0 mb-2">
+                            <div class="cat-filter-box">
+                                <div class="d-flex">
+                                    <label class="form-check-label form-check-inline" for="flexRadioDefault2">
+                                        <div class="d-flex">
+                                            <img class="me-2 filter-img" src="assets/images/beras&gula.jpg" alt="">
+                                            <p class="filter-text">Beras & Gula</p>
+                                        </div>
+                                    </label>
+                                    <input class="filter-radio" type="radio" name="flexRadioDefault"
+                                        id="flexRadioDefault2">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col p-0 mb-2">
+                            <div class="cat-filter-box me-2">
+                                <div class="d-flex">
+                                    <label class="align-self-center form-check-inline form-check-label"
+                                        for="flexRadioDefault3">
+                                        <div class="d-flex">
+                                            <img class="me-2 filter-img" src="assets/images/camilan.jpg" alt="">
+                                            <p class="filter-text">Camilan</p>
+                                        </div>
+                                    </label>
+                                    <input class="filter-radio" type="radio" name="flexRadioDefault"
+                                        id="flexRadioDefault3">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col p-0 mb-2">
+                            <div class="cat-filter-box">
+                                <div class="d-flex">
+                                    <label class="align-self-center form-check-inline form-check-label"
+                                        for="flexRadioDefault4">
+                                        <div class="d-flex">
+                                            <img class="me-2 filter-img"
+                                                src="assets/images/kebersihan&perawatan-rumah.jpg" alt="">
+                                            <p class="filter-text">Kebersihan & Perawatan Rumah</p>
+                                        </div>
+                                    </label>
+                                    <input class="filter-radio" type="radio" name="flexRadioDefault"
+                                        id="flexRadioDefault4">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col p-0 mb-2">
+                            <div class="cat-filter-box me-2">
+                                <div class="d-flex">
+                                    <label class="align-self-center form-check-inline form-check-label"
+                                        for="flexRadioDefault5">
+                                        <div class="d-flex">
+                                            <img class="me-2 filter-img" src="assets/images/keperluan-bayi.jpg" alt="">
+                                            <p class="filter-text">Keperluan Bayi</p>
+                                        </div>
+                                    </label>
+                                    <input class="filter-radio" type="radio" name="flexRadioDefault"
+                                        id="flexRadioDefault5">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col p-0 mb-2">
+                            <div class="cat-filter-box">
+                                <div class="d-flex">
+                                    <label class="align-self-center form-check-inline form-check-label"
+                                        for="flexRadioDefault6">
+                                        <div class="d-flex">
+                                            <img class="me-2 filter-img" src="assets/images/keperluan-dapur.jpg" alt="">
+                                            <p class="filter-text">Keperluan Dapur</p>
+                                        </div>
+                                    </label>
+                                    <input class="filter-radio" type="radio" name="flexRadioDefault"
+                                        id="flexRadioDefault6">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col p-0 mb-2">
+                            <div class="cat-filter-box me-2">
+                                <div class="d-flex">
+                                    <label class="align-self-center form-check-inline form-check-label"
+                                        for="flexRadioDefault7">
+                                        <div class="d-flex">
+                                            <img class="me-2 filter-img" src="assets/images/keperluan-pria.jpg" alt="">
+                                            <p class="filter-text">Keperluan Pria</p>
+                                        </div>
+                                    </label>
+                                    <input class="filter-radio" type="radio" name="flexRadioDefault"
+                                        id="flexRadioDefault7">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col p-0 mb-2">
+                            <div class="cat-filter-box">
+                                <div class="d-flex">
+                                    <label class="align-self-center form-check-inline form-check-label"
+                                        for="flexRadioDefault8">
+                                        <div class="d-flex">
+                                            <img class="me-2 filter-img" src="assets/images/keperluan-wanita.jpg"
+                                                alt="">
+                                            <p class="filter-text">Keperluan Wanita</p>
+                                        </div>
+                                    </label>
+                                    <input class="filter-radio" type="radio" name="flexRadioDefault"
+                                        id="flexRadioDefault8">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col p-0 mb-2">
+                            <div class="cat-filter-box me-2">
+                                <div class="d-flex">
+                                    <label class="align-self-center form-check-inline form-check-label"
+                                        for="flexRadioDefault9">
+                                        <div class="d-flex">
+                                            <img class="me-2 filter-img" src="assets/images/kesehatan.jpg" alt="">
+                                            <p class="filter-text">Kesehatan</p>
+                                        </div>
+                                    </label>
+                                    <input class="filter-radio" type="radio" name="flexRadioDefault"
+                                        id="flexRadioDefault9">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col p-0 mb-2">
+                            <div class="cat-filter-box">
+                                <div class="d-flex">
+                                    <label class="align-self-center form-check-inline form-check-label"
+                                        for="flexRadioDefault10">
+                                        <div class="d-flex">
+                                            <img class="me-2 filter-img" src="assets/images/makanan-instan.jpg" alt="">
+                                            <p class="filter-text">Makanan Instan</p>
+                                        </div>
+                                    </label>
+                                    <input class="filter-radio" type="radio" name="flexRadioDefault"
+                                        id="flexRadioDefault10">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col p-0 mb-2">
+                            <div class="cat-filter-box me-2">
+                                <div class="d-flex">
+                                    <label class="align-self-center form-check-inline form-check-label"
+                                        for="flexRadioDefault11">
+                                        <div class="d-flex">
+                                            <img class="me-2 filter-img" src="assets/images/minuman-ringan.jpg" alt="">
+                                            <p class="filter-text">Minuman Ringan</p>
+                                        </div>
+                                    </label>
+                                    <input class="filter-radio" type="radio" name="flexRadioDefault"
+                                        id="flexRadioDefault11">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col p-0 mb-2">
+                            <div class="cat-filter-box">
+                                <div class="d-flex">
+                                    <label class="align-self-center form-check-inline form-check-label"
+                                        for="flexRadioDefault12">
+                                        <div class="d-flex">
+                                            <img class="me-2 filter-img" src="assets/images/perawatan-tubuh.jpg" alt="">
+                                            <p class="filter-text">Perawatan Tubuh</p>
+                                        </div>
+                                    </label>
+                                    <input class="filter-radio" type="radio" name="flexRadioDefault"
+                                        id="flexRadioDefault12">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col p-0 mb-2">
+                            <div class="cat-filter-box me-2">
+                                <div class="d-flex">
+                                    <label class="align-self-center form-check-inline form-check-label"
+                                        for="flexRadioDefault13">
+                                        <div class="d-flex">
+                                            <img class="me-2 filter-img" src="assets/images/sabun&shampoo.jpg" alt="">
+                                            <p class="filter-text">Sabun & Shampoo</p>
+                                        </div>
+                                    </label>
+                                    <input class="filter-radio" type="radio" name="flexRadioDefault"
+                                        id="flexRadioDefault13">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col p-0 mb-2">
+                            <div class="cat-filter-box">
+                                <div class="d-flex">
+                                    <label class="align-self-center form-check-inline form-check-label"
+                                        for="flexRadioDefault14">
+                                        <div class="d-flex">
+                                            <img class="me-2 filter-img" src="assets/images/susu.jpg" alt="">
+                                            <p class="filter-text">Susu</p>
+                                        </div>
+                                    </label>
+                                    <input class="filter-radio" type="radio" name="flexRadioDefault"
+                                        id="flexRadioDefault14">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="promo-only-box">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="promo-product-only">
+                            <label class="form-check-label lh-1" style="font-size: 0.8em;" for="promo-product-only">
+                                Tampilkan produk yang sedang promo saja
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="container p-2">
+                    <div class="col-12 col-4 d-flex gap-2">
+                        <button class="btn btn-grad-green btn-rounded text-light w-100" type="button">Terapkan
+                            Filter</button>
+                        <button class="btn btn-grad-red btn-rounded text-light w-100" type="button">Hapus
+                            Filter</button>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        crossorigin="anonymous"></script>
+    <script src="js/scripts.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+    <script src="assets/demo/chart-area-demo.js"></script>
+    <script src="assets/demo/chart-bar-demo.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
+    <script src="js/datatables-simple-demo.js"></script>
+</body>
+
+</html>

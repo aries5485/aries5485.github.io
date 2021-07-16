@@ -66,12 +66,22 @@ input:focus-visible {
 }
 
 /* swiper */
-.swiper-slide img {
+/* .swiper-slide img {
     display: block;
     width: 100%;
     height: 100%;
     object-fit: cover;
+} */
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  max-height: 14em;
+  object-fit: contain;
 }
+/* .product-swiper {
+  height: 14em;
+} */
 
 /* header */
 .cart-qty-num {
@@ -368,6 +378,9 @@ input:focus-visible {
   overflow: hidden;
   overflow-x: scroll;
   padding: 5px 5px;
+}
+.sub-section-row a {
+  text-decoration: none;
 }
 
 .box-promo {
@@ -671,6 +684,9 @@ input:focus-visible {
   width: 50%;
   padding: 5px;
 }
+.product-box-wrapper a {
+  text-decoration: none;
+}
 
 .product-box {
   background: white;
@@ -767,3 +783,97 @@ input:focus-visible {
 
 
 /* end of SHOP */
+
+/* Filter */
+.cat-filter-box {
+  border: 1px solid rgb(0 0 0 / 20%);
+  border-radius: 0.3em;
+  padding: 5px;
+  min-height: 2.6em;
+  align-items: center;
+  display: flex;
+  background-color: white;
+}
+
+.filter-img {
+  width: 25%;
+  align-self: center;
+  border-radius: 0.3em;
+}
+
+p.filter-text {
+  font-size: 0.6em;
+  line-height: 1;
+  align-self: center;
+  margin: 0;
+}
+
+.filter-radio {
+  align-self: center;
+}
+
+.promo-only-box {
+  padding: 10px;
+  font-family: 'Nunito';
+  margin: 12px;
+  border: 1px solid rgb(0 0 0 / 20%);
+  border-radius: 0.3em;
+  background-color: white;
+}
+
+/* end of Filter */
+
+/* Product Detail */
+.detail-product-info {
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  color: white;
+  font-family: 'Nunito';
+  width: 100%;
+  background: linear-gradient(140deg, rgba(71,202,235,1) 0%, rgba(26,125,202,1) 100%);
+}
+
+.detail-product-info-left h4 {
+  color: white;
+  font-weight: bold;
+  margin: 0;
+}
+
+.detail-product-info-right p {
+  margin: 0;
+}
+.detail-product-info-left p, h4 {
+    margin: 0;
+    font-size: 1em;
+}
+
+.detail-product-title {
+  padding: 10px;
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.product-like {
+  display: flex;
+  align-self: center;
+}
+
+i.btn-icon-on {
+  color: red;
+}
+i.btn-icon-off {
+  color: lightgrey;
+}
+
+.detail-product-title h3 {
+  font-size: 1.1em;
+  margin: 0;
+}
+
+.detail-product-title > div {
+  align-self: center;
+}
+/* end of Product Detail */
