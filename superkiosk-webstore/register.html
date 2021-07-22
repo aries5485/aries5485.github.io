@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Registrasi - SuperKiosk Webstore</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <link href="css/styles.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/custom.css">
+    <link rel="stylesheet" href="assets/font-awesome/css/all.css">
+    <!-- Swiper JS -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+</head>
+
+<body class="sb-nav-fixed">
+    <nav class="bg-dark grad-blue navbar navbar-dark navbar-expand sb-topnav">
+        <!-- Sidebar Toggle-->
+        <div class="align-items-center d-flex">
+            <a href="index.html"><button class="btn btn-link text-light"><i class="fa-arrow-left fas"></i></button></a>
+            <!-- Navbar Brand-->
+            <a class="navbar-brand" href="#!">Registrasi</a>
+        </div>
+        <div class="align-items-center d-flex justify-content-between" style="width: 80px;margin-right: 28px;">
+            <i class="bi bi-heart-fill text-light"></i>
+            <div class="position-relative">
+                <i class="bi bi-bell-fill text-light"></i>
+                <div class="notif-icon"><i class="bi bi-dot"></i></div>
+            </div>
+            <div class="position-relative">
+                <i class="bi bi-cart-fill text-light"></i>
+                <div class="cart-qty-num">99+</div>
+            </div>
+        </div>
+    </nav>
+    <div id="layoutSidenav">
+
+        <div id="layoutSidenav_content">
+            <main>
+                <img src="./assets/images/register-banner.svg" alt="" class="d-block m-auto p-3 w-75">
+                <!-- Form -->
+                <form class="p-2 text-nunito">
+                    <div class="form-group pb-1 fw-bold">
+                        <label for="name"></label>Nama Lengkap</label>
+                        <input type="email" class="form-control" id="name" aria-describedby="emailHelp"
+                            placeholder="Nama lengkap sesuai KTP">
+                    </div>
+                    <div class="form-group pb-1 fw-bold">
+                        <label for="phoneNumber">No. Handphone</label>
+                        <input type="text" class="form-control" id="phoneNumber" placeholder="Nomor HP Anda yang aktif">
+                    </div>
+                    <div class="form-group pb-1 fw-bold position-relative">
+                        <label for="userPassword1">Password</label>
+                        <input type="password" class="form-control" style="padding-right: 36px;" id="userPassword1">
+                        <button type="button" class="btn"><i
+                                class="bi bi-eye-fill icon-right-form position-absolute"></i></button>
+                    </div>
+                    <div class="form-group pb-1 fw-bold position-relative" style="margin-top: -24px;">
+                        <label for="userPassword2">Konfirmasi Password</label>
+                        <input type="password" class="form-control" style="padding-right: 36px;" id="userPassword2">
+                        <button type="button" class="btn"><i
+                                class="bi bi-eye-fill icon-right-form position-absolute"></i></button>
+                    </div>
+                    <div class="form-group pb-1 fw-bold" style="margin-top: -24px;">
+                        <label for="refCode">Kode Referal/Reward jika ada</label>
+                        <input type="text" class="form-control" id="refCode" placeholder="Kode Referal">
+                    </div>
+                    <a href="register_otp.html">
+                        <button type="button"
+                            class="btn btn-grad-blue fw-bold mt-2 rounded-pill text-light w-100">DAFTAR</button>
+                    </a>
+                    <div class="d-grid justify-content-end">
+                        <a href="index.html" class="text-decoration-none"><button
+                                class="align-items-center btn d-flex fw-bold pe-0" type="button"
+                                style="color:#11C1F3;">Lewati<i class="bi bi-arrow-right-short" style="
+                                font-size: x-large;
+                            "></i></button></a>
+                    </div>
+                </form>
+
+                <!-- end of Form -->
+            </main>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        crossorigin="anonymous"></script>
+    <script src="js/scripts.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+    <script src="assets/demo/chart-area-demo.js"></script>
+    <script src="assets/demo/chart-bar-demo.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
+    <script src="js/datatables-simple-demo.js"></script>
+</body>
+
+</html>
