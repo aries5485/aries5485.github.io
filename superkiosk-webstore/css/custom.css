@@ -69,6 +69,26 @@ input:focus-visible {
     border-radius: 7px;
 }
 
+.text-2-lines {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* number of lines to show */
+  -webkit-box-orient: vertical;
+}
+
+.text-orange {
+  color: orange;
+}
+
+.text-green {
+  color: limegreen;
+}
+
+.text-blue {
+  color: #4ED1FA;
+}
+
 /* swiper */
 /* .swiper-slide img {
     display: block;
@@ -194,6 +214,22 @@ input:focus-visible {
 }
 .ava-pic img {
   width: inherit;
+}
+
+.ava-small {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  align-content: center;
+  align-items: center;
+  flex: none;
+}
+
+.ava-small img {
+  width: 100%;
+  align-self: center;
 }
 
 .logo-header-menu {
@@ -968,6 +1004,7 @@ i.btn-icon-off {
   margin-bottom: 0.4em;
   display: flex;
   justify-content: space-around;
+  background-color: white;
 }
 .cart-item-thumb img {
   max-width: 100%;
@@ -978,6 +1015,33 @@ i.btn-icon-off {
   border-bottom: 0 !important;
 }
 /* end of Shopping Cart */
+
+/* Shopping cart confirm */
+.bg-light.p-3 div:last-child {
+  border-bottom: 0 !important;
+  margin-bottom: 0 !important;
+}
+/* end of Shopping cart confirm */
+
+/* Order Saya */
+.ava-rounded {
+  width: 80px;
+  height: 80px;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+.ava-rounded img {
+  width: inherit;
+}
+/* end of Order Saya */
+
+/* transactions detail */
+.bg-light.p-2 div:last-child {
+  border-bottom: 0 !important;
+  margin-bottom: 0 !important;
+}
+/* end of transactions detail */
 
 /* MEDIA SCREEN */
 @media only screen and (min-width: 600px) {

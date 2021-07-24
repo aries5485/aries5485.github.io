@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Tambah Alamat - SuperKiosk Webstore</title>
+    <title>Pembayaran - SuperKiosk Webstore</title>
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
@@ -28,7 +28,7 @@
         <div class="align-items-center d-flex">
             <button class="btn btn-link text-light" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
             <!-- Navbar Brand-->
-            <a class="navbar-brand" href="#!">Tambah Alamat</a>
+            <a class="navbar-brand" href="#!">Pembayaran</a>
         </div>
         <div class="align-items-center d-flex justify-content-between" style="width: 80px;margin-right: 28px;">
             <i class="bi bi-heart-fill text-light"></i>
@@ -157,32 +157,98 @@
         </div>
         <div id="layoutSidenav_content">
             <main>
-                <form class="p-2 text-nunito">
-                    <div class="form-group pb-2 fw-bold">
-                        <label for="addressName">Namakan sebagai</label>
-                        <input type="text" class="form-control" id="addressName" aria-describedby="addressName"
-                            placeholder="Namakan sebagai">
+                <!-- Header -->
+                <div class="align-items-center bg-white d-flex p-2 mb-1">
+                    <div class="ava-small">
+                        <img src="./assets/images/img-profile.png" alt="">
                     </div>
-                    <div class="form-group pb-1 fw-bold">
-                        <div class="d-flex justify-content-between">
-                            <label for="addressFull">Alamat lengkap</label>
-                            <a href="#">
-                                <button type="button" class="border-0 btn btn-grad-green btn-sm btn-success">Set lokasi
-                                    alamat di peta</button>
-                            </a>
-                        </div>
-                        <textarea class="form-control" name="addressFull" id="addressFull" rows="3"
-                            placeholder="Alamat lengkap"></textarea>
+                    <div class="ms-2 text-nunito">
+                        <p class="lh-1 m-0" style="font-size: 0.8em;">Pesanan akan dikirimkan oleh Merchant:</p>
+                        <p class="fw-bold m-0">Akasia SuperKiosk</p>
+                    </div>
+                </div>
+                <!-- end of Header -->
+
+                <!-- Notes & Voucher -->
+                <form class="bg-white mb-1 p-2 text-nunito">
+                    <div class="mb-2">
+                        <label class="fw-bold" for="userNote">Catatan (bila ada)</label>
+                        <textarea class="form-control" name="userNote" id="userNote" rows="2"
+                            placeholder="Catatan untuk merchant"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label class="fw-bold" for="userVoucher">Kode Voucher (bila ada)</label>
+                        <input type="text" class="form-control" id="userVoucher" placeholder="Masukkan kode voucher">
                     </div>
                 </form>
+                <!-- end ofNotes & Voucher -->
+
+                <!-- User Address -->
+                <div class="bg-white mb-1 p-2">
+                    <div class="align-items-center d-flex justify-content-between text-nunito">
+                        <div>
+                            <p class="lh-1 m-0">Alamat Pengiriman</p>
+                            <p class="fw-bold m-0">Rumah Kontrakan lama</p>
+                        </div>
+                        <div>
+                            <a href="change_address_profile.html"><button
+                                    class="border-0 btn btn-changeAddress btn-dark btn-grad-green btn-sm lh-1">Ganti
+                                    Alamat</button></a>
+                        </div>
+                    </div>
+                    <textarea class="form-control" style="font-size: 0.8em;" name="userAddress" id="userAddress"
+                        rows="3"
+                        disabled>The Great Saladdin Square Blok C No. 31 Jl. Margonda Raya, Kelurahan Depok, Kecamatan Pancoran Mas Kota Depok, Jawa Barat - Kode Pos 16431</textarea>
+                </div>
+                <!-- end of User Address -->
+
+                <!-- Courier & Payment Method select -->
+                <div class="bg-white mb-1 p-2">
+                    <div class="align-items-end d-flex text-nunito mb-3">
+                        <div class="border-bottom me-2 w-100">
+                            <p class="lh-1 m-0">Pilih Kurir</p>
+                            <p class="fw-bold m-0">Pilih kurir Anda</p>
+                        </div>
+                        <div>
+                            <a href="change_address_profile.html"><button
+                                    class="border-0 btn btn-changeAddress btn-dark btn-grad-green btn-sm lh-1">Pilih
+                                    Kurir</button></a>
+                        </div>
+                    </div>
+                    <div class="align-items-end d-flex text-nunito mb-2">
+                        <div class="border-bottom me-2 w-100">
+                            <p class="lh-1 m-0">Metode Pembayaran</p>
+                            <p class="fw-bold m-0">Saldo SuperKiosk <span class="text-green">(Rp 560.000)</span></p>
+                        </div>
+                        <div>
+                            <a href="change_address_profile.html"><button
+                                    class="border-0 btn btn-changeAddress btn-dark btn-grad-green btn-sm lh-1">Pilih
+                                    Metode Pembayaran</button></a>
+                        </div>
+                    </div>
+                </div>
+                <!-- end of Courier & Payment Method select -->
+
+                <!-- Payment Total Info -->
+                <div class="p-2 bg-white mb-2">
+                    <div class="d-flex justify-content-between text-nunito">
+                        <p class="fw-bold m-0" style="font-size: 0.8em;">Subtotal belanja</p>
+                        <p class="fw-bold m-0" style="font-size: 0.8em;">Rp 95.000</p>
+                    </div>
+                    <div class="d-flex justify-content-between text-nunito mb-2">
+                        <p class="fw-bold m-0">Total Pembayaran</p>
+                        <p class="fw-bold m-0">Rp 145.000</p>
+                    </div>
+
+                    <button type="button"
+                        class="border-0 btn btn-grad-green btn-primary rounded-pill w-100">BAYAR</button>
+                </div>
+                <!-- end of Payment Total Info -->
+
+
             </main>
         </div>
     </div>
-    <!-- Absolute Buy Button -->
-    <div class="bottom-0 d-grid gap-2 position-fixed w-100">
-        <button class="btn btn-grad-green border-0 btn-primary" type="button">Simpan Alamat Baru</button>
-    </div>
-    <!-- end of Absolute Buy Button -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         crossorigin="anonymous"></script>
     <script src="js/scripts.js"></script>

@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Tambah Alamat - SuperKiosk Webstore</title>
+    <title>Cek dan Konfirmasi Belanja - SuperKiosk Webstore</title>
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
@@ -22,13 +22,14 @@
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
 </head>
 
-<body class="sb-nav-fixed bg-light">
+<body class="sb-nav-fixed">
     <nav class="bg-dark grad-blue navbar navbar-dark navbar-expand sb-topnav">
         <!-- Sidebar Toggle-->
         <div class="align-items-center d-flex">
-            <button class="btn btn-link text-light" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
+            <a href="shopping_cart.html"><button class="btn btn-link text-light"><i
+                        class="fa-arrow-left fas"></i></button></a>
             <!-- Navbar Brand-->
-            <a class="navbar-brand" href="#!">Tambah Alamat</a>
+            <a class="navbar-brand" href="#!">Konfirmasi Belanja</a>
         </div>
         <div class="align-items-center d-flex justify-content-between" style="width: 80px;margin-right: 28px;">
             <i class="bi bi-heart-fill text-light"></i>
@@ -157,32 +158,126 @@
         </div>
         <div id="layoutSidenav_content">
             <main>
-                <form class="p-2 text-nunito">
-                    <div class="form-group pb-2 fw-bold">
-                        <label for="addressName">Namakan sebagai</label>
-                        <input type="text" class="form-control" id="addressName" aria-describedby="addressName"
-                            placeholder="Namakan sebagai">
-                    </div>
-                    <div class="form-group pb-1 fw-bold">
-                        <div class="d-flex justify-content-between">
-                            <label for="addressFull">Alamat lengkap</label>
-                            <a href="#">
-                                <button type="button" class="border-0 btn btn-grad-green btn-sm btn-success">Set lokasi
-                                    alamat di peta</button>
-                            </a>
+                <!-- Cek stok Barang -->
+                <!-- <div>
+                    <img src="./assets/images/stock-checking.svg" alt="" class="d-block m-auto p-3 w-75">
+                    <p class="p-2 text-center text-nunito">
+                        Mohon tunggu sebentar.<br />
+                        Sedang memeriksa ketersediaan barang
+                    </p>
+                </div> -->
+                <!-- end of Cek stok Barang -->
+
+                <!-- item list -->
+                <div class="bg-light p-3">
+                    <div class="d-flex mb-3 text-nunito" style="border-bottom: 2px dashed #ccc;">
+                        <div class="w-25">
+                            <div>
+                                <div class="cart-item-thumb">
+                                    <img class="" src="./assets/images/Chitato-Sapi-Panggang-68-gr-089686598056.jpg"
+                                        alt="">
+                                </div>
+                            </div>
                         </div>
-                        <textarea class="form-control" name="addressFull" id="addressFull" rows="3"
-                            placeholder="Alamat lengkap"></textarea>
+                        <div class="cart-item-info w-75 ms-2">
+                            <div class="align-items-baseline d-flex justify-content-between">
+                                <div class="me-1">
+                                    <p class="fw-bold lh-1 mb-1 text-2-lines text-orange">ABC Baterai Alkaline AAA 2pcs
+                                    </p>
+                                    <p class="mb-1 fw-bold">Rp 18.500</p>
+                                </div>
+                                <div>
+                                    <p class="text-end fw-bold m-0">Qty</p>
+                                    <p class="fw-bold m-0 text-end">9</p>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <p class="">Tersedia:</p>
+                                <p>0</p>
+                            </div>
+                        </div>
                     </div>
-                </form>
+                    <div class="d-flex mb-3 text-nunito" style="border-bottom: 2px dashed #ccc;">
+                        <div class="w-25">
+                            <div>
+                                <div class="cart-item-thumb">
+                                    <img class="" src="./assets/images/Chitato-Sapi-Panggang-68-gr-089686598056.jpg"
+                                        alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cart-item-info w-75 ms-2">
+                            <div class="align-items-baseline d-flex justify-content-between">
+                                <div class="me-1">
+                                    <p class="fw-bold lh-1 mb-1 text-2-lines text-green">ABC Baterai Alkaline AAA 2pcs
+                                    </p>
+                                    <p class="mb-1 fw-bold">Rp 18.500</p>
+                                </div>
+                                <div>
+                                    <p class="text-end fw-bold m-0">Qty</p>
+                                    <p class="fw-bold m-0 text-end">12</p>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <p class="">Tersedia:</p>
+                                <p>45</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex mb-3 text-nunito" style="border-bottom: 2px dashed #ccc;">
+                        <div class="w-25">
+                            <div>
+                                <div class="cart-item-thumb">
+                                    <img class="" src="./assets/images/Chitato-Sapi-Panggang-68-gr-089686598056.jpg"
+                                        alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cart-item-info w-75 ms-2">
+                            <div class="align-items-baseline d-flex justify-content-between">
+                                <div class="me-1">
+                                    <p class="fw-bold lh-1 mb-1 text-2-lines text-green">ABC Baterai Alkaline AAA 2pcs
+                                    </p>
+                                    <p class="mb-1 fw-bold">Rp 18.500</p>
+                                </div>
+                                <div>
+                                    <p class="text-end fw-bold m-0">Qty</p>
+                                    <p class="fw-bold m-0 text-end">12</p>
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <p class="">Tersedia:</p>
+                                <p>45</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end of item list -->
+
+                <div class="d-flex p-2 justify-content-between fw-bold">
+                    <p class="lh-1">Subtotal Produk yang tersedia</p>
+                    <p class="lh-1 text-end">Rp 99.000</p>
+                </div>
+
+                <div class="alert alert-warning d-flex align-items-center m-2 mt-0" role="alert">
+                    <i class="bi bi-exclamation-triangle-fill fs-1 me-2"></i>
+                    <div class="lh-1">
+                        Maaf, produk pilihan Anda sedang kosong
+                    </div>
+                </div>
+
+                <div class="d-flex gap-2 m-2">
+                    <button class="border-0 btn btn-grad-green btn-primary lh-1 rounded-pill w-100" type="button">Order
+                        yang<br />
+                        tersedia saja</button>
+                    <button class="border-0 btn btn-grad-green btn-primary lh-1 rounded-pill w-100" type="button">Order
+                        ke
+                        Gudang<br /> SuperKiosk</button>
+                </div>
+
             </main>
         </div>
     </div>
-    <!-- Absolute Buy Button -->
-    <div class="bottom-0 d-grid gap-2 position-fixed w-100">
-        <button class="btn btn-grad-green border-0 btn-primary" type="button">Simpan Alamat Baru</button>
-    </div>
-    <!-- end of Absolute Buy Button -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         crossorigin="anonymous"></script>
     <script src="js/scripts.js"></script>
