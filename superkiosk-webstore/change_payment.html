@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Pembayaran - SuperKiosk Webstore</title>
+    <title>Metode Pembayaran - SuperKiosk Webstore</title>
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
@@ -22,13 +22,14 @@
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
 </head>
 
-<body class="sb-nav-fixed bg-light">
+<body class="sb-nav-fixed">
     <nav class="bg-dark grad-blue navbar navbar-dark navbar-expand sb-topnav">
         <!-- Sidebar Toggle-->
         <div class="align-items-center d-flex">
-            <button class="btn btn-link text-light" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
+            <a href="checkout.html"><button class="btn btn-link text-light"><i
+                        class="fa-arrow-left fas"></i></button></a>
             <!-- Navbar Brand-->
-            <a class="navbar-brand" href="#!">Pembayaran</a>
+            <a class="navbar-brand" href="#!">Metode Pembayaran</a>
         </div>
         <div class="align-items-center d-flex justify-content-between" style="width: 80px;margin-right: 28px;">
             <i class="bi bi-heart-fill text-light"></i>
@@ -157,94 +158,126 @@
         </div>
         <div id="layoutSidenav_content">
             <main>
-                <!-- Header -->
-                <div class="align-items-center bg-white d-flex p-2 mb-1">
-                    <div class="ava-small">
-                        <img src="./assets/images/img-profile.png" alt="">
-                    </div>
-                    <div class="ms-2 text-nunito">
-                        <p class="lh-1 m-0" style="font-size: 0.8em;">Pesanan akan dikirimkan oleh Merchant:</p>
-                        <p class="fw-bold m-0">Akasia SuperKiosk</p>
-                    </div>
+                <p class="text-nunito p-2 mb-2 fw-bold">Pilih Metode Pembayaran</p>
+
+                <div class="container p-2 text-nunito">
+                    <form>
+                        <!-- Saldo SK dengan tombol Topup -->
+                        <div class="border p-2 position-relative">
+                            <div class="d-flex">
+                                <input class="input-custom-radio form-check-input m-0" type="radio"
+                                    name="flexRadioDefault" id="saldoTopup" style="top: 35px;">
+                                <label class="form-check-label w-100" for="saldoTopup">
+                                    <div class="align-items-center d-flex">
+                                        <img src="./assets/images/icon_saldosk.png" alt="" class="icon-square-sm me-2">
+                                        <p class="fw-bold m-0">Saldo <span class="text-danger">(Rp -17.500)</span></p>
+                                    </div>
+                                </label>
+                            </div>
+                            <a href="#">
+                                <button type="button"
+                                    class="btn btn-primary border-0 btn-grad-green w-100">Topup</button>
+                            </a>
+                        </div> <!-- end of Saldo SK dengan tombol Topup -->
+                        <!-- Saldo tanpa tombol topup -->
+                        <div class="border d-flex p-2 position-relative">
+                            <input class="input-custom-radio form-check-input m-0" type="radio" name="flexRadioDefault"
+                                id="saldo">
+                            <label class="form-check-label w-100" for="saldo">
+                                <div class="align-items-center d-flex">
+                                    <img src="./assets/images/icon_saldosk.png" alt="" class="icon-square-sm me-2">
+                                    <p class="fw-bold m-0">Saldo</p>
+                                </div>
+                            </label>
+                        </div> <!-- end of Saldo tanpa tombol topup -->
+                        <div class="border d-flex p-2 position-relative">
+                            <input class="input-custom-radio form-check-input m-0" type="radio" name="flexRadioDefault"
+                                id="tunai">
+                            <label class="form-check-label w-100" for="tunai">
+                                <div class="align-items-center d-flex">
+                                    <img src="./assets/images/icon_tunai.png" alt="" class="icon-square-sm me-2">
+                                    <p class="fw-bold m-0">Tunai</p>
+                                </div>
+                            </label>
+                        </div>
+                        <div class="border d-flex p-2 position-relative">
+                            <input class="input-custom-radio form-check-input m-0" type="radio" name="flexRadioDefault"
+                                id="ovo">
+                            <label class="form-check-label w-100" for="ovo">
+                                <div class="align-items-center d-flex">
+                                    <img src="./assets/images/icon_ovo.png" alt="" class="icon-square-sm me-2">
+                                    <p class="fw-bold m-0">OVO</p>
+                                </div>
+                            </label>
+                        </div>
+                        <div class="border d-flex p-2 position-relative">
+                            <input class="input-custom-radio form-check-input m-0" type="radio" name="flexRadioDefault"
+                                id="linkaja">
+                            <label class="form-check-label w-100" for="linkaja">
+                                <div class="align-items-center d-flex">
+                                    <img src="./assets/images/icon_linkaja.png" alt="" class="icon-square-sm me-2">
+                                    <p class="fw-bold m-0">Link Aja</p>
+                                </div>
+                            </label>
+                        </div>
+                        <div class="border d-flex p-2 position-relative">
+                            <input class="input-custom-radio form-check-input m-0" type="radio" name="flexRadioDefault"
+                                id="shopeepay">
+                            <label class="form-check-label w-100" for="shopeepay">
+                                <div class="align-items-center d-flex">
+                                    <img src="./assets/images/icon_shopeepay.png" alt="" class="icon-square-sm me-2">
+                                    <p class="fw-bold m-0">Shopee Pay</p>
+                                </div>
+                            </label>
+                        </div>
+                        <div class="border d-flex p-2 position-relative">
+                            <input class="input-custom-radio form-check-input m-0" type="radio" name="flexRadioDefault"
+                                id="creditcard">
+                            <label class="form-check-label w-100" for="creditcard">
+                                <div class="align-items-center d-flex">
+                                    <img src="./assets/images/icon_kartu-kredit.png" alt="" class="icon-square-sm me-2">
+                                    <p class="fw-bold m-0">Kartu Kredit</p>
+                                </div>
+                            </label>
+                        </div>
+                        <div class="border d-flex p-2 position-relative">
+                            <input class="input-custom-radio form-check-input m-0" type="radio" name="flexRadioDefault"
+                                id="vabni">
+                            <label class="form-check-label w-100" for="vabni">
+                                <div class="align-items-center d-flex">
+                                    <img src="./assets/images/icon_bni.png" alt="" class="icon-square-sm me-2">
+                                    <p class="fw-bold m-0">Virtual Account BNI</p>
+                                </div>
+                            </label>
+                        </div>
+                        <div class="border d-flex p-2 position-relative">
+                            <input class="input-custom-radio form-check-input m-0" type="radio" name="flexRadioDefault"
+                                id="maybank">
+                            <label class="form-check-label w-100" for="maybank">
+                                <div class="align-items-center d-flex">
+                                    <img src="./assets/images/icon_maybank.png" alt="" class="icon-square-sm me-2">
+                                    <p class="fw-bold m-0">Virtual Account Maybank</p>
+                                </div>
+                            </label>
+                        </div>
+                        <div class="border d-flex p-2 position-relative">
+                            <input class="input-custom-radio form-check-input m-0" type="radio" name="flexRadioDefault"
+                                id="vapermata">
+                            <label class="form-check-label w-100" for="vapermata">
+                                <div class="align-items-center d-flex">
+                                    <img src="./assets/images/icon_permata.png" alt="" class="icon-square-sm me-2">
+                                    <p class="fw-bold m-0">Virtual Account Permata Bank</p>
+                                </div>
+                            </label>
+                        </div>
+
+                        <div class="mt-3">
+                            <button type="button"
+                                class="btn btn-primary border-0 btn-grad-green rounded-pill w-100">Konfirmasi</button>
+                        </div>
+
+                    </form>
                 </div>
-                <!-- end of Header -->
-
-                <!-- Notes & Voucher -->
-                <form class="bg-white mb-1 p-2 text-nunito">
-                    <div class="mb-2">
-                        <label class="fw-bold" for="userNote">Catatan (bila ada)</label>
-                        <textarea class="form-control" name="userNote" id="userNote" rows="2"
-                            placeholder="Catatan untuk merchant"></textarea>
-                    </div>
-                    <div class="mb-3">
-                        <label class="fw-bold" for="userVoucher">Kode Voucher (bila ada)</label>
-                        <input type="text" class="form-control" id="userVoucher" placeholder="Masukkan kode voucher">
-                    </div>
-                </form>
-                <!-- end ofNotes & Voucher -->
-
-                <!-- User Address -->
-                <div class="bg-white mb-1 p-2">
-                    <div class="align-items-center d-flex justify-content-between text-nunito">
-                        <div>
-                            <p class="lh-1 m-0">Alamat Pengiriman</p>
-                            <p class="fw-bold m-0">Rumah Kontrakan lama</p>
-                        </div>
-                        <div>
-                            <a href="change_address_profile.html"><button
-                                    class="border-0 btn btn-changeAddress btn-dark btn-grad-green btn-sm lh-1">Ganti
-                                    Alamat</button></a>
-                        </div>
-                    </div>
-                    <textarea class="form-control" style="font-size: 0.8em;" name="userAddress" id="userAddress"
-                        rows="3"
-                        disabled>The Great Saladdin Square Blok C No. 31 Jl. Margonda Raya, Kelurahan Depok, Kecamatan Pancoran Mas Kota Depok, Jawa Barat - Kode Pos 16431</textarea>
-                </div>
-                <!-- end of User Address -->
-
-                <!-- Courier & Payment Method select -->
-                <div class="bg-white mb-1 p-2">
-                    <div class="align-items-end d-flex text-nunito mb-3">
-                        <div class="border-bottom me-2 w-100">
-                            <p class="lh-1 m-0">Pilih Kurir</p>
-                            <p class="fw-bold m-0">Pilih kurir Anda</p>
-                        </div>
-                        <div>
-                            <a href="change_expedition.html"><button
-                                    class="border-0 btn btn-changeAddress btn-dark btn-grad-green btn-sm lh-1">Pilih
-                                    Kurir</button></a>
-                        </div>
-                    </div>
-                    <div class="align-items-end d-flex text-nunito mb-2">
-                        <div class="border-bottom me-2 w-100">
-                            <p class="lh-1 m-0">Metode Pembayaran</p>
-                            <p class="fw-bold m-0">Saldo SuperKiosk <span class="text-green">(Rp 560.000)</span></p>
-                        </div>
-                        <div>
-                            <a href="change_address_profile.html"><button
-                                    class="border-0 btn btn-changeAddress btn-dark btn-grad-green btn-sm lh-1">Pilih
-                                    Metode Pembayaran</button></a>
-                        </div>
-                    </div>
-                </div>
-                <!-- end of Courier & Payment Method select -->
-
-                <!-- Payment Total Info -->
-                <div class="p-2 bg-white mb-2">
-                    <div class="d-flex justify-content-between text-nunito">
-                        <p class="fw-bold m-0" style="font-size: 0.8em;">Subtotal belanja</p>
-                        <p class="fw-bold m-0" style="font-size: 0.8em;">Rp 95.000</p>
-                    </div>
-                    <div class="d-flex justify-content-between text-nunito mb-2">
-                        <p class="fw-bold m-0">Total Pembayaran</p>
-                        <p class="fw-bold m-0">Rp 145.000</p>
-                    </div>
-
-                    <button type="button"
-                        class="border-0 btn btn-grad-green btn-primary rounded-pill w-100">BAYAR</button>
-                </div>
-                <!-- end of Payment Total Info -->
-
 
             </main>
         </div>

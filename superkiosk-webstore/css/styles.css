@@ -4794,7 +4794,7 @@ textarea.form-control-lg {
     background-position-x: 1rem;
   }
 }
-.progress {
+/* .progress {
   display: flex;
   height: 1rem;
   overflow: hidden;
@@ -4834,7 +4834,7 @@ textarea.form-control-lg {
     -webkit-animation: none;
             animation: none;
   }
-}
+} */
 
 .list-group {
   display: flex;

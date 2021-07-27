@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Profile - SuperKiosk Webstore</title>
+    <title>Topup via Merchant - SuperKiosk Webstore</title>
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
@@ -26,9 +26,9 @@
     <nav class="bg-dark grad-blue navbar navbar-dark navbar-expand sb-topnav">
         <!-- Sidebar Toggle-->
         <div class="align-items-center d-flex">
-            <button class="btn btn-link text-light" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
+            <a href="topup.html"><button class="btn btn-link text-light"><i class="fa-arrow-left fas"></i></button></a>
             <!-- Navbar Brand-->
-            <a class="navbar-brand" href="#!">Beranda</a>
+            <a class="navbar-brand" href="#!">Topup via Merchant</a>
         </div>
         <div class="align-items-center d-flex justify-content-between" style="width: 80px;margin-right: 28px;">
             <i class="bi bi-heart-fill text-light"></i>
@@ -42,10 +42,11 @@
             </div>
         </div>
     </nav>
-    <div id="layoutSidenav"> 
+    <div id="layoutSidenav">
         <div id="layoutSidenav_nav">
             <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                 <div class="sb-sidenav-menu">
+
                     <!-- Logged User -->
                     <div class="sidemenu-avatar-container">
                         <div class="sidemenu-info-user">
@@ -73,14 +74,40 @@
                         <button class="btn btn-dark btn-logout" type="submit">Logout</button>
                         <div class="header-wave"></div>
                     </div>
+                    <!-- end of Logged User -->
+
+                    <!-- Public User -->
+                    <!-- <div id="public-state">
+                        <div class="logo-header-menu">
+                            <p>
+                                Selamat Datang di<br />
+                                <span>SuperKiosk</span>
+                            </p>
+                            <h6>Belanja Jaman Now</h6>
+                            <div>
+                                <div class="header-wave" style="z-index: 2;bottom: -139px;height: 100%;"></div>
+                            </div>
+                        </div>
+                        <div class="login-box-menu">
+                            <p>
+                                Silahkan login untuk dapat mulai belanja dan menikmati promo yang tersedia
+                            </p>
+                            <a href="#app/login" menu-close>
+                                <button class="btn fw-bold btn-grad-blue btn-rounded text-white w-100" type="submit"
+                                    style="font-size: 0.8em;">Login</button>
+                            </a>
+                        </div>
+                    </div> -->
+                    <!-- end of Public User -->
+
                     <div class="list-group list-group-flush">
                         <a class="align-items-center d-flex list-group-item list-group-item-action list-group-item-light p-3"
-                            href="#!">
+                            href="index.html">
                             <img src="assets/images/menu-icon/icon-home.svg" alt="">
                             Beranda
                         </a>
                         <a class="align-items-center d-flex list-group-item list-group-item-action list-group-item-light p-3"
-                            href="#!">
+                            href="shop.html">
                             <img src="assets/images/menu-icon/icon-shop.svg" alt="">
                             Belanja
                         </a>
@@ -98,7 +125,7 @@
                             <div class="notif-icon-side">99+</div>
                         </a>
                         <a class="align-items-center d-flex list-group-item list-group-item-action list-group-item-light p-3"
-                            href="#!">
+                            href="transactions.html">
                             <img src="assets/images/menu-icon/icon-transactions.svg" alt="">Order Saya</a>
                         <a class="align-items-center d-flex list-group-item list-group-item-action list-group-item-light p-3"
                             href="#!">
@@ -129,67 +156,44 @@
             </nav>
         </div>
         <div id="layoutSidenav_content">
-            <main> 
-                <div class="header-wave-profile">
-                    <div class="wave-white img">
-                        <img src="assets/images/wave.png">
-                    </div>
-                    <div class="photo-profile img">
-                        <img src="assets/images/img-profile.png">
-                        <div class="change-photo">
-                            <img src="">
-                        </div>
-                        </div>
-                    <div class="name-profile">
-                        <b>Adi Superkiosk</b>
-                    </div>
-                    <div class="no-handphone h1">
-                        <h1>No.Handphone</h1>
-                    </div> 
-                    <div class="form-nohandphone">
-                        <p style="color: rgb(159, 156, 156);">No.handphone yang aktif</p>
-                    </div>
-                    <div class="alamat-lengkap-profile h1">
-                        <h1>Alamat Lengkap</h1>
-                    </div>
-                    <div class="form-alamat-lengkap">
-                        <p style="color: rgb(159, 156, 156);">Alamat Lengkap</p>
-                    </div>
-                    <div class="ubah-alamat-profile h1">
-                        <h1>Ubah Alamat</h1>
-                    </div>
-                    <div class="saldo-superpoin d-flex">
-                        <div class="saldo-superkiosk img">
-                            <img src="assets/images/icon-saldodompet-blue.svg">
-                        </div>
-                        <div class="superpoin-user img">
-                            <img src="assets/images/menu-icon/icon-superpoinuser-blue.svg">
-                        </div>
-                    </div>
-                    <div class="Saldo-superkiosk-text d-flex">
-                        <p>Saldo Superkiosk</p>
-                        <p style="margin-left: 73px;">SuperPoin</p>
-                    </div>
-                    <div class="rupiah h1 d-flex">
-                        <h1>Rp.0</h1>
-                        <h1 style="margin-left: 210px;">Rp.0</h1>
-                    </div>
-                    <div class="btn-topup-klain d-flex">
-                        <div class="topup-profile">
-                            <p>Top Up</p>
-                        </div>
+            <main>
+                <div class="position-relative">
+                    <img src="./assets/images/topup_via_merchant.jpg" alt="" class="img-fluid w-100">
+                    <p class="text-topup">Topup via Merchant</p>
+                </div>
+
+                <div class="p-2 text-nunito">
+                    <p class="fw-bold lh-sm">
+                        Topup cash melalui merchant dapat dilakukan ketika merchant datang ke tempat anda
+                        mengantarkan belanjaan dengan cara sebagai berikut:
+                    </p>
+                    <ol class="lh-sm">
+                        <li>Siapkan nominal uang cash yang ingin di topup</li>
+                        <li>Merchant SuperKiosk akan mengisi nominal tersebut di aplikasinya dan akan menunjukkan QR
+                            Code untuk
+                            anda scan</li>
+                        <li>Masuk ke menu Topup Saldo dan pilih pembayaran Cash via merchant</li>
+                        <li>Klik tombol scan barcode dan scan QR code yang ditunjukkan oleh si Merchant</li>
+                        <li>Bila sukses maka Saldo anda akan bertambah</li>
+                        <li>Silahkan serahkan uang cash dengan nominal topup tersebut ke merchant kami</li>
+                    </ol>
+
+                    <div class="d-grid gap-2">
+                        <button type="button" class="btn btn-primary border-0 rounded-pill btn-grad-orange">
+                            <i class="bi bi-telephone-fill me-2"></i>
+                            Hubungi Merchant
+                        </button>
+                        <button type="button" class="btn btn-primary border-0 rounded-pill btn-grad-green">
+                            <i class="fas fa-qrcode me-2"></i>
+                            Scan QR Code
+                        </button>
                     </div>
                 </div>
-                    
-                </div>
-            
-               
-                   
-                    
-                </div>
+
             </main>
         </div>
     </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         crossorigin="anonymous"></script>
     <script src="js/scripts.js"></script>
@@ -198,45 +202,7 @@
     <script src="assets/demo/chart-bar-demo.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
     <script src="js/datatables-simple-demo.js"></script>
-    <!-- swiper JS -->
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-    <!-- Swiper Main Banner -->
-    <script>
-        var swiper = new Swiper(".mainSwiper", {
-            slidesPerView: 3,
-            spaceBetween: 0,
-            pagination: {
-                el: ".swiper-pagination",
-                clickable: true,
 
-            },
-            breakpoints: {
-                // when window width is >= 320px
-                320: {
-                    slidesPerView: 1,
-                    spaceBetween: 0
-                },
-                // when window width is >= 480px
-                480: {
-                    slidesPerView: 1,
-                    spaceBetween: 0
-                },
-                // when window width is >= 640px
-                640: {
-                    slidesPerView: 3,
-                    spaceBetween: 0
-                }
-            }
-        });
-        var swiper = new Swiper(".testimonialSwiper", {
-            slidesPerView: 2,
-            spaceBetween: 30,
-            pagination: {
-                el: ".swiper-pagination",
-                clickable: true,
-            },
-        });
-    </script>
 </body>
 
 </html>

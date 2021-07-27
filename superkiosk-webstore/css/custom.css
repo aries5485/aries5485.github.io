@@ -89,6 +89,18 @@ input:focus-visible {
   color: #4ED1FA;
 }
 
+.text-topup {
+  position: absolute;
+  top: 50%;
+  left: 2em;
+  text-align: center;
+  width: 6em;
+  line-height: 1.2;
+  font-weight: bold;
+  transform: translateY(-50%);
+  font-family: 'Nunito';
+}
+
 /* swiper */
 /* .swiper-slide img {
     display: block;
@@ -636,8 +648,129 @@ input:focus-visible {
   font-weight: bold;
 }
 .header-wave-profile {
-  background-color: coral
+  position: relative;
+  background: linear-gradient(140deg, rgba(71,202,235,1) 0%, rgba(26,125,202,1) 100%);
+  height: 200px;
 }
+.wave-white img {
+  position: absolute;
+  width: 100%;
+  margin-top:132px;
+}
+.photo-profile img {
+  position:absolute;
+  margin-top:114px;
+  left: 25px;
+  height: 105px;
+  border-radius: 219px;
+  box-shadow: 0px 6px 3px rgb(0 0 0 / 20%);
+}
+.change-photo {
+  background-color: black;
+  overflow: hidden;
+}
+.name-profile {
+  position: absolute;
+  font-family: 'Nunito';
+  color:#11C1F3;
+  margin-left: 148px;
+  margin-top: 204px;
+  position: absolute;
+}
+.no-handphone h1 {
+  position: absolute;
+  font-size: 15px;
+  margin-left: 26px;
+  margin-top: 244px
+}
+.form-nohandphone {
+  position: absolute;
+  background: rgb(242 239 239);
+  box-shadow: 0px 2px 3px rgb(0 0 0 / 60%);
+  height: 40px;
+  width: 86%;
+  margin-top: 262px;
+  margin-left: 19px;
+  border-radius: 4px;
+  padding: 8px;
+  display: -webkit-box;
+}
+.alamat-lengkap-profile h1 {
+  position: absolute;
+  font-size: 15px;
+  margin-left: 26px;
+  margin-top:319px
+}
+.form-alamat-lengkap {
+  position: absolute;
+  background: rgb(242 239 239);
+  box-shadow:0px 2px 3px rgb(0 0 0 / 60%);
+  height: 105px;
+  width: 86%;
+  margin-top: 345px;
+  margin-left: 19px;
+  border-radius: 4px;
+  padding: 8px;
+  display: -webkit-box;
+}
+.ubah-alamat-profile h1 {
+  position: absolute;
+  background:linear-gradient(121deg, rgba(105,248,7,1) 0%, rgba(33,156,7,1) 71%);
+  margin-top: 465px;
+  left: 19px;
+  width: 86%;
+  border-radius: 90px;
+  height: 44px;
+  color: white;
+  font-size: 15px;
+  text-align: center;
+  padding: 11px;
+}
+.saldo-superpoin {
+  position: relative;
+  background: rgb(242 239 239);
+  text-align: center;
+  height: 225px;
+  position: relative;
+  margin-top:536px;
+}
+.saldo-superkiosk img {
+  position: absolute;
+  margin-top: 20px;
+  margin-left:68px;
+  height: 35px;
+}
+.superpoin-user img {
+  position: absolute;
+  margin-top:20px;
+  margin-left:215px;
+  height: 35px;
+}
+.Saldo-superkiosk-text {
+  position: absolute;
+  font-size: 12px;
+  margin-left:39px;
+  margin-top:-152px;
+  font-family: 'Nunito';
+}
+.rupiah h1 {
+  position: absolute;
+  margin-top: -117px;
+  margin-left: 68px;
+  font-size: 20px;
+  color: rgb(4, 220, 4);
+}
+.topup-profile {
+  position: absolute;
+  background:linear-gradient(121deg, rgba(105,248,7,1) 0%, rgba(33,156,7,1) 71%);
+  border-radius: 90px;
+  margin-top: -79px;
+  margin-left: 46px;
+  width: 90px;
+  color:white
+
+}
+
 /* end of Box Product V2 */
 
 /* Kategori Produk */
@@ -1043,6 +1176,209 @@ i.btn-icon-off {
 }
 /* end of transactions detail */
 
+/* Pilih Kurir */
+.form-check-input:checked {
+  background-color: #44c4e8;
+  border-color: #44c4e8;
+}
+
+.form-check-input:checked + label {
+  background-color: aliceblue;
+}
+
+.icon-square-sm {
+  width: 50px;
+  height: 50px;
+}
+
+.input-custom-radio {
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+}
+
+.radio-custom-info p {
+  margin: 0;
+}
+/* end of Pilih Kurir */
+
+/* topup slider */
+.slider-topup-decimal {
+  font-weight: bold;
+  background-color: #11C1F3;
+  padding: 10px 30px 10px 30px;
+  color: white;
+  border-radius: 30px;
+  width: fit-content;
+  margin: auto;
+}
+
+.custom-range::-webkit-slider-thumb {
+  background: #11C1F3;
+}
+
+.custom-range::-moz-range-thumb {
+  background: #11C1F3;
+}
+
+.custom-range::-ms-thumb {
+  background: #11C1F3;
+}
+/* end of topup slider */
+
+/* TRACKING */
+.tracking-order {
+  font-size: 13px;
+  font-family: "Nunito", sans-serif;
+  font-weight: 400;
+  line-height: 13px;
+  -webkit-font-smoothing: auto;
+  text-rendering: optimizeLegibility;
+  color: #444;
+  /* overflow: hidden; */
+}
+
+.tracking-order body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  letter-spacing: 0.6px;
+}
+
+.tracking-order p {
+  font-size: 13px;
+  margin: 0 0 11px;
+}
+
+.tracking-order a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.tracking-order header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+.tracking-order header h1 {
+  font-size: 1.8rem;
+  line-height: 2.1rem;
+}
+.tracking-order header p {
+  margin-top: 1rem;
+}
+.tracking-order header .icon {
+  color: #F3597D;
+}
+
+.tracking-order .progressContainer {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+  padding: 10px;
+  color: #444;
+  background: #ffffff;
+  -moz-box-shadow: 0 0 7px rgb(0 0 0 / 30%);
+  /* -webkit-box-shadow: 0 0 7px rgb(0 0 0 / 30%); */
+  /* box-shadow: 0 0 7px rgb(0 0 0 / 30%); */
+}
+
+.tracking-order .progress {
+  position: relative;
+  padding: 0 1rem 0 3.5rem;
+  margin: 2rem 0 0;
+  list-style: none;
+}
+
+.tracking-order .progress__item {
+  position: relative;
+  min-height: 75px;
+  counter-increment: list;
+  /* padding-left: 0.5rem; */
+}
+.tracking-order .progress__item:before {
+  content: "";
+  position: absolute;
+  left: -1.5rem;
+  top: 16px;
+  height: 80%;
+  width: 1px;
+  border-left: 2px solid #9e9e9e;
+}
+.tracking-order .progress__item:after {
+  content: counter(list);
+  position: absolute;
+  top: 1px;
+  left: -31px;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: #9e9e9e;
+  color: #fff;
+  font-weight: 400;
+  font-size: 8px;
+  line-height: 1rem;
+  text-align: center;
+  /* border: 1px solid #fff; */
+}
+.tracking-order .progress__item:last-child:before {
+  border: none;
+}
+.tracking-order .progress__item.progress__item--completed {
+  opacity: 0.6;
+  color: #03a9f4;
+}
+.tracking-order .progress__item.progress__item--completed:after {
+  content: "\2713";
+  font-weight: 400;
+  background: #03a9f4;
+  color: #ffffff;
+}
+.tracking-order .progress__item.progress__item--active:after {
+  background: #8bc34a;
+  color: #ffffff;
+}
+
+.tracking-order .progress__title {
+  padding: 0 0 0.1rem;
+  margin: 0;
+  font-size: 0.5rem;
+}
+
+.tracking-order .progress__info {
+  font-size: 13px;
+}
+
+.tracking-header {
+  padding: 10px;
+  -webkit-box-shadow: 0px 3px 6px 0px rgb(204 204 204);
+  -moz-box-shadow: 0px 3px 6px 0px rgb(204 204 204);
+  box-shadow: 0px 3px 6px 0px rgb(204 204 204);
+  width: 100%;
+  background: white;
+}
+
+.order-info tr td {
+  padding: 0;
+  font-size: 0.8em;
+  color: #444;
+}
+
+.order-info td:nth-child(2) {
+  padding-left: 10px;
+}
+
+
+/* table.table-tracking-header tr td {
+  border: none;
+  font-family: 'Nunito', sans-serif;
+}
+table.table-tracking-header tr td:nth-child(odd) {
+  padding-right: 15px;
+} */
+
 /* MEDIA SCREEN */
 @media only screen and (min-width: 600px) {
   .login-logo-header-menu p {
@@ -1052,4 +1388,61 @@ i.btn-icon-off {
   .login-header-wave {
     display: none;
 }
+}
+
+/* Animation */
+.lds-ellipsis {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.lds-ellipsis div {
+  position: absolute;
+  top: 33px;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: rgb(126, 197, 255);
+  animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+.lds-ellipsis div:nth-child(1) {
+  left: 8px;
+  animation: lds-ellipsis1 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(2) {
+  left: 8px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(3) {
+  left: 32px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(4) {
+  left: 56px;
+  animation: lds-ellipsis3 0.6s infinite;
+}
+@keyframes lds-ellipsis1 {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes lds-ellipsis3 {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+@keyframes lds-ellipsis2 {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(24px, 0);
+  }
 }
