@@ -150,6 +150,34 @@ input:focus-visible {
   padding: 15px;
   height: 170px;
   margin-bottom: 60px;
+  width: 100%;
+}
+.profile-avatar-container {
+  position: relative;
+  background: linear-gradient( 
+140deg
+, rgba(71,202,235,1) 0%, rgba(26,125,202,1) 100%);
+  padding: 15px;
+  height: 100px;
+  margin-bottom: 60px;
+  width: 100%;
+}
+.profile-avatar-container h3 {
+  margin: 0;
+  position: absolute;
+  left: 130px;
+  font-size: 1em;
+  font-family: 'Nunito';
+  font-weight: bold;
+  color: #11C1F3;
+  bottom: -29px;
+  z-index: 1;
+}
+
+.icon-profile-info {
+  width: 50px;
+  margin-bottom: 10px;
+  max-height: 40px;
 }
 
 .sidemenu-avatar-container svg {
@@ -287,9 +315,18 @@ input:focus-visible {
     width: 100%;
     left: 0;
     height: 40px;
-    background-color: aliceblue;
-    bottom: -1px;
-    background: url(../assets/images/wave.png) no-repeat;
+    background-size: cover !important;
+    bottom: -8px;
+    background: url(../assets/images/wave-profile.png) no-repeat;
+}
+  .header-wave-profile {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    height: 50px;
+    background-size: cover !important;
+    bottom: -8px;
+    background: url(../assets/images/wave-profile.png) no-repeat;
 }
   
   .logo-header-menu h6 {
@@ -647,11 +684,11 @@ input:focus-visible {
   margin-top: 7px;
   font-weight: bold;
 }
-.header-wave-profile {
+/* .header-wave-profile {
   position: relative;
   background: linear-gradient(140deg, rgba(71,202,235,1) 0%, rgba(26,125,202,1) 100%);
   height: 200px;
-}
+} */
 .wave-white img {
   position: absolute;
   width: 100%;
@@ -1090,7 +1127,7 @@ i.btn-icon-off {
   z-index: 2;
   background-color: aliceblue;
   bottom: -25px;
-  background: url(../assets/images/wave.png) no-repeat;
+  background: url(../assets/images/wave-profile.png) no-repeat;
   background-size: cover;
 }
 
@@ -1226,6 +1263,20 @@ i.btn-icon-off {
   background: #11C1F3;
 }
 /* end of topup slider */
+
+.topup-account-info img {
+  width: 40px;
+  height: 100%;
+}
+
+.topup-account-info {
+  border: 1px solid #11c1f3;
+  background-color: aliceblue;
+}
+
+.topup-account-info i {
+  color: #11c1f3;
+}
 
 /* TRACKING */
 .tracking-order {
@@ -1387,7 +1438,24 @@ table.table-tracking-header tr td:nth-child(odd) {
   }
   .login-header-wave {
     display: none;
+  }
 }
+
+@media screen and (max-width: 425px) and (min-width: 375px) {
+  .header-wave-profile {
+    bottom: -3px;
+  }
+}
+@media screen and (max-width: 500px) and (min-width: 425px) {
+  .header-wave-profile {
+    height: 58px;
+    bottom: -1px;
+  }
+}
+@media screen and (min-width: 500px) {
+  .header-wave-profile {
+    display: none;
+  }
 }
 
 /* Animation */
