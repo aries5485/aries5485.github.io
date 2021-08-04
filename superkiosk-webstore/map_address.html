@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Verifikasi Registrasi - SuperKiosk Webstore</title>
+    <title>Set Lokasi Anda di Peta - SuperKiosk Webstore</title>
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
@@ -26,9 +26,10 @@
     <nav class="bg-dark grad-blue navbar navbar-dark navbar-expand sb-topnav">
         <!-- Sidebar Toggle-->
         <div class="align-items-center d-flex">
-            <button class="btn btn-link text-light" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
+            <a href="address_profile.html"><button class="btn btn-link text-light"><i
+                        class="fa-arrow-left fas"></i></button></a>
             <!-- Navbar Brand-->
-            <a class="navbar-brand" href="#!">Verifikasi Registrasi</a>
+            <a class="navbar-brand" href="#!">Set Lokasi</a>
         </div>
         <div class="align-items-center d-flex justify-content-between" style="width: 80px;margin-right: 28px;">
             <i class="bi bi-heart-fill text-light"></i>
@@ -157,31 +158,30 @@
         </div>
         <div id="layoutSidenav_content">
             <main>
-                <img src="./assets/images/img_otp.svg" alt="" class="d-block m-auto p-3 w-75">
-                <p class="fs-6 fw-bold lh-sm p-5 pb-0 pt-0 text-center text-nunito">
-                    Kami telah mengirimkan Kode Verifikasi ke No. Handphone Anda via SMS
-                </p>
-                <h6 class="fw-bold text-center text-nunito text-success">Masukkan Kode Verifikasi</h6>
-                <form>
-                    <div class="d-flex justify-content-center pb-4">
-                        <input type="text" class="input-otp" maxlength="1">
-                        <input type="text" class="input-otp" maxlength="1">
-                        <input type="text" class="input-otp" maxlength="1">
-                        <input type="text" class="input-otp" maxlength="1">
-                    </div>
 
-                    <div class="d-grid gap-2 p-2">
+                <div id="mapSearch" class="map-search position-relative">
+                    <div class="input-group mb-3 position-absolute top-0">
+                        <input type="text" class="form-control pe-5" placeholder="Cari Alamat"
+                            aria-label="Recipient's username" aria-describedby="button-addon2">
+                        <button class="btn position-absolute" type="button" style="right: 0px;z-index: 99;"><i
+                                class="bi bi-x"></i></button>
+                    </div>
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9430.373953191604!2d106.82475447935579!3d-6.396085501163576!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69eb86777a750d%3A0xfea971d996d1a49d!2sSuperKiosk%20Head%20Office!5e0!3m2!1sen!2sid!4v1628054863594!5m2!1sen!2sid"
+                        style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    <div class="position-absolute set-location">
                         <a href="#">
                             <button type="button"
-                                class="border-0 btn btn-grad-green btn-success w-100">Verifikasi</button>
-                        </a>
-                        <a href="#">
-                            <button type="button" class="border-0 btn btn-grad-blue btn-primary w-100">Kirim Ulang
-                                OTP</button>
+                                class="btn btn-grad-blue fw-bold mt-2 rounded-pill text-light w-100">Set Lokasi</button>
                         </a>
                     </div>
-                    <small class="d-block p-2 text-center">kirim kode ulang dalam <span>59 detik</span> </small>
-                </form>
+                    <div class="position-absolute get-location">
+                        <a href="#">
+                            <button type="button" class="btn"><i class="fas fa-crosshairs"></i></button>
+                        </a>
+                    </div>
+                </div>
+
             </main>
         </div>
     </div>

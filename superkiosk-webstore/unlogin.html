@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Verifikasi Registrasi - SuperKiosk Webstore</title>
+    <title>Daftar atau Register - SuperKiosk Webstore</title>
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
@@ -26,9 +26,10 @@
     <nav class="bg-dark grad-blue navbar navbar-dark navbar-expand sb-topnav">
         <!-- Sidebar Toggle-->
         <div class="align-items-center d-flex">
-            <button class="btn btn-link text-light" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
+            <a href="transactions.html"><button class="btn btn-link text-light"><i
+                        class="fa-arrow-left fas"></i></button></a>
             <!-- Navbar Brand-->
-            <a class="navbar-brand" href="#!">Verifikasi Registrasi</a>
+            <a class="navbar-brand" href="#!">Daftar/Register</a>
         </div>
         <div class="align-items-center d-flex justify-content-between" style="width: 80px;margin-right: 28px;">
             <i class="bi bi-heart-fill text-light"></i>
@@ -157,31 +158,84 @@
         </div>
         <div id="layoutSidenav_content">
             <main>
-                <img src="./assets/images/img_otp.svg" alt="" class="d-block m-auto p-3 w-75">
-                <p class="fs-6 fw-bold lh-sm p-5 pb-0 pt-0 text-center text-nunito">
-                    Kami telah mengirimkan Kode Verifikasi ke No. Handphone Anda via SMS
+                <p class="p-2 text-center text-orange fw-bold text-nunito">Untuk melanjutkan belanja, silahkan Register
+                    atau Login terlebih
+                    dahulu
                 </p>
-                <h6 class="fw-bold text-center text-nunito text-success">Masukkan Kode Verifikasi</h6>
-                <form>
-                    <div class="d-flex justify-content-center pb-4">
-                        <input type="text" class="input-otp" maxlength="1">
-                        <input type="text" class="input-otp" maxlength="1">
-                        <input type="text" class="input-otp" maxlength="1">
-                        <input type="text" class="input-otp" maxlength="1">
-                    </div>
 
-                    <div class="d-grid gap-2 p-2">
-                        <a href="#">
-                            <button type="button"
-                                class="border-0 btn btn-grad-green btn-success w-100">Verifikasi</button>
-                        </a>
-                        <a href="#">
-                            <button type="button" class="border-0 btn btn-grad-blue btn-primary w-100">Kirim Ulang
-                                OTP</button>
-                        </a>
+                <!-- form register -->
+                <form class="p-2 text-nunito mb-3">
+                    <div class="form-group pb-1 fw-bold">
+                        <label for="name"></label>Nama Lengkap
+                        <input type="email" class="form-control" id="name" aria-describedby="emailHelp"
+                            placeholder="Nama lengkap sesuai KTP">
                     </div>
-                    <small class="d-block p-2 text-center">kirim kode ulang dalam <span>59 detik</span> </small>
+                    <div class="form-group pb-1 fw-bold">
+                        <label for="phoneNumber">No. Handphone</label>
+                        <input type="text" class="form-control" id="phoneNumber" placeholder="Nomor HP Anda yang aktif">
+                    </div>
+                    <div class="form-group pb-1 fw-bold position-relative">
+                        <label for="userPassword1">Password</label>
+                        <input type="password" class="form-control" style="padding-right: 36px;" id="userPassword1">
+                        <button type="button" class="btn"><i
+                                class="bi bi-eye-fill icon-right-form position-absolute"></i></button>
+                    </div>
+                    <div class="form-group pb-1 fw-bold position-relative" style="margin-top: -24px;">
+                        <label for="userPassword2">Konfirmasi Password</label>
+                        <input type="password" class="form-control" style="padding-right: 36px;" id="userPassword2">
+                        <button type="button" class="btn"><i
+                                class="bi bi-eye-fill icon-right-form position-absolute"></i></button>
+                    </div>
+                    <div class="form-group pb-1 fw-bold" style="margin-top: -14px;">
+                        <div class="d-flex justify-content-between">
+                            <label for="addressFull">Alamat lengkap</label>
+                            <a href="#">
+                                <button type="button" class="border-0 btn btn-grad-green btn-sm btn-success">Set lokasi
+                                    alamat di peta</button>
+                            </a>
+                        </div>
+                        <textarea class="form-control" name="addressFull" id="addressFull" rows="3"
+                            placeholder="Alamat lengkap"></textarea>
+                    </div>
+                    <a href="register_otp.html">
+                        <button type="button"
+                            class="btn btn-grad-blue fw-bold mt-2 rounded-pill text-light w-100">DAFTAR</button>
+                    </a>
                 </form>
+                <!-- end of form register -->
+
+                <div class="d-flex w-100 align-items-center mb-3">
+                    <div class="border-bottom w-25"></div>
+                    <p class="w-50 bg-white text-center text-nunito text-black-50 m-0 lh-sm">Sudah punya akun
+                        SuperKiosk?<br />Login terlebih dahulu</p>
+                    <div class="border-bottom w-25"></div>
+                </div>
+
+                <!-- login form -->
+                <form action="" class="mb-3">
+                    <div class="p-2 position-relative">
+                        <i class="bi bi-phone-fill icon-left-input position-absolute"></i>
+                        <input type="text" placeholder="No. Handphone" class="border p-2 ps-5 rounded-pill w-100">
+                    </div>
+                    <div class="p-2 position-relative">
+                        <i class="bi bi-lock-fill icon-left-input position-absolute"></i>
+                        <input type="password" placeholder="Password" class="border p-2 ps-5 rounded-pill w-100">
+                        <button class="btn" type="button"><i
+                                class="bi bi-eye-fill icon-right-input position-absolute"></i></button>
+                        <div class="text-end" style="margin-top: -1em;">
+                            <a href="#"><button class="btn fw-bold pe-0" type="button" style="color:#11C1F3;">Lupa
+                                    Password<i class="bi bi-arrow-right-short"></i></button></a>
+                        </div>
+                        <div class="mt-2">
+                            <a href="#">
+                                <button type="button"
+                                    class="btn btn-grad-blue fw-bold rounded-pill text-light w-100">LOGIN</button>
+                            </a>
+                        </div>
+                    </div>
+                </form>
+                <!-- end of login form -->
+
             </main>
         </div>
     </div>
