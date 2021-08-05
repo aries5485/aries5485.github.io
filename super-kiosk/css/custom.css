@@ -3,6 +3,7 @@
 
 #mainNav .navbar-nav .nav-item .nav-link.active {
     color: #11C1F3 !important;
+    font-weight: bold !important;
 }
 
 h3 {
