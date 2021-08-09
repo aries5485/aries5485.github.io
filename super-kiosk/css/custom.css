@@ -254,12 +254,16 @@ a.news-caption p {
     background-position-x: center;
 }
 
+.superkiosk-app {display: contents;}
+
 .superkiosk-app img {
-    width: 100%;
+    width: 55%;
+    margin: auto;
 }
 
 .superkiosk-logo {
-    margin-left: -8em;
+    margin-left: 0em;
+    margin-right: 11em;
 }
 
 .footer-testimoni img {
@@ -369,12 +373,16 @@ footer {
     .join-image img {
         bottom: -24em;
     }
+    #news {
+        padding: 1em 0;
+    }
     .news2-big-box {
         height: 20em;
         margin-bottom: 1em;
     }
     #news2 {
         padding-top: 1em;
+        padding-bottom: 1em;
     }
     .superkiosk-logo {
         margin-left: 0em;
@@ -383,8 +391,16 @@ footer {
     .bg-download {
         padding: 1em;
     }
+    .superkiosk-app img {
+        width: 100%;
+        margin-top: 2em;
+    }
+    .news2-box-mini {
+        flex-wrap: wrap;
+    }
     .news2-box-mini-thumb {
         height: 6em;
+        width: 40%;
     }
     .footer-row {
         flex-direction: column-reverse !important;
