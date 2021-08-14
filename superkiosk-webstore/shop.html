@@ -172,6 +172,24 @@
                 </div>
                 <!-- end of Search and Filter -->
 
+                <div class="cat-filter-active">
+                    <div class="align-items-baseline cat-filter-item d-flex float-start me-1">
+                        <p class="me-1 text-uppercase">Camilan</p>
+                        <button type="button" class="btn btn-close-filter btn-sm"><i
+                                class="bi bi-x-circle"></i></button>
+                    </div>
+                    <div class="align-items-baseline cat-filter-item d-flex float-start me-1">
+                        <p class="me-1 text-uppercase">Promo Product</p>
+                        <button type="button" class="btn btn-close-filter btn-sm"><i
+                                class="bi bi-x-circle"></i></button>
+                    </div>
+                    <div class="align-items-baseline cat-filter-item d-flex float-start me-1">
+                        <p class="me-1 text-uppercase">Promo Product</p>
+                        <button type="button" class="btn btn-close-filter btn-sm"><i
+                                class="bi bi-x-circle"></i></button>
+                    </div>
+                </div>
+
                 <!-- Produk list -->
                 <div class="product-list-container">
                     <div class="product-box-wrapper">
@@ -479,60 +497,74 @@
 
                 <!-- Offcanvas -->
                 <div class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvasBottom"
-                    aria-labelledby="offcanvasBottomLabel" style="height: 18em;">
-                    <div class="offcanvas-header">
-                        <h5 class="offcanvas-title" id="offcanvasBottomLabel">Berapa banyak ya?</h5>
-                        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
-                            aria-label="Close"></button>
-                    </div>
-                    <div class="offcanvas-body small">
-                        <div class="d-flex mb-1">
-                            <div class="w-25">
-                                <div>
-                                    <div class="cart-item-thumb">
-                                        <img class="" src="./assets/images/Chitato-Sapi-Panggang-68-gr-089686598056.jpg"
-                                            alt="">
-                                    </div>
+                    aria-labelledby="offcanvasBottomLabel" style="height: 19em;">
+                    <div class="container">
+                        <div class="justify-content-center row">
+                            <div class="col-md-6">
+                                <div class="offcanvas-header">
+                                    <h5 class="offcanvas-title" id="offcanvasBottomLabel">Berapa banyak ya?</h5>
+                                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+                                        aria-label="Close"></button>
                                 </div>
-                            </div>
-                            <div class="cart-item-info w-75 ms-2">
-                                <div class="border-bottom d-flex justify-content-between">
-                                    <div class="me-1">
-                                        <p class="fw-bold lh-1 mb-1 text-2-lines">ABC Baterai Alkaline AAA 2pcs</p>
-                                        <p class="mb-1">Rp 18.500</p>
-                                    </div>
-                                    <div>
-                                        <p class="text-end fw-bold m-0">Qty</p>
-                                        <div class="d-flex justify-content-end">
-                                            <button type="button" class="border-0 btn btn-grad-blue btn-primary"><i
-                                                    class="bi bi-dash"></i>
-                                            </button>
-                                            <input type="number" class="text-end" style="width: 40px;">
-                                            <button type="button" class="border-0 btn btn-grad-blue btn-primary"><i
-                                                    class="bi bi-plus"></i>
-                                            </button>
+                                <div class="offcanvas-body small">
+                                    <div class="d-flex mb-1">
+                                        <div class="w-25">
+                                            <div>
+                                                <div class="cart-item-thumb">
+                                                    <img class="" id="itemCart"
+                                                        src="./assets/images/Chitato-Sapi-Panggang-68-gr-089686598056.jpg"
+                                                        alt="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="cart-item-info w-75 ms-2">
+                                            <div class="border-bottom d-flex justify-content-between">
+                                                <div class="me-1">
+                                                    <p class="fw-bold lh-1 mb-1 text-2-lines">ABC Baterai Alkaline AAA
+                                                        2pcs
+                                                    </p>
+                                                    <p class="mb-1">Rp 18.500</p>
+                                                </div>
+                                                <div>
+                                                    <p class="text-end fw-bold m-0">Qty</p>
+                                                    <div class="d-flex justify-content-end">
+                                                        <button type="button"
+                                                            class="border-0 btn btn-grad-blue btn-primary"><i
+                                                                class="bi bi-dash"></i>
+                                                        </button>
+                                                        <input type="number" class="text-end" style="width: 40px;">
+                                                        <button type="button"
+                                                            class="border-0 btn btn-grad-blue btn-primary"><i
+                                                                class="bi bi-plus"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="d-flex justify-content-between">
+                                                <p>sub total</p>
+                                                <p>Rp 18.500</p>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="d-flex justify-content-between">
-                                    <p>sub total</p>
-                                    <p>Rp 18.500</p>
+                                    <div class="d-flex gap-2 justify-content-center mb-2">
+                                        <button type="button"
+                                            class="border-0 btn btn-grad-red btn-primary rounded-pill w-100">
+                                            Batalkan
+                                        </button>
+                                        <button type="button" onclick="addToCart()"
+                                            class="border-0 btn btn-grad-green btn-primary rounded-pill w-100">
+                                            Tambahkan
+                                        </button>
+                                    </div>
+                                    <div class="d-block">
+                                        <button type="button"
+                                            class="border-0 btn btn-grad-blue btn-primary rounded-pill w-100">
+                                            <i class="bi bi-cart-fill me-2"></i>
+                                            Lihat Keranjang
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="d-flex gap-2 justify-content-center mb-2">
-                            <button type="button" class="border-0 btn btn-grad-red btn-primary rounded-pill w-100">
-                                Batalkan
-                            </button>
-                            <button type="button" class="border-0 btn btn-grad-green btn-primary rounded-pill w-100">
-                                Tambahkan
-                            </button>
-                        </div>
-                        <div class="d-block">
-                            <button type="button" class="border-0 btn btn-grad-blue btn-primary rounded-pill w-100">
-                                <i class="bi bi-cart-fill me-2"></i>
-                                Lihat Keranjang
-                            </button>
                         </div>
                     </div>
                 </div>
@@ -550,6 +582,13 @@
     <script src="js/datatables-simple-demo.js"></script>
     <!-- swiper JS -->
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+    <script>
+        function addToCart() {
+            itemCart = document.querySelector('#itemCart');
+            itemCart.classList.add('add-to-cart');
+        }
+    </script>
 
 </body>
 
