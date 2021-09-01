@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Keranjang Belanja - SuperKiosk Webstore</title>
+    <title>Halaman tidak bisa diakses - SuperKiosk Webstore</title>
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
@@ -26,9 +26,9 @@
     <nav class="bg-dark grad-blue navbar navbar-dark navbar-expand sb-topnav">
         <!-- Sidebar Toggle-->
         <div class="align-items-center d-flex">
-            <a href="shop.html"><button class="btn btn-link text-light"><i class="fa-arrow-left fas"></i></button></a>
+            <button class="btn btn-link text-light" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
             <!-- Navbar Brand-->
-            <a class="navbar-brand" href="#!">Keranjang Belanja</a>
+            <a class="navbar-brand" href="#!">Halaman tidak bisa diakses</a>
         </div>
         <div class="align-items-center d-flex justify-content-between" style="width: 80px;margin-right: 28px;">
             <i class="bi bi-heart-fill text-light"></i>
@@ -155,137 +155,50 @@
                 </div>
             </nav>
         </div>
-        <div id="layoutSidenav_content" style="background-color: #ececec;">
+        <div id="layoutSidenav_content">
             <main>
-                <!-- Produk list belanja -->
-                <div class="bg-white p-2 text-nunito cart-item-box mb-2">
-                    <!-- item produk -->
-                    <div class="d-flex pb-3 mb-3" style="border-bottom: 2px dashed #ccc;">
-                        <div class="w-25">
-                            <div>
-                                <div class="cart-item-thumb">
-                                    <img class="" src="./assets/images/Chitato-Sapi-Panggang-68-gr-089686598056.jpg"
-                                        alt="">
+                <div class="container">
+                    <div class="justify-content-center m-0 p-0 row">
+                        <div class="col-md-6">
+                            <!-- Page under construction -->
+                            <div class="bg-white p-2">
+                                <img src="./assets/images/404.svg" alt="" class="img-fluid">
+                                <p class="lh-sm mt-4 mx-4 text-black-50 text-center text-nunito">Mohon maaf. Halaman ini
+                                    tak
+                                    tersedia.
+                                    Silahkan coba lagi secara berkala
+                                </p>
+                                <div class="">
+                                    <a href="index.html" class="text-decoration-none">
+                                        <button type="button"
+                                            class="btn btn-grad-blue d-block fw-bold m-auto rounded-pill text-light"
+                                            style="min-width: 8em;">Ke Beranda</button>
+                                    </a>
                                 </div>
-                                <button type="button" class="btn btn-sm btn-danger border-0 w-100">hapus</button>
                             </div>
+                            <!-- end of Page under construction -->
+                            <!-- Need to login -->
+                            <div class="bg-white p-2">
+                                <img src="./assets/images/forbiden.svg" alt="" class="img-fluid">
+                                <p class="lh-sm mt-4 mx-4 text-black-50 text-center text-nunito">Mohon Maaf. Halaman ini
+                                    tidak bisa diakses.
+                                    Silahkan login terlebih dahulu
+                                </p>
+                                <div class="">
+                                    <a href="login.html" class="text-decoration-none">
+                                        <button type="button"
+                                            class="btn btn-grad-blue d-block fw-bold m-auto rounded-pill text-light"
+                                            style="min-width: 8em;">LOGIN</button>
+                                    </a>
+                                </div>
+                            </div>
+                            <!-- end of Need to login -->
                         </div>
-                        <div class="cart-item-info w-75 ms-2">
-                            <div class="border-bottom d-flex justify-content-between">
-                                <div class="me-1">
-                                    <p class="fw-bold lh-1 mb-1 text-2-lines">ABC Baterai Alkaline AAA 2pcs</p>
-                                    <p class="mb-1">Rp 18.500</p>
-                                </div>
-                                <div>
-                                    <p class="text-end fw-bold m-0">Qty</p>
-                                    <div class="d-flex justify-content-end">
-                                        <button type="button" class="border-0 btn btn-grad-blue btn-primary"><i
-                                                class="bi bi-dash"></i>
-                                        </button>
-                                        <input type="number" class="text-end" style="width: 40px;">
-                                        <button type="button" class="border-0 btn btn-grad-blue btn-primary"><i
-                                                class="bi bi-plus"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="d-flex justify-content-between">
-                                <p>sub total</p>
-                                <p>Rp 18.500</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="d-flex pb-3 mb-3" style="border-bottom: 2px dashed #ccc;">
-                        <div class="w-25">
-                            <div>
-                                <div class="cart-item-thumb">
-                                    <img class="" src="./assets/images/Chitato-Sapi-Panggang-68-gr-089686598056.jpg"
-                                        alt="">
-                                </div>
-                                <button type="button" class="btn btn-sm btn-danger border-0 w-100">hapus</button>
-                            </div>
-                        </div>
-                        <div class="cart-item-info w-75 ms-2">
-                            <div class="border-bottom d-flex justify-content-between">
-                                <div class="me-1">
-                                    <p class="fw-bold lh-1 mb-1 text-2-lines">ABC Baterai Alkaline AAA 2pcs</p>
-                                    <p class="mb-1">Rp 18.500</p>
-                                </div>
-                                <div>
-                                    <p class="text-end fw-bold m-0">Qty</p>
-                                    <div class="d-flex justify-content-end">
-                                        <button type="button" class="border-0 btn btn-grad-blue btn-primary"><i
-                                                class="bi bi-dash"></i>
-                                        </button>
-                                        <input type="number" class="text-end" style="width: 40px;">
-                                        <button type="button" class="border-0 btn btn-grad-blue btn-primary"><i
-                                                class="bi bi-plus"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="d-flex justify-content-between">
-                                <p>sub total</p>
-                                <p>Rp 18.500</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="d-flex pb-3 mb-3" style="border-bottom: 2px dashed #ccc;">
-                        <div class="w-25">
-                            <div>
-                                <div class="cart-item-thumb">
-                                    <img class="" src="./assets/images/Chitato-Sapi-Panggang-68-gr-089686598056.jpg"
-                                        alt="">
-                                </div>
-                                <button type="button" class="btn btn-sm btn-danger border-0 w-100">hapus</button>
-                            </div>
-                        </div>
-                        <div class="cart-item-info w-75 ms-2">
-                            <div class="border-bottom d-flex justify-content-between">
-                                <div class="me-1">
-                                    <p class="fw-bold lh-1 mb-1 text-2-lines">ABC Baterai Alkaline AAA 2pcs</p>
-                                    <p class="mb-1">Rp 18.500</p>
-                                </div>
-                                <div>
-                                    <p class="text-end fw-bold m-0">Qty</p>
-                                    <div class="d-flex justify-content-end">
-                                        <button type="button" class="border-0 btn btn-grad-blue btn-primary"><i
-                                                class="bi bi-dash"></i>
-                                        </button>
-                                        <input type="number" class="text-end" style="width: 40px;">
-                                        <button type="button" class="border-0 btn btn-grad-blue btn-primary"><i
-                                                class="bi bi-plus"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="d-flex justify-content-between">
-                                <p>sub total</p>
-                                <p>Rp 18.500</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- end of item produk -->
-                </div>
-                <!-- end Produk list belanja -->
-
-                <!-- Sub Total Produk -->
-                <div class="bg-white mb-5 p-2 text-nunito">
-                    <div class="d-flex justify-content-between">
-                        <p class="fw-bold m-0">Sub Total Produk</p>
-                        <p class="fw-bold m-0">Rp. 23.500</p>
                     </div>
                 </div>
-                <!-- end of Sub Total Produk -->
             </main>
         </div>
     </div>
-    <!-- Absolute Buy Button -->
-    <div class="bottom-0 d-grid gap-2 position-fixed w-100">
-        <a href="shopping_cart_confirm.html"><button class="btn btn-grad-blue btn-primary w-100 border-0"
-                type="button">Lanjut<i class="bi bi-arrow-right ms-2"></i></button></a>
-    </div>
-    <!-- end of Absolute Buy Button -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         crossorigin="anonymous"></script>
     <script src="js/scripts.js"></script>

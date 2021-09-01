@@ -25,8 +25,13 @@
 <body class="sb-nav-fixed">
     <nav class="bg-dark grad-blue navbar navbar-dark navbar-expand sb-topnav">
         <!-- Sidebar Toggle-->
+        <!-- <div class="align-items-center d-flex">
+            <a href="index.html"><button class="btn btn-link text-light"><i class="fa-arrow-left fas"></i></button></a> -->
+        <!-- Navbar Brand-->
+        <!-- <a class="navbar-brand" href="#!">Registrasi</a>
+        </div> -->
         <div class="align-items-center d-flex">
-            <a href="index.html"><button class="btn btn-link text-light"><i class="fa-arrow-left fas"></i></button></a>
+            <button class="btn btn-link text-light" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
             <!-- Navbar Brand-->
             <a class="navbar-brand" href="#!">Registrasi</a>
         </div>
@@ -43,10 +48,123 @@
         </div>
     </nav>
     <div id="layoutSidenav">
+        <div id="layoutSidenav_nav">
+            <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                <div class="sb-sidenav-menu">
 
+                    <!-- Logged User -->
+                    <div class="sidemenu-avatar-container">
+                        <div class="sidemenu-info-user">
+                            <p class="username-info">Devi Rana Calista</p>
+                            <div style="display: flex;">
+                                <div class="user-quick-info">
+                                    <img src="assets/images/menu-icon/icon-saldodompet.svg" alt="">
+                                    <div class="user-quick-info-text">
+                                        <p>Saldo SuperKiosk</p>
+                                        <h3>Rp 750.000</h3>
+                                    </div>
+                                </div>
+                                <div class="user-quick-info">
+                                    <img src="assets/images/menu-icon/icon-superpoinuser.svg" alt="">
+                                    <div class="user-quick-info-text">
+                                        <p>Super Poin</p>
+                                        <h3>5.250 Pts</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <a menu-close href="profile.html" class="ava-pic">
+                            <img src="assets/images/img-profile.png">
+                        </a>
+                        <button class="btn btn-dark btn-logout" type="submit">Logout</button>
+                        <div class="header-wave"></div>
+                    </div>
+                    <!-- end of Logged User -->
+
+                    <!-- Public User -->
+                    <!-- <div id="public-state">
+                        <div class="logo-header-menu">
+                            <p>
+                                Selamat Datang di<br />
+                                <span>SuperKiosk</span>
+                            </p>
+                            <h6>Belanja Jaman Now</h6>
+                            <div>
+                                <div class="header-wave-public"></div>
+                            </div>
+                        </div>
+                        <div class="login-box-menu">
+                            <p>
+                                Silahkan login untuk dapat mulai belanja dan menikmati promo yang tersedia
+                            </p>
+                            <a href="#app/login" menu-close>
+                                <button class="btn fw-bold btn-grad-blue btn-rounded text-white w-100" type="submit"
+                                    style="font-size: 0.8em;">Login</button>
+                            </a>
+                        </div>
+                    </div> -->
+                    <!-- end of Public User -->
+
+                    <div class="list-group list-group-flush mb-5">
+                        <a class="align-items-center d-flex list-group-item list-group-item-action list-group-item-light p-3"
+                            href="index.html">
+                            <img src="assets/images/menu-icon/icon-home.svg" alt="">
+                            Beranda
+                        </a>
+                        <a class="align-items-center d-flex list-group-item list-group-item-action list-group-item-light p-3"
+                            href="shop.html">
+                            <img src="assets/images/menu-icon/icon-shop.svg" alt="">
+                            Belanja
+                        </a>
+                        <a class="align-items-center d-flex list-group-item list-group-item-action list-group-item-light p-3"
+                            href="#!">
+                            <img src="assets/images/menu-icon/icon-favourite.svg" alt="">
+                            Favorit
+                        </a>
+                        <a class="align-items-center d-flex list-group-item list-group-item-action list-group-item-light p-3"
+                            href="#!">
+                            <img src="assets/images/menu-icon/icon-promo.svg" alt="">Berita & Promo</a>
+                        <a class="align-items-center d-flex list-group-item list-group-item-action list-group-item-light p-3"
+                            href="#!">
+                            <img src="assets/images/menu-icon/icon-notifications.svg" alt="">Notifikasi
+                            <div class="notif-icon-side">99+</div>
+                        </a>
+                        <a class="align-items-center d-flex list-group-item list-group-item-action list-group-item-light p-3"
+                            href="transactions.html">
+                            <img src="assets/images/menu-icon/icon-transactions.svg" alt="">Order Saya</a>
+                        <a class="align-items-center d-flex list-group-item list-group-item-action list-group-item-light p-3"
+                            href="#!">
+                            <img src="assets/images/menu-icon/icon-transactions_history.svg" alt="">Transaksi Saya</a>
+                        <a class="align-items-center d-flex list-group-item list-group-item-action list-group-item-light p-3"
+                            href="#!">
+                            <img src="assets/images/menu-icon/icon-bills_history.svg" alt="">Pembelian &
+                            Pembayaran</a>
+                        <a class="align-items-center d-flex list-group-item list-group-item-action list-group-item-light p-3"
+                            href="#!">
+                            <img src="assets/images/menu-icon/icon-topup.svg" alt="">Topup Saldo</a>
+                        <a class="align-items-center d-flex list-group-item list-group-item-action list-group-item-light p-3"
+                            href="#!">
+                            <img src="assets/images/menu-icon/icon-points.svg" alt="">Super Poin</a>
+                        <a class="align-items-center d-flex list-group-item list-group-item-action list-group-item-light p-3"
+                            href="#!">
+                            <img src="assets/images/menu-icon/icon-about.svg" alt="">Tentang
+                            SuperKiosk</a>
+                        <a class="align-items-center d-flex list-group-item list-group-item-action list-group-item-light p-3"
+                            href="#!">
+                            <img src="assets/images/menu-icon/icon-feedback.svg" alt="">Hubungi Kami</a>
+                    </div>
+                    <div class="sidemenu-footer">
+                        <img src="assets/images/sidemenu-footer.png" alt="">
+                        <p>Versi 69</p>
+                    </div>
+                </div>
+            </nav>
+        </div>
         <div id="layoutSidenav_content">
-            <main>
-                <img src="./assets/images/register-banner.svg" alt="" class="d-block m-auto p-3 w-75">
+            <main class="container col-lg-6">
+                <!-- <img src="./assets/images/register-banner.svg" alt="" class="d-block m-auto p-3 w-75"> -->
+                <lottie-player src="./assets/images/register-animation.json" background="transparent" speed="1"
+                    style="width: 300px;height: auto;margin: 20px auto;" loop autoplay></lottie-player>
                 <!-- Form -->
                 <form class="p-2 text-nunito">
                     <div class="form-group pb-1 fw-bold">
@@ -91,6 +209,7 @@
             </main>
         </div>
     </div>
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         crossorigin="anonymous"></script>
     <script src="js/scripts.js"></script>

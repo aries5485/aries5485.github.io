@@ -102,7 +102,7 @@
                     </div>
                     <!-- end of Public User -->
 
-                    <div class="list-group list-group-flush">
+                    <div class="list-group list-group-flush mb-5">
                         <a class="align-items-center d-flex list-group-item list-group-item-action list-group-item-light p-3"
                             href="index.html">
                             <img src="assets/images/menu-icon/icon-home.svg" alt="">
@@ -164,6 +164,7 @@
                     <div class="search-field">
                         <i class="fas fa-search"></i>
                         <input type="text" placeholder="Cari produk disini">
+                        <button class="bi bi-x btn btn-search-close" type="button" style="right: 0.5em;"></button>
                     </div>
                     <a href="filter.html">
                         <button type="button" class="btn btn-light h-100"><i class="bi bi-filter"
@@ -552,8 +553,8 @@
                                             Batalkan
                                         </button>
                                         <button type="button" onclick="addToCart()"
-                                            class="border-0 btn btn-grad-green btn-primary rounded-pill w-100">
-                                            Tambahkan
+                                            class="border-0 btn btn-grad-green btn-primary rounded-pill w-100"
+                                            data-bs-toggle="modal" data-bs-target="#addToCartModal">Tambahkan
                                         </button>
                                     </div>
                                     <div class="d-block">
@@ -569,6 +570,31 @@
                     </div>
                 </div>
                 <!-- end of Offcanvas -->
+
+                <!-- Modal -->
+                <div class="modal fade" id="addToCartModal" data-bs-backdrop="static" data-bs-keyboard="false"
+                    tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <!-- <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5> -->
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                Anda berhasil menambahkan produk ABC Kopi Pahit sepahit kehidupan Anda yang tidak
+                                berguna itu 80gr
+                            </div>
+                            <div class="modal-footer">
+                                <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button> -->
+                                <button type="button" class="border-0 btn btn-grad-blue btn-primary rounded-pill w-100">
+                                    <i class="bi bi-cart-fill me-2"></i>
+                                    Lihat Keranjang
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </main>
         </div>
     </div>
