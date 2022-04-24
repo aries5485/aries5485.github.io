@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Mulish:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+.kanit {
+    font-family: "Kanit", sans-serif;
+}
+.mulish {
+    font-family: "Mulish", sans-serif;
+}
+
+.sk-text-primary-color {
+    color: #212529;
+}
+
+.mobile-banner {
+    display: none;
+}
+
+.reg-form {
+    background-color: #F4F4F4;
+    padding: 4em;
+    border-radius: 30px;
+}
+
+.btn-sk-primary {
+    background-color: #2896D4 !important;
+    border-color: #2590ce !important ;
+}
+.btn-sk-primary:hover {
+    background-color: #39A9E8 !important;
+}
+
+.reg-link:hover {
+    text-decoration: underline !important;
+}
+
+.big-arrow {
+    position: absolute;
+    right: 0;
+    top: 132px;
+}
+
+.sk-video {
+    border-radius: 30px;
+    width: 100%;
+    min-height: 350px;
+}
+
+.sk-ol {
+    padding-left: 18px;
+}
+.sk-ol li {
+    padding-left: 0.5em;
+    line-height: 2em;
+}
+
+.sitemap ul li {
+    display: inline-block;
+    margin-right: 1em;
+    font-family: 'Mulish', sans-serif;
+    font-size: smaller;
+}
+
+.sitemap ul {
+    padding-left: 0;
+    margin: 0;
+}
+
+.sitemap a {
+    color: rgb(0 0 0 / 50%);
+}
+.sitemap a:hover {
+    color: black;
+}
+
+#footer {
+    border-top: 1px solid #d9d9d9;
+}
+
+.prize1 {
+    width: 100%;
+}
+
+
+@media only screen and (max-width: 425px) {
+    .quicklinks {
+        display: block !important;
+        padding: 1em;
+        text-align: center;
+    }
+    .sitemap {
+        margin-bottom: 1em;
+    }
+    .mobile-banner {
+        display: block;
+    }
+    .desktop-banner {
+        display: none;
+    }
+    .socmed {
+        display: block !important;
+        margin: auto;
+    }
+    .footer-cr {
+        text-align: center;
+    }
+    .big-arrow {
+        right: 33px;
+        top: 187px;
+        width: 130px;
+        transform: scaleX(-1) rotate(88deg);
+    }
+    .reg-form {
+        padding: 2em;
+    }
+    #hero .container {
+        padding: 0 !important;
+    }
+    
+}
