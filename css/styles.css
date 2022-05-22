@@ -11033,7 +11033,7 @@ a.text-dark:focus {
 }
 
 #mainNav .navbar-nav li.nav-item a.nav-link.active {
-  color: #1abc9c;
+  color: #294e72;
 }
 
 #mainNav .navbar-toggler {
@@ -11066,7 +11066,7 @@ a.text-dark:focus {
   #mainNav .navbar-nav>li.nav-item>a.nav-link.active:focus,
   #mainNav .navbar-nav>li.nav-item>a.nav-link.active:hover {
     color: #fff;
-    background: #1abc9c;
+    background: #294e72;
   }
 
   #mainNav.navbar-shrink {
