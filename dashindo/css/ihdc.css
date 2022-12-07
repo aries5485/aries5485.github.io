@@ -11,15 +11,14 @@
     --font-size-btn: 0.8rem;
 }
 
-
 body {
     background: url('/dashindo/assets/img/pushidrosal/main-bg.jpg') no-repeat;
-    background-position-x: right;
-    position: fixed;
+    background-position-x: 100%;
+    background-size: auto;
     z-index: -2;
     width: 100%;
-    height: 100vh;
-    /* overflow: hidden; */
+    height: 100%;
+    overflow-x: hidden;
 }
 
 .main-content {
@@ -193,3 +192,21 @@ footer {
 .foot-note p {
     margin: 0;
 }
+
+/* MEDIA SCREEN */
+@media only screen and (max-width: 600px) {
+    .main-content {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    body {
+        background-size: contain;
+    }
+    .big-title-text h1 {
+        font-size: 1.9rem;
+        text-shadow: 1px 1px white;
+    }
+    footer {
+        bottom: 350px;
+    }
+  }
