@@ -208,5 +208,6 @@ footer {
     }
     footer {
         bottom: 350px;
+        position: absolute;
     }
   }
