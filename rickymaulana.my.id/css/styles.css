@@ -12467,6 +12467,11 @@ footer h5 {
 }
 
 @media (max-width: 768px) {
+  .about-img img  {
+    width: 60%;
+    margin: 20px auto;
+  }
+
   img.cloud {
     position: absolute;
     top: 145px;
