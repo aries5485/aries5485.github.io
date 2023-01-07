@@ -12308,6 +12308,12 @@ img.person {
   top: -150px;
 }
 
+.services-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 24px;
+}
+
 .service-box {
   background-color: white;
   padding: 0.6rem;
@@ -12316,6 +12322,60 @@ img.person {
   min-height: 260px;
   transition: all 0.3s ease 0s;
   box-shadow: none;
+}
+
+.services-box {
+  background: #FFFFFF;
+  border: 1px solid #F5F5F5;
+  box-shadow: 0px 0px 36px rgba(0, 0, 0, 0.06);
+  border-radius: 12px;
+  padding: 28px;
+  font-family: var(--primary-font);
+  color: var(--sub-text-color);
+}
+.services-box h4 {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 27px;
+}
+.services-box p {
+  font-style: normal;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 150%;
+}
+
+.services-icon-container {
+  width: 70px;
+  height: 70px;
+  border-radius: 10px 10px 0px 10px;
+  margin-bottom: 24px;
+}
+.services-icon-container.ui-ux_design {
+  background: url(../assets/img/icons/icon_ui-ux_design.svg) var(--primary-color) no-repeat;
+  background-size: 60%;
+  background-position: center;
+}
+.services-icon-container.graphic_design {
+  background: url(../assets/img/icons/icon_graphic-design.svg) var(--primary-color) no-repeat;
+  background-size: 60%;
+  background-position: center;
+}
+.services-icon-container.editing {
+  background: url(../assets/img/icons/icon_editing.svg) var(--primary-color) no-repeat;
+  background-size: 60%;
+  background-position: center;
+}
+.services-icon-container.software {
+  background: url(../assets/img/icons/icon_software.svg) var(--primary-color) no-repeat;
+  background-size: 60%;
+  background-position: center;
+}
+.services-icon-container.print {
+  background: url(../assets/img/icons/icon_print.svg) var(--primary-color) no-repeat;
+  background-size: 60%;
+  background-position: center;
 }
 
 .service-box:hover {
