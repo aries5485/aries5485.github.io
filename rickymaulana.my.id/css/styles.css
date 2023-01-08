@@ -222,12 +222,12 @@ sup {
 }
 
 a {
-  color: rgb(255, 200, 0);
+  color: var(--primary-text-color);
   text-decoration: underline;
 }
 
 a:hover {
-  color: rgb(204, 160, 0);
+  color: var(--primary-color);
 }
 
 a:not([href]):not([class]), a:not([href]):not([class]):hover {
@@ -12316,6 +12316,16 @@ img.person {
   background-color: #F9F9F9;
   padding: 9rem 0;
 }
+#portfolio {
+  padding: 9rem 0;
+}
+#experience {
+  padding: 9rem 0;
+}
+#kontak {
+  padding: 9rem 0;
+  /* background-color: #f9f9f9; */
+}
 
 .services-container {
   display: grid;
@@ -12388,28 +12398,6 @@ img.person {
   background-position: center;
 }
 
-.service-box:hover {
-  box-shadow: rgba(0, 0, 0, 0.01) 0px 28px 11px, rgba(0, 0, 0, 0.05) 0px 16px 9px, rgba(0, 0, 0, 0.09) 0px 7px 7px, rgba(0, 0, 0, 0.1) 0px 2px 4px, rgba(0, 0, 0, 0.1) 0px 0px 0px;
-}
-
-.service-box:hover h4 {
-  color: rgb(8, 163, 249);
-}
-
-.service-box:hover img {
-  transform: translate(-50%, -50%) scale(1.1);
-}
-
-.service-box h4 {
-  font-size: 16px;
-  transition: all 0.3s ease 0s;
-}
-
-.service-box p {
-  font-size: 12px;
-  line-height: 1.4;
-}
-
 .bg-circle {
   width: 80px;
   height: 80px;
@@ -12479,7 +12467,7 @@ img.bg-services {
 }
 
 footer {
-  background-color: rgb(8, 163, 249);
+  background-color: var(--primary-text-color);
 }
 
 footer h5 {
@@ -12498,7 +12486,8 @@ footer h5 {
 
 .swiper {
   width: 100%;
-  height: 121%;
+  height: 100%;
+  padding-bottom: 2rem !important;
 }
 
 .swiper-slide {
@@ -12529,9 +12518,11 @@ footer h5 {
   background-color: #F5F5F5;
   border-radius: 8px;
   overflow: hidden;
+  width: 100%;
 }
 .port-title {
   font-family: var(--primary-font);
+  color: var(--primary-text-color);
   font-style: normal;
   font-weight: 600;
   font-size: 16px;
@@ -12539,10 +12530,167 @@ footer h5 {
 }
 .swiper-slide small {
   font-family: var(--primary-font);
+  color: var(--sub-text-color);
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
   line-height: 17px;
+}
+
+.swiper-pagination-bullet {
+  width: 12px !important;
+  height: 12px !important;
+}
+.swiper-pagination-bullet-active {
+  opacity: var(--swiper-pagination-bullet-opacity, 1);
+  background: var(--primary-color,var(--swiper-theme-color)) !important;
+}
+
+.bg-lightgrey {
+  background-color: #f9f9f9;
+}
+
+.work_experience {
+  position: relative;
+  margin-top: 30px;
+}
+.work_experience::before {
+  position: absolute;
+  content: '';
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  transform: translateX(-50%);
+  top: 0;
+  width: 2px;
+  height: 100%;
+  background-color: #00A78E;
+  z-index: 0;
+}
+.single_experience .experience_title {
+  width: 46%;
+}
+.single_experience .experience_number {
+  width: 8%;
+  text-align: center;
+}
+.single_experience .experience_content {
+  -webkit-box-shadow: 0px 0px 10px 0px rgb(196 196 196 / 30%);
+  -moz-box-shadow: 0px 0px 10px 0px rgba(196, 196, 196, 0.3);
+  box-shadow: 0px 0px 10px 0px rgb(196 196 196 / 30%);
+  padding: 30px;
+  border-radius: 10px;
+  background-color: #fff;
+  width: 46%;
+  -webkit-transition: all 0.3s ease-out 0s;
+  -moz-transition: all 0.3s ease-out 0s;
+  -ms-transition: all 0.3s ease-out 0s;
+  -o-transition: all 0.3s ease-out 0s;
+  transition: all 0.3s ease-out 0s;
+}
+.single_experience .experience_title .title {
+  font-size: 25px;
+  font-weight: 600;
+}
+.single_experience .experience_title p {
+  color: #00A78E;
+  font-size: 16px;
+  font-weight: 600;
+  font-family: "Open Sans", sans-serif;
+  margin-top: 10px;
+}
+.single_experience .experience_title .date {
+  font-size: 16px;
+  font-weight: 600;
+  color: #646F87;
+  font-family: "Open Sans", sans-serif;
+  margin-top: 10px;
+}
+.single_experience .experience_number span {
+  width: 55px;
+  height: 55px;
+  line-height: 51px;
+  text-align: center;
+  border: 2px solid #00A78E;
+  font-size: 20px;
+  font-family: "Open Sans", sans-serif;
+  color: #00A78E;
+  border-radius: 50%;
+  -webkit-transition: all 0.3s ease-out 0s;
+  -moz-transition: all 0.3s ease-out 0s;
+  -ms-transition: all 0.3s ease-out 0s;
+  -o-transition: all 0.3s ease-out 0s;
+  transition: all 0.3s ease-out 0s;
+  background-color: #fff;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+}
+.single_experience .experience_content p {
+  -webkit-transition: all 0.3s ease-out 0s;
+  -moz-transition: all 0.3s ease-out 0s;
+  -ms-transition: all 0.3s ease-out 0s;
+  -o-transition: all 0.3s ease-out 0s;
+  transition: all 0.3s ease-out 0s;
+}
+
+
+.contact-name {
+  font-family: var(--primary-font);
+  color: var(--primary-color);
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+
+.socmed-icons {
+  display: flex;
+  gap: 14px;
+}
+
+.icon-socmed {
+  width: 40px;
+  height: 40px;
+  background-color: #ebebeb;
+  border-radius: 50%;
+  text-decoration: none;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon-socmed img {
+  max-width: 16px;
+  max-height: 16px;
+  align-self: center;
+}
+
+.contact-email {
+  font-family: var(--primary-font);
+  color: var(--primary-text-color);
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+}
+
+.footer-menu {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+  flex-wrap: wrap;
+}
+.footer-menu a {
+  text-decoration: none;
 }
 
 @-webkit-keyframes slide-top {
@@ -12672,5 +12820,37 @@ footer h5 {
   }
   #services {
     padding: 3rem 0;
+  }
+  .work_experience {
+    margin-top: 0;
+  }
+  .single_experience {
+    margin-top: 25px;
+  }
+  .single_experience .experience_title {
+    width: 100%;
+  }
+  .single_experience .experience_number {
+    display: none;
+  }
+  .single_experience .experience_content {
+    width: 100%;
+    margin-top: 30px;
+    padding: 20px;
+  }
+  .single_experience .experience_title .title {
+    font-size: 20px;
+  }
+  .single_experience .experience_title p {
+    font-size: 15px;
+  }
+  .single_experience .experience_title .date {
+    font-size: 15px;
+  }
+  .text-lg-right {
+    text-align: right!important;
+  }
+  .work_experience::before {
+    display: none;
   }
 }
