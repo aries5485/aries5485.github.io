@@ -12664,12 +12664,22 @@ footer h5 {
   display: inline-flex;
   justify-content: center;
   align-items: center;
+  transition: all 0.3s;
 }
 
 .icon-socmed img {
   max-width: 16px;
   max-height: 16px;
   align-self: center;
+  transition: all 0.3s;
+}
+
+.icon-socmed:hover {
+    background-color: var(--primary-color);
+}
+
+.icon-socmed:hover img {
+    filter: brightness(10);
 }
 
 .contact-email {
