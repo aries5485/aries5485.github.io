@@ -56,6 +56,7 @@
   --sub-text-color: #666666;
 }
 
+
 *, ::before, ::after {
   box-sizing: border-box;
   --primary-color: #00A78E;
@@ -223,7 +224,7 @@ sup {
 
 a {
   color: var(--primary-text-color);
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 a:hover {
@@ -12195,7 +12196,7 @@ img.person {
 }
 
 .btn-prime {
-  display: flex;
+  display: inline-flex;
   flex-direction: row;
   align-items: center;
   padding: 20px 40px;
@@ -12352,6 +12353,12 @@ img.person {
   height: 100%;
   font-family: var(--primary-font);
   color: var(--sub-text-color);
+  transition: all 0.4s;
+  scale: 1;
+}
+.services-box:hover {
+    box-shadow: 0px 0px 36px rgb(0 0 0 / 18%);
+    scale: 1.02;
 }
 .services-box h4 {
   font-style: normal;
@@ -12637,6 +12644,12 @@ footer h5 {
   transition: all 0.3s ease-out 0s;
 }
 
+#banner-cta {
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../assets/img/bg-banner-cta.jpg') no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
 
 .contact-name {
   font-family: var(--primary-font);
@@ -12744,6 +12757,9 @@ footer h5 {
 }
 
 @media (max-width: 768px) {
+  #banner-cta {
+    padding: 4rem 0;
+  }
   .about-img img  {
     width: 60%;
     margin: 20px auto;
