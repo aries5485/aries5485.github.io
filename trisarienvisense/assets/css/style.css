@@ -206,8 +206,9 @@ li.nav-item {
     background-position: center;
 }
 .icon-features {
-    transition: all 0.4s;
+    transition: all 1s;
     transform: rotate(0);
+    transition-timing-function: cubic-bezier(0.49, 0.42, 0.05, 1.38);
 }
 .features-desc:hover .icon-features {
     transform: rotate(360deg);
