@@ -12303,6 +12303,10 @@ img.person {
   border-radius: 80px;
 }
 
+.mytools img {
+  width: 50px;
+}
+
 #aboutus {
   position: relative;
   background-color: rgb(236, 236, 236);
