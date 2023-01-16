@@ -34,7 +34,7 @@ body {
     color: white;
 }
 .btn-cta {
-    display: flex;
+    /* display: flex; */
     flex-direction: row;
     align-items: center;
     padding: 20px 40px;
@@ -43,8 +43,25 @@ body {
     box-shadow: 0px 90px 36px rgba(0, 0, 0, 0.01), 0px 51px 30px rgba(0, 0, 0, 0.05), 0px 23px 23px rgba(0, 0, 0, 0.09), 0px 6px 12px rgba(0, 0, 0, 0.1), 0px 0px 0px rgba(0, 0, 0, 0.1);
     color: white;
 }
-.btn-cta:hover {
+.btn-cta-no-shadow {
+    /* display: flex; */
+    flex-direction: row;
+    align-items: center;
+    padding: 20px 40px;
+    gap: 5px;
+    background-color: var(--btn-main-color);
+    color: white;
+}
+.btn-cta-no-shadow:hover, .btn-cta:hover {
     box-shadow: unset;
+    background-color: var(--btn-main-hover-color);
+    color: white;
+}
+.btn-green-prime {
+    background-color: var(--btn-main-color);
+    color: white;
+}
+.btn-green-prime:hover {
     background-color: var(--btn-main-hover-color);
     color: white;
 }
@@ -57,7 +74,7 @@ body {
 
 #hero {
     position: relative;
-    padding-top: 5rem;
+    padding-top: 8rem;
     height: 88vh;
     display: grid;
     align-items: center;
@@ -82,23 +99,19 @@ body {
     z-index: -1;
 }
 
-#features {
+#features, #pricenplan {
     padding-top: 9rem;
+    padding-bottom: 9rem;
 }
 
-
-.bg-hero {
-    position: absolute;
-    z-index: -1;
-    bottom: -380px;
-    right: 0;
-    width: 69%;
-}
 .hero-img {
-    position: absolute;
-    z-index: 0;
-}
-
+    position: unset;
+    width: 100%;
+    padding-top: 1rem;
+    }
+    .bg-hero {
+        display: none;
+    }
 
 #mainNav {
     padding: 1.8rem 0;
@@ -132,6 +145,15 @@ li.nav-item {
     font-size: 40px;
     line-height: 48px;
     text-align: center;
+}
+.sec-subtitle {
+    font-family: var(--primary-font);
+    font-style: normal;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 48px;
+    color: var(--primary-color);
+
 }
 .title-hr {
     width: 100px;
@@ -197,6 +219,14 @@ li.nav-item {
     background-size: 25px;
     background-position: center;
 }
+.icon-features.cctv {
+    width: 80px;
+    height: 80px;
+    border-radius: 53px;
+    background: #E6F3FF url('/trisarienvisense/assets/img/icon-feature-cctv.svg') no-repeat;
+    background-size: 25px;
+    background-position: center;
+}
 .icon-features.customize {
     width: 80px;
     height: 80px;
@@ -234,10 +264,129 @@ li.nav-item {
     color: var(--sub-text-color);
 }
 
+.switch-prime {
+    height: 1.8rem !important;
+    width: 3.5em !important;
+    margin-right: 1rem;
+}
+
+.switch-prime.form-check-input:checked {
+    background-color: #6dc265;
+    border-color: #6DC265;
+}
+
+.plan-box {
+    background-color: white;
+    border: 1px solid #DEDEDE;
+    border-radius: 12px;
+    padding: 20px;
+    height: 100%;
+}
+.plan-box h3 {
+    font-family: var(--primary-font);
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 29px;
+    text-align: center;
+    color: #444;
+}
+.plan-box h1 {
+    font-family: var(--primary-font);
+    font-style: normal;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 44px;
+    text-align: center;
+    color: #6DC265;
+}
+.plan-box h1 span {
+    font-family: var(--primary-font);
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+    color: #000000;
+}
+.plan-benefit {
+    display: flex;
+    gap: 10px;
+    font-family: var(--primary-font);
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: var(--sub-text-color);
+}
+
+.support-box h4 {
+    font-family: var(--primary-font);
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 29px;
+    color: #444444;
+}
+.support-box p {
+    font-family: var(--primary-font);
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 150%;
+    color: #999999;
+}
+
+#faq {
+    position: relative;
+    background-color: #f5f5f5;
+}
+#faq::before {
+    content: ' ';
+    position: absolute;
+    background: url('../img/faq-top-bg.svg') no-repeat;
+    background-size: contain;
+    width: 100%;
+    height: 300px;
+    top: -204px;
+    z-index: -99;
+}
+
+footer {
+    padding: 7rem 0;
+}
+
+.accordion-button:not(.collapsed) {
+    color: white;
+    background-color: #6DC265;
+}
+
+.accordion-body {
+    color: #666;
+    font-size: 0.8rem;
+}
+
+.bg-footer-end {
+    background-color: var(--primary-color);
+    color: white;
+}
 
 
     @media (min-width: 768px) {
         #about {
             padding: 9rem 0;
         }
+        .bg-hero {
+            position: absolute;
+            z-index: -1;
+            bottom: -380px;
+            right: 0;
+            width: 69%;
+            display: block;
+        }
+        .hero-img {
+            position: absolute;
+            z-index: 0;
+            width: auto;
+        }
+        
     }
