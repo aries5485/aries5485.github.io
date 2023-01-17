@@ -8,6 +8,10 @@
     --btn-main-hover-color: #5eb056;
 }
 
+a {
+    text-decoration: none;
+}
+
 button:focus:not(:focus-visible) {
     outline: 0 !important;
     box-shadow: none !important;
@@ -420,6 +424,7 @@ li.nav-item {
 }
 .footer-menu ul li:hover {
     padding-left: 10px;
+    color: var(--btn-main-color);
 }
 
 #contactForm textarea {
