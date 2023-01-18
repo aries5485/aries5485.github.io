@@ -59,7 +59,7 @@
 					<h1 class="main-color">Monitoring Your Environment Data<br /> Real time with ease</h1>
 					<p>TrisariEnviSense can be your one stop solution for monitoring your environment with realtime
 						data.</p>
-					<div class="align-items-center d-grid d-md-flex gap-2 hero-cta">
+					<div class="align-items-center d-md-flex gap-2 hero-cta mb-4">
 						<a href="#pricenplan"><button class="btn rounded-pill btn-cta">Get Started</button></a>
 						<a href="#about">
 							<button class="btn btn-transparent">Learn More <i
@@ -102,16 +102,16 @@
 					</p>
 				</div>
 			</div>
-			<h4 class="text-center mt-4">Our software compatibility</h4>
+			<h4 class="text-center mt-4 text-secondary">Our software compatibility</h4>
 			<div class="align-items-sm-center g-5 partner py-5 row row-cols-md-4 text-center">
-				<div class="col"><img src="assets/img/about01.png" alt=""></div>
-				<div class="col"><img src="assets/img/about02.png" alt=""></div>
-				<div class="col"><img src="assets/img/about03.png" alt=""></div>
-				<div class="col"><img src="assets/img/about04.png" alt=""></div>
-				<div class="col"><img src="assets/img/about05.png" alt=""></div>
-				<div class="col"><img src="assets/img/about06.png" alt=""></div>
-				<div class="col"><img src="assets/img/about07.png" alt=""></div>
-				<div class="col"><img src="assets/img/about08.png" alt=""></div>
+				<div class="col"><img src="assets/img/about01.png" alt="" class="about-image"></div>
+				<div class="col"><img src="assets/img/about02.png" alt="" class="about-image"></div>
+				<div class="col"><img src="assets/img/about03.png" alt="" class="about-image"></div>
+				<div class="col"><img src="assets/img/about04.png" alt="" class="about-image"></div>
+				<div class="col"><img src="assets/img/about05.png" alt="" class="about-image"></div>
+				<div class="col"><img src="assets/img/about06.png" alt="" class="about-image"></div>
+				<div class="col"><img src="assets/img/about07.png" alt="" class="about-image"></div>
+				<div class="col"><img src="assets/img/about08.png" alt="" class="about-image"></div>
 			</div>
 		</div>
 	</section>
@@ -272,7 +272,7 @@
 					<div class="plan-box">
 						<div class="text-center">
 							<h3>Basic</h3>
-							<h1 class="my-3">$250<span>/month</span></h1>
+							<h1 class="my-3" id="pricePlanBasic">$250<span>/month</span></h1>
 							<div class="d-grid gap-2">
 								<button class="btn rounded-pill btn-cta-no-shadow" type="button">Purchase</button>
 							</div>
@@ -311,7 +311,7 @@
 					<div class="plan-box">
 						<div class="text-center">
 							<h3>Premium</h3>
-							<h1 class="my-3">$450<span>/month</span></h1>
+							<h1 class="my-3" id="pricePlanPremium">$450<span>/month</span></h1>
 							<div class="d-grid gap-2">
 								<button class="btn rounded-pill btn-cta-no-shadow" type="button">Purchase</button>
 							</div>
@@ -358,7 +358,7 @@
 					<div class="plan-box">
 						<div class="text-center">
 							<h3>Platinum</h3>
-							<h1 class="my-3">$550<span>/month</span></h1>
+							<h1 class="my-3" id="pricePlanPlatinum">$550<span>/month</span></h1>
 							<div class="d-grid gap-2">
 								<button class="btn rounded-pill btn-cta-no-shadow" type="button">Purchase</button>
 							</div>
@@ -409,7 +409,7 @@
 					<div class="plan-box" style="border:1px solid #6DC265;background-color: azure;">
 						<div class="text-center">
 							<h3>One-off Payment</h3>
-							<h1 class="my-3">$1,500</h1>
+							<h1 class="my-3" id="pricePlanOneoff">$1,500</h1>
 							<div class="d-grid gap-2">
 								<button class="btn rounded-pill btn-cta-no-shadow" type="button">Purchase</button>
 							</div>
@@ -742,19 +742,20 @@
 								</div>
 								<!-- Submit Button-->
 								<div class="d-grid">
-									<div class="text-center"><button class="btn btn-cta-no-shadow w-100" id="submitButton"
-											type="submit">Send Message <img src="assets/img/icon-send.svg" alt=""></button></div>
+									<div class="text-center"><button class="btn btn-cta-no-shadow w-100"
+											id="submitButton" type="submit">Send Message <img
+												src="assets/img/icon-send.svg" alt=""></button></div>
 								</div>
 							</div>
 						</div>
 					</form>
 				</div>
 			</div>
-		</div>		
+		</div>
 	</footer>
 	<!-- End of Contact -->
 	<div class="container-fluid text-center py-2 bg-footer-end">
-		Copyright ©2023  |  Trisari Group 
+		Copyright ©2023 | Trisari Group
 	</div>
 
 
@@ -763,6 +764,10 @@
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
 		crossorigin="anonymous"></script>
+	<script src="assets/script.js"></script>
+
+
+
 </body>
 
 </html>

@@ -141,6 +141,17 @@ li.nav-item {
     line-height: 200%;
 }
 
+.about-image {
+    opacity: 0.3;
+    filter: grayscale(1);
+    transition: all 0.3s;
+}
+
+.about-image:hover {
+    opacity: 1;
+    filter: none;
+}
+
 .sec-title {
     font-family: var(--primary-font);
     color: var(--primary-color);
