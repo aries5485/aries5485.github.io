@@ -144,6 +144,11 @@ body {
     display: none;
 }
 
+.hero-stat > div:nth-child(1) {
+    width: 80px;
+    display: grid;
+    place-content: center;
+}
 .hero-stat h3 {
     font-family: var(--primary-font);
     font-style: normal;
@@ -198,6 +203,10 @@ li.nav-item {
     font-weight: 400;
     font-size: 16px;
     line-height: 200%;
+}
+
+#about, #services {
+    padding: 7rem 0;
 }
 
 .about-image {
@@ -327,6 +336,12 @@ li.nav-item {
     justify-items: center;
     padding: 32px;
 }
+.partner-box img, .logos-box img {
+    width: 100%;
+    aspect-ratio: 3/2;
+    object-fit: contain;
+}
+
 .logos-box {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(22%, 1fr));
@@ -700,6 +715,9 @@ footer {
             background-size: cover;
             background-position: center;
             height: 142rem;
+        }
+        .partner-box img, .logos-box img {
+            width: 50%;
         }
         #gallery {
             padding: 8rem 0 1rem 0;
