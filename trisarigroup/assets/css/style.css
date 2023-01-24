@@ -31,6 +31,10 @@ button:focus:not(:focus-visible) {
 .navbar-brand:focus, .navbar-brand:hover {
     color: var(--primary-color);
 }
+.navbar-nav .nav-link.active, .navbar-nav .show>.nav-link {
+    color: var(--btn-main-color) !important;
+    font-weight: bold !important;
+}
 
 
 body {
