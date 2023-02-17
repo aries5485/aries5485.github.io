@@ -662,6 +662,10 @@ footer {
     margin-bottom: 50px;
 }
 
+.project-table tr td:last-child {
+    text-align: right;
+}
+
     @media (min-width: 768px) {
         #about {
             padding: 18rem 0 8rem 0;
