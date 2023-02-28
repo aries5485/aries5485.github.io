@@ -84,6 +84,16 @@ body {
     color: var(--btn-main-hover-color);
 }
 
+.bg-white-blur {
+    backdrop-filter: blur(4px);
+    background: rgb(255 255 255 / 80%);
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.15);
+}
+
+.navbar {
+    transition: all 0.5s;
+}
+
 #hero {
     position: relative;
     padding-top: 8rem;
