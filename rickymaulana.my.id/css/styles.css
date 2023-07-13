@@ -12530,7 +12530,22 @@ footer h5 {
   border-radius: 8px;
   overflow: hidden;
   width: 100%;
+  position: relative;
 }
+.port-image:hover .port-hover {
+  top: 50%;
+}
+.port-hover {
+  position: absolute;
+  top: -100%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition-duration: 0.6s;
+  transition-timing-function: cubic-bezier(0.25, 0.1, 0.27, 1.29);
+  transition-delay: 0s;
+  transition-property: all;
+}
+
 .port-title {
   font-family: var(--primary-font);
   color: var(--primary-text-color);
