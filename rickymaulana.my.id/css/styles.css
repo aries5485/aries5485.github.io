@@ -12112,7 +12112,7 @@ section#contact form#contactForm ::-webkit-input-placeholder {
 
 .hero-bg-img {
   position: absolute;
-  right: 22%;
+  right: 30%;
   bottom: 0;
 }
 
@@ -12853,7 +12853,7 @@ footer h5 {
     right: 0;
     left: 0;
     bottom: 0;
-    width: 131%;
+    width: 100%;
   }
   .quotes-box {
     right: unset;
