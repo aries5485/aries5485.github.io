@@ -12735,6 +12735,10 @@ footer h5 {
   text-decoration: none;
 }
 
+video.port-video {
+  border-radius: 14px;
+}
+
 @-webkit-keyframes slide-top {
   0% {
     transform: translateY(0px);
