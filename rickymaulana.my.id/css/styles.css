@@ -12112,8 +12112,9 @@ section#contact form#contactForm ::-webkit-input-placeholder {
 
 .hero-bg-img {
   position: absolute;
-  right: 30%;
+  right: 26%;
   bottom: 0;
+  height: 400px;
 }
 
 .hero-img {
@@ -12803,7 +12804,6 @@ video.port-video {
   }
 
   header.masthead {
-    padding-top: 5.5rem;
     min-height: 820px;
     background-position: center bottom;
     background-position-y: 550px;
@@ -12858,6 +12858,7 @@ video.port-video {
     left: 0;
     bottom: 0;
     width: 100%;
+    height: auto;
   }
   .quotes-box {
     right: unset;
