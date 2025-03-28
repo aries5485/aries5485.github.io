@@ -7,6 +7,14 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <style>
+        .portfolio-item img {
+            transition: transform 0.3s ease;
+        }
+        .portfolio-item:hover img {
+            transform: scale(1.05);
+        }
+    </style>
 </head>
 <body class="font-sans text-gray-800">
     <header class="bg-white shadow-md py-4">
@@ -34,24 +42,23 @@
             <h2 class="text-3xl font-bold text-center mb-10" data-aos="fade-down">Portofolio Saya</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <div class="portfolio-item" data-aos="fade-up">
-                    <img src="gambar1.jpg" alt="Proyek 1" class="rounded-lg mb-4">
+                    <img src="https://source.unsplash.com/random/400x300/?programming" alt="Proyek 1" class="rounded-lg mb-4 w-full h-64 object-cover">
                     <h3 class="text-xl font-semibold mb-2">Proyek 1</h3>
                     <p class="text-gray-600 mb-4">Deskripsi singkat proyek 1.</p>
                     <a href="proyek1.html" class="text-blue-500 hover:underline">Lihat Detail</a>
                 </div>
                 <div class="portfolio-item" data-aos="fade-up" data-aos-delay="200">
-                    <img src="gambar2.jpg" alt="Proyek 2" class="rounded-lg mb-4">
+                    <img src="https://source.unsplash.com/random/400x300/?design" alt="Proyek 2" class="rounded-lg mb-4 w-full h-64 object-cover">
                     <h3 class="text-xl font-semibold mb-2">Proyek 2</h3>
                     <p class="text-gray-600 mb-4">Deskripsi singkat proyek 2.</p>
                     <a href="proyek2.html" class="text-blue-500 hover:underline">Lihat Detail</a>
                 </div>
                 <div class="portfolio-item" data-aos="fade-up" data-aos-delay="400">
-                    <img src="gambar3.jpg" alt="Proyek 3" class="rounded-lg mb-4">
+                    <img src="https://source.unsplash.com/random/400x300/?web" alt="Proyek 3" class="rounded-lg mb-4 w-full h-64 object-cover">
                     <h3 class="text-xl font-semibold mb-2">Proyek 3</h3>
                     <p class="text-gray-600 mb-4">Deskripsi singkat proyek 3.</p>
                     <a href="proyek3.html" class="text-blue-500 hover:underline">Lihat Detail</a>
                 </div>
-
             </div>
         </div>
     </section>
@@ -60,7 +67,7 @@
         <div class="container mx-auto px-4">
             <h2 class="text-3xl font-bold text-center mb-10" data-aos="fade-down">Tentang Saya</h2>
             <div class="flex flex-col md:flex-row items-center">
-                <img src="foto-profil.jpg" alt="Foto Profil" class="rounded-full w-48 h-48 mb-8 md:mb-0 md:mr-8" data-aos="fade-right">
+                <img src="https://source.unsplash.com/random/200x200/?profile" alt="Foto Profil" class="rounded-full w-48 h-48 mb-8 md:mb-0 md:mr-8" data-aos="fade-right">
                 <p class="text-lg text-gray-700" data-aos="fade-left">Ceritakan tentang diri Anda, latar belakang, dan keahlian Anda.</p>
             </div>
         </div>
