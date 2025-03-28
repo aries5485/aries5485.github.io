@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio [Nama Anda]</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+</head>
+<body class="font-sans text-gray-800">
+    <header class="bg-white shadow-md py-4">
+        <nav class="container mx-auto px-4">
+            <ul class="flex justify-center space-x-8">
+                <li><a href="#beranda" class="hover:text-blue-500">Beranda</a></li>
+                <li><a href="#portofolio" class="hover:text-blue-500">Portofolio</a></li>
+                <li><a href="#tentang-saya" class="hover:text-blue-500">Tentang Saya</a></li>
+                <li><a href="#kontak" class="hover:text-blue-500">Kontak</a></li>
+                <li><a href="#blog" class="hover:text-blue-500">Blog</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="beranda" class="bg-gradient-to-r from-blue-100 to-blue-50 py-20">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl font-bold mb-4" data-aos="fade-up">Halo, Saya [Nama Anda]</h1>
+            <p class="text-lg mb-8" data-aos="fade-up" data-aos-delay="200">Seorang [Profesi Anda] dengan pengalaman dalam [Bidang Anda].</p>
+            <a href="#portofolio" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-full" data-aos="fade-up" data-aos-delay="400">Lihat Portofolio</a>
+        </div>
+    </section>
+
+    <section id="portofolio" class="py-20">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-10" data-aos="fade-down">Portofolio Saya</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="portfolio-item" data-aos="fade-up">
+                    <img src="gambar1.jpg" alt="Proyek 1" class="rounded-lg mb-4">
+                    <h3 class="text-xl font-semibold mb-2">Proyek 1</h3>
+                    <p class="text-gray-600 mb-4">Deskripsi singkat proyek 1.</p>
+                    <a href="proyek1.html" class="text-blue-500 hover:underline">Lihat Detail</a>
+                </div>
+                <div class="portfolio-item" data-aos="fade-up" data-aos-delay="200">
+                    <img src="gambar2.jpg" alt="Proyek 2" class="rounded-lg mb-4">
+                    <h3 class="text-xl font-semibold mb-2">Proyek 2</h3>
+                    <p class="text-gray-600 mb-4">Deskripsi singkat proyek 2.</p>
+                    <a href="proyek2.html" class="text-blue-500 hover:underline">Lihat Detail</a>
+                </div>
+                <div class="portfolio-item" data-aos="fade-up" data-aos-delay="400">
+                    <img src="gambar3.jpg" alt="Proyek 3" class="rounded-lg mb-4">
+                    <h3 class="text-xl font-semibold mb-2">Proyek 3</h3>
+                    <p class="text-gray-600 mb-4">Deskripsi singkat proyek 3.</p>
+                    <a href="proyek3.html" class="text-blue-500 hover:underline">Lihat Detail</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="tentang-saya" class="bg-gray-100 py-20">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-10" data-aos="fade-down">Tentang Saya</h2>
+            <div class="flex flex-col md:flex-row items-center">
+                <img src="foto-profil.jpg" alt="Foto Profil" class="rounded-full w-48 h-48 mb-8 md:mb-0 md:mr-8" data-aos="fade-right">
+                <p class="text-lg text-gray-700" data-aos="fade-left">Ceritakan tentang diri Anda, latar belakang, dan keahlian Anda.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="kontak" class="py-20">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-10" data-aos="fade-down">Kontak Saya</h2>
+            <form action="kirim-pesan.php" method="post" class="max-w-md mx-auto">
+                <input type="text" name="nama" placeholder="Nama Anda" class="w-full p-3 mb-4 border rounded-md" required data-aos="fade-up">
+                <input type="email" name="email" placeholder="Email Anda" class="w-full p-3 mb-4 border rounded-md" required data-aos="fade-up" data-aos-delay="100">
+                <textarea name="pesan" placeholder="Pesan Anda" class="w-full p-3 mb-4 border rounded-md" required data-aos="fade-up" data-aos-delay="200"></textarea>
+                <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-full w-full" data-aos="fade-up" data-aos-delay="300">Kirim Pesan</button>
+            </form>
+        </div>
+    </section>
+
+    <section id="blog" class="bg-gray-100 py-20">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-10" data-aos="fade-down">Blog</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="blog-post" data-aos="fade-up">
+                    <h3 class="text-xl font-semibold mb-2">Judul Artikel 1</h3>
+                    <p class="text-gray-600 mb-4">Ringkasan artikel 1.</p>
+                    <a href="artikel1.html" class="text-blue-500 hover:underline">Baca Selengkapnya</a>
+                </div>
+                <div class="blog-post" data-aos="fade-up" data-aos-delay="200">
+                    <h3 class="text-xl font-semibold mb-2">Judul Artikel 2</h3>
+                    <p class="text-gray-600 mb-4">Ringkasan artikel 2.</p>
+                    <a href="artikel2.html" class="text-blue-500 hover:underline">Baca Selengkapnya</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-gray-800 text-white py-4">
+        <p class="text-center">&copy; [Tahun] [Nama Anda]. Semua hak cipta dilindungi.</p>
+    </footer>
+
+    <script>
+        AOS.init();
+    </script>
+</body>
+</html>
