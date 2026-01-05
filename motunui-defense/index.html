@@ -188,7 +188,6 @@
             <span id="aiText">Menunggu bisikan ombak...</span>
         </div>
 
-        <!-- Footer ditambahkan di sini -->
         <div class="footer-credit">Created by Ricky Maulana - 2026</div>
     </div>
 
@@ -206,16 +205,27 @@
 
     <script>
         // --- GEMINI API CONFIG ---
+        // CATATAN: Jika diunggah ke GitHub, Anda perlu mengisi apiKey di bawah ini secara manual.
+        // Namun, JANGAN pernah mengunggah API Key asli Anda ke publik di GitHub (Repo Publik).
+        // Gunakan variabel lingkungan atau masukkan lewat prompt jika ingin digunakan di GitHub Pages.
         const apiKey = ""; 
         const appId = typeof __app_id !== 'undefined' ? __app_id : 'motunui-defense-ai';
 
         async function callGemini(prompt, systemInstruction) {
+            // Cek apakah API Key tersedia
+            if (!apiKey && typeof __app_id === 'undefined') {
+                return "Fitur AI memerlukan API Key untuk berfungsi di luar lingkungan Canvas.";
+            }
+
             const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
             const payload = {
                 contents: [{ parts: [{ text: prompt }] }],
                 systemInstruction: { parts: [{ text: systemInstruction }] }
             };
-            for (let i = 0; i < 3; i++) {
+            
+            // Implementasi Exponential Backoff (Maksimal 5 kali percobaan)
+            let delay = 1000;
+            for (let i = 0; i < 5; i++) {
                 try {
                     const response = await fetch(url, {
                         method: 'POST',
@@ -226,10 +236,11 @@
                     const result = await response.json();
                     return result.candidates?.[0]?.content?.parts?.[0]?.text || "Samudra diam...";
                 } catch (e) {
-                    await new Promise(r => setTimeout(r, 1000));
+                    if (i === 4) return "Leluhur sulit dihubungi saat ini. Cek koneksi Anda.";
+                    await new Promise(r => setTimeout(r, delay));
+                    delay *= 2; // Menambah delay (1s, 2s, 4s, 8s, 16s)
                 }
             }
-            return "Gagal terhubung ke leluhur.";
         }
 
         // --- AUDIO SYSTEM ---
