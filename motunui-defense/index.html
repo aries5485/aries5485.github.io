@@ -52,7 +52,7 @@
             margin-bottom: 5px;
             text-align: center;
         }
-        #startScreen, #gameOverScreen, #prankScreen {
+        #startScreen, #gameOverScreen, #prankScreen, #confirmModal {
             position: absolute;
             top: 0;
             left: 0;
@@ -65,6 +65,10 @@
             justify-content: center;
             pointer-events: auto;
             z-index: 10;
+        }
+        #confirmModal {
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 30;
         }
         .btn {
             background: #ffbe76;
@@ -190,6 +194,17 @@
         </div>
     </div>
 
+    <!-- Confirmation Modal Pop-up -->
+    <div id="confirmModal" class="hidden">
+        <div class="bg-white p-8 rounded-3xl shadow-2xl max-w-xs w-full text-center border-4 border-orange-500">
+            <p class="text-xl font-bold text-gray-800 mb-6">Loh, kok ga mau? kan lumayan. sayang banget loh wkwkwk. Yakin ga mau nerima?</p>
+            <div class="flex flex-col gap-3">
+                <button class="btn w-full !mt-0 bg-red-500 text-white border-red-200 shadow-red-800" id="yakinBtn">YAKIN</button>
+                <button class="btn w-full !mt-0 bg-blue-500 text-white border-blue-200 shadow-blue-800" id="cobaTerusBtn">COBA TERUS</button>
+            </div>
+        </div>
+    </div>
+
     <script>
         // --- AUDIO SYSTEM ---
         const AudioSys = {
@@ -275,6 +290,7 @@
         const startScreen = document.getElementById('startScreen');
         const gameOverScreen = document.getElementById('gameOverScreen');
         const prankScreen = document.getElementById('prankScreen');
+        const confirmModal = document.getElementById('confirmModal');
         const scoreDisplay = document.getElementById('scoreDisplay');
         const levelDisplay = document.getElementById('levelDisplay');
         const livesDisplay = document.getElementById('livesDisplay');
@@ -283,6 +299,8 @@
         const levelUpNotif = document.getElementById('levelUpNotif');
         const acceptBtn = document.getElementById('acceptBtn');
         const declineBtn = document.getElementById('declineBtn');
+        const yakinBtn = document.getElementById('yakinBtn');
+        const cobaTerusBtn = document.getElementById('cobaTerusBtn');
 
         let gameActive = false;
         let score = 0;
@@ -447,6 +465,7 @@
             startScreen.classList.add('hidden');
             gameOverScreen.classList.add('hidden');
             prankScreen.classList.add('hidden');
+            confirmModal.classList.add('hidden');
             resetAcceptBtn();
             requestAnimationFrame(gameLoop);
         }
@@ -559,9 +578,20 @@
             moveAcceptBtn();
         });
 
+        // Decline shows pop-up prank
         declineBtn.onclick = () => {
+            confirmModal.classList.remove('hidden');
+        };
+
+        // Modal buttons logic
+        yakinBtn.onclick = () => {
+            confirmModal.classList.add('hidden');
             prankScreen.classList.add('hidden');
             startScreen.classList.remove('hidden');
+        };
+
+        cobaTerusBtn.onclick = () => {
+            confirmModal.classList.add('hidden');
         };
 
         canvas.addEventListener('mousedown', (e) => handleInput(e.clientX, e.clientY));
