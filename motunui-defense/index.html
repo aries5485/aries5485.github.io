@@ -84,12 +84,6 @@
             transform: translateY(4px);
             box-shadow: 0 2px 0 #e67e22;
         }
-        .btn-ai {
-            background: #81ecec;
-            color: #006994;
-            border: 2px solid white;
-            font-size: 16px;
-        }
         .hidden {
             display: none !important;
         }
@@ -101,32 +95,10 @@
             text-align: center;
             font-weight: 900;
         }
-        .ai-box {
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px dashed #81ecec;
-            padding: 15px;
-            border-radius: 15px;
-            color: #fff;
-            max-width: 80%;
-            text-align: center;
-            margin-top: 20px;
-            font-size: 14px;
-            line-height: 1.4;
-        }
         .score-big {
             font-size: 60px;
             color: #f1c40f;
             margin: 10px 0;
-        }
-        .loader {
-            border: 3px solid #f3f3f3;
-            border-top: 3px solid #81ecec;
-            border-radius: 50%;
-            width: 20px;
-            height: 20px;
-            animation: spin 1s linear infinite;
-            display: inline-block;
-            margin-right: 10px;
         }
         /* Level Up Notification */
         #levelUpNotif {
@@ -154,8 +126,6 @@
             font-size: 12px;
             letter-spacing: 1px;
         }
-
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
     </style>
 </head>
 <body>
@@ -181,12 +151,6 @@
         </p>
         
         <button class="btn" id="startBtn">MULAI BERMAIN</button>
-        
-        <button class="btn btn-ai" id="aiOracleBtn">✨ Tanya Ramalan Samudra ✨</button>
-        
-        <div id="aiResponse" class="ai-box hidden">
-            <span id="aiText">Menunggu bisikan ombak...</span>
-        </div>
 
         <div class="footer-credit">Created by Ricky Maulana - 2026</div>
     </div>
@@ -196,53 +160,10 @@
         <p class="text-white">Level Dicapai: <span id="finalLevel" class="text-yellow-300 font-bold">1</span></p>
         <div id="finalScore" class="score-big">0</div>
         
-        <div id="aiMotivation" class="ai-box mb-4">
-            <div class="loader"></div> <span id="motivationalText">Menghubungi nenek moyang...</span>
-        </div>
-
         <button class="btn" id="restartBtn">COBA LAGI</button>
     </div>
 
     <script>
-        // --- GEMINI API CONFIG ---
-        // CATATAN: Jika diunggah ke GitHub, Anda perlu mengisi apiKey di bawah ini secara manual.
-        // Namun, JANGAN pernah mengunggah API Key asli Anda ke publik di GitHub (Repo Publik).
-        // Gunakan variabel lingkungan atau masukkan lewat prompt jika ingin digunakan di GitHub Pages.
-        const apiKey = ""; 
-        const appId = typeof __app_id !== 'undefined' ? __app_id : 'motunui-defense-ai';
-
-        async function callGemini(prompt, systemInstruction) {
-            // Cek apakah API Key tersedia
-            if (!apiKey && typeof __app_id === 'undefined') {
-                return "Fitur AI memerlukan API Key untuk berfungsi di luar lingkungan Canvas.";
-            }
-
-            const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
-            const payload = {
-                contents: [{ parts: [{ text: prompt }] }],
-                systemInstruction: { parts: [{ text: systemInstruction }] }
-            };
-            
-            // Implementasi Exponential Backoff (Maksimal 5 kali percobaan)
-            let delay = 1000;
-            for (let i = 0; i < 5; i++) {
-                try {
-                    const response = await fetch(url, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(payload)
-                    });
-                    if (!response.ok) throw new Error('API Error');
-                    const result = await response.json();
-                    return result.candidates?.[0]?.content?.parts?.[0]?.text || "Samudra diam...";
-                } catch (e) {
-                    if (i === 4) return "Leluhur sulit dihubungi saat ini. Cek koneksi Anda.";
-                    await new Promise(r => setTimeout(r, delay));
-                    delay *= 2; // Menambah delay (1s, 2s, 4s, 8s, 16s)
-                }
-            }
-        }
-
         // --- AUDIO SYSTEM ---
         const AudioSys = {
             ctx: null, isPlaying: false, timeoutId: null,
@@ -331,9 +252,6 @@
         const livesDisplay = document.getElementById('livesDisplay');
         const finalScoreDisplay = document.getElementById('finalScore');
         const finalLevelDisplay = document.getElementById('finalLevel');
-        const aiResponse = document.getElementById('aiResponse');
-        const aiText = document.getElementById('aiText');
-        const motivationalText = document.getElementById('motivationalText');
         const levelUpNotif = document.getElementById('levelUpNotif');
 
         let gameActive = false;
@@ -476,19 +394,6 @@
             }
         }
 
-        async function fetchAIStrategy() {
-            const system = `Anda adalah Samudra bijak. Pemain sedang di Level ${level}. Berikan 1 kalimat strategi singkat.`;
-            const text = await callGemini("Berikan aku strategi!", system);
-            aiText.innerText = text;
-            aiResponse.classList.remove('hidden');
-        }
-
-        async function fetchGameOverAI() {
-            const system = `Anda adalah Gramma Tala. Pemain kalah di Level ${level} dengan Skor ${score}.`;
-            const text = await callGemini(`Saya kalah.`, system);
-            motivationalText.innerText = text;
-        }
-
         function checkLevelUp() {
             if (level >= 10) return;
             if (score >= LEVEL_THRESHOLDS[level]) {
@@ -526,7 +431,6 @@
                 finalScoreDisplay.innerText = score;
                 finalLevelDisplay.innerText = level;
                 gameOverScreen.classList.remove('hidden');
-                fetchGameOverAI();
             }
         }
 
@@ -592,11 +496,6 @@
 
         document.getElementById('startBtn').onclick = startGame;
         document.getElementById('restartBtn').onclick = startGame;
-        document.getElementById('aiOracleBtn').onclick = (e) => {
-            e.stopPropagation();
-            aiText.innerHTML = '<div class="loader"></div> Membaca bintang...';
-            fetchAIStrategy();
-        };
     </script>
 </body>
 </html>
