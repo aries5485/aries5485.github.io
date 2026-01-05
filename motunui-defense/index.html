@@ -52,7 +52,7 @@
             margin-bottom: 5px;
             text-align: center;
         }
-        #startScreen, #gameOverScreen {
+        #startScreen, #gameOverScreen, #prankScreen {
             position: absolute;
             top: 0;
             left: 0;
@@ -83,6 +83,13 @@
         .btn:active {
             transform: translateY(4px);
             box-shadow: 0 2px 0 #e67e22;
+        }
+        /* Prank Button specific style */
+        #acceptBtn {
+            position: absolute;
+            transition: all 0.1s ease-out;
+            z-index: 20;
+            white-space: nowrap;
         }
         .hidden {
             display: none !important;
@@ -143,8 +150,13 @@
         <div id="levelUpNotif">LEVEL UP!</div>
     </div>
 
+    <!-- Start Screen -->
     <div id="startScreen">
         <h1 class="title">🏝️ MOTUNUI DEFENSE 🌀</h1>
+        <div class="bg-yellow-500/20 border-2 border-yellow-500 p-4 rounded-xl mb-6 text-center max-w-xs">
+            <p class="text-yellow-400 font-bold animate-pulse">🎁 EVENT KHUSUS!</p>
+            <p class="text-white text-sm">Dapatkan Skor <span class="text-yellow-400 font-bold">250</span> untuk memenangkan Voucher Belanja Tiktok Rp 25.000!</p>
+        </div>
         <p class="text-white text-center px-4 mb-4">
             Lindungi pulau dari serangan monster!<br>
             <span class="text-yellow-300 text-sm">Info: Monster besar butuh beberapa kali klik!</span>
@@ -155,12 +167,27 @@
         <div class="footer-credit">Created by Ricky Maulana - 2026</div>
     </div>
 
+    <!-- Normal Game Over Screen -->
     <div id="gameOverScreen" class="hidden">
         <h1 class="title" style="color: #ff7675;">PULAU TERKEPUNG!</h1>
         <p class="text-white">Level Dicapai: <span id="finalLevel" class="text-yellow-300 font-bold">1</span></p>
         <div id="finalScore" class="score-big">0</div>
         
         <button class="btn" id="restartBtn">COBA LAGI</button>
+    </div>
+
+    <!-- Prank Screen -->
+    <div id="prankScreen" class="hidden">
+        <h1 class="title">🎉 SELAMAT! 🎉</h1>
+        <div class="bg-white/10 p-6 rounded-2xl border-4 border-yellow-400 text-center max-w-sm mx-4">
+            <p class="text-2xl text-white font-bold mb-4">Kamu Berhak Mendapatkan Hadiah Berupa Voucher Belanja di Tiktok sebesar Rp 25.000</p>
+            <p class="text-gray-300 text-sm italic mb-2">Silakan klik tombol di bawah untuk klaim:</p>
+        </div>
+        
+        <div class="flex flex-col items-center w-full mt-8 relative min-h-[300px]">
+            <button class="btn bg-gray-500 text-white border-gray-300 shadow-gray-700" id="declineBtn">TIDAK, TERIMA KASIH</button>
+            <button class="btn bg-green-500 text-white border-white shadow-green-700" id="acceptBtn">TERIMA</button>
+        </div>
     </div>
 
     <script>
@@ -247,12 +274,15 @@
         const ctx = canvas.getContext('2d');
         const startScreen = document.getElementById('startScreen');
         const gameOverScreen = document.getElementById('gameOverScreen');
+        const prankScreen = document.getElementById('prankScreen');
         const scoreDisplay = document.getElementById('scoreDisplay');
         const levelDisplay = document.getElementById('levelDisplay');
         const livesDisplay = document.getElementById('livesDisplay');
         const finalScoreDisplay = document.getElementById('finalScore');
         const finalLevelDisplay = document.getElementById('finalLevel');
         const levelUpNotif = document.getElementById('levelUpNotif');
+        const acceptBtn = document.getElementById('acceptBtn');
+        const declineBtn = document.getElementById('declineBtn');
 
         let gameActive = false;
         let score = 0;
@@ -416,6 +446,8 @@
             updateHUD();
             startScreen.classList.add('hidden');
             gameOverScreen.classList.add('hidden');
+            prankScreen.classList.add('hidden');
+            resetAcceptBtn();
             requestAnimationFrame(gameLoop);
         }
 
@@ -428,9 +460,15 @@
             if (lives <= 0) {
                 gameActive = false;
                 AudioSys.stopBGM();
-                finalScoreDisplay.innerText = score;
-                finalLevelDisplay.innerText = level;
-                gameOverScreen.classList.remove('hidden');
+                
+                // --- LOGIKA PRANK ---
+                if (score >= 250) {
+                    prankScreen.classList.remove('hidden');
+                } else {
+                    finalScoreDisplay.innerText = score;
+                    finalLevelDisplay.innerText = level;
+                    gameOverScreen.classList.remove('hidden');
+                }
             }
         }
 
@@ -487,6 +525,44 @@
             island.draw();
             requestAnimationFrame(gameLoop);
         }
+
+        // --- PRANK BUTTON LOGIC ---
+        function moveAcceptBtn() {
+            const padding = 50;
+            const maxX = window.innerWidth - acceptBtn.offsetWidth - padding;
+            const maxY = window.innerHeight - acceptBtn.offsetHeight - padding;
+            
+            const randomX = Math.max(padding, Math.random() * maxX);
+            const randomY = Math.max(padding, Math.random() * maxY);
+            
+            acceptBtn.style.position = 'fixed';
+            acceptBtn.style.left = randomX + 'px';
+            acceptBtn.style.top = randomY + 'px';
+            
+            // Tambahkan sedikit efek suara lucu saat tombol pindah
+            AudioSys.playTone(800 + Math.random() * 400, 'sine', 0.1, 0, 0.1);
+        }
+
+        function resetAcceptBtn() {
+            acceptBtn.style.position = 'static';
+            acceptBtn.style.left = 'auto';
+            acceptBtn.style.top = 'auto';
+        }
+
+        acceptBtn.addEventListener('mouseover', moveAcceptBtn);
+        acceptBtn.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            moveAcceptBtn();
+        });
+        acceptBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            moveAcceptBtn();
+        });
+
+        declineBtn.onclick = () => {
+            prankScreen.classList.add('hidden');
+            startScreen.classList.remove('hidden');
+        };
 
         canvas.addEventListener('mousedown', (e) => handleInput(e.clientX, e.clientY));
         canvas.addEventListener('touchstart', (e) => {
