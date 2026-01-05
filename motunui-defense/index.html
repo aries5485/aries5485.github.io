@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Motunui Defense</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: #006994; /* Ocean Blue */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            touch-action: none;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+        #gameCanvas {
+            display: block;
+            width: 100vw;
+            height: 100vh;
+            background: radial-gradient(circle, #00a8e8 0%, #006994 100%);
+        }
+        #uiLayer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .hud {
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        .level-badge {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 5px 15px;
+            border-radius: 20px;
+            border: 2px solid #f1c40f;
+            color: #f1c40f;
+            font-size: 24px;
+            margin-bottom: 5px;
+            text-align: center;
+        }
+        #startScreen, #gameOverScreen {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 43, 61, 0.9);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            pointer-events: auto;
+            z-index: 10;
+        }
+        .btn {
+            background: #ffbe76;
+            color: #d35400;
+            border: 4px solid #fff;
+            padding: 12px 30px;
+            font-size: 20px;
+            font-family: inherit;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 15px;
+            border-radius: 50px;
+            box-shadow: 0 6px 0 #e67e22;
+            transition: all 0.1s;
+        }
+        .btn:active {
+            transform: translateY(4px);
+            box-shadow: 0 2px 0 #e67e22;
+        }
+        .btn-ai {
+            background: #81ecec;
+            color: #006994;
+            border: 2px solid white;
+            font-size: 16px;
+        }
+        .hidden {
+            display: none !important;
+        }
+        .title {
+            font-size: 44px;
+            color: #f1c40f;
+            text-shadow: 0 4px 10px rgba(0,0,0,0.5);
+            margin-bottom: 10px;
+            text-align: center;
+            font-weight: 900;
+        }
+        .ai-box {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px dashed #81ecec;
+            padding: 15px;
+            border-radius: 15px;
+            color: #fff;
+            max-width: 80%;
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+        .score-big {
+            font-size: 60px;
+            color: #f1c40f;
+            margin: 10px 0;
+        }
+        .loader {
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #81ecec;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            animation: spin 1s linear infinite;
+            display: inline-block;
+            margin-right: 10px;
+        }
+        /* Level Up Notification */
+        #levelUpNotif {
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 60px;
+            font-weight: 900;
+            color: #f1c40f;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.5s, transform 0.5s;
+        }
+        .level-up-anim {
+            opacity: 1 !important;
+            transform: translate(-50%, -60%) scale(1.2) !important;
+        }
+
+        .footer-credit {
+            position: absolute;
+            bottom: 20px;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 12px;
+            letter-spacing: 1px;
+        }
+
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    </style>
+</head>
+<body>
+
+    <canvas id="gameCanvas"></canvas>
+
+    <div id="uiLayer">
+        <div class="hud">
+            <div>
+                <div class="level-badge" id="levelDisplay">LEVEL 1</div>
+                <div id="scoreDisplay">SKOR: 0</div>
+            </div>
+            <div id="livesDisplay">💙💙💙</div>
+        </div>
+        <div id="levelUpNotif">LEVEL UP!</div>
+    </div>
+
+    <div id="startScreen">
+        <h1 class="title">🏝️ MOTUNUI DEFENSE 🌀</h1>
+        <p class="text-white text-center px-4 mb-4">
+            Lindungi pulau dari serangan monster!<br>
+            <span class="text-yellow-300 text-sm">Info: Monster besar butuh beberapa kali klik!</span>
+        </p>
+        
+        <button class="btn" id="startBtn">MULAI BERMAIN</button>
+        
+        <button class="btn btn-ai" id="aiOracleBtn">✨ Tanya Ramalan Samudra ✨</button>
+        
+        <div id="aiResponse" class="ai-box hidden">
+            <span id="aiText">Menunggu bisikan ombak...</span>
+        </div>
+
+        <!-- Footer ditambahkan di sini -->
+        <div class="footer-credit">Created by Masbumbul - 2026</div>
+    </div>
+
+    <div id="gameOverScreen" class="hidden">
+        <h1 class="title" style="color: #ff7675;">PULAU TERKEPUNG!</h1>
+        <p class="text-white">Level Dicapai: <span id="finalLevel" class="text-yellow-300 font-bold">1</span></p>
+        <div id="finalScore" class="score-big">0</div>
+        
+        <div id="aiMotivation" class="ai-box mb-4">
+            <div class="loader"></div> <span id="motivationalText">Menghubungi nenek moyang...</span>
+        </div>
+
+        <button class="btn" id="restartBtn">COBA LAGI</button>
+    </div>
+
+    <script>
+        // --- GEMINI API CONFIG ---
+        const apiKey = ""; 
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'motunui-defense-ai';
+
+        async function callGemini(prompt, systemInstruction) {
+            const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
+            const payload = {
+                contents: [{ parts: [{ text: prompt }] }],
+                systemInstruction: { parts: [{ text: systemInstruction }] }
+            };
+            for (let i = 0; i < 3; i++) {
+                try {
+                    const response = await fetch(url, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+                    if (!response.ok) throw new Error('API Error');
+                    const result = await response.json();
+                    return result.candidates?.[0]?.content?.parts?.[0]?.text || "Samudra diam...";
+                } catch (e) {
+                    await new Promise(r => setTimeout(r, 1000));
+                }
+            }
+            return "Gagal terhubung ke leluhur.";
+        }
+
+        // --- AUDIO SYSTEM ---
+        const AudioSys = {
+            ctx: null, isPlaying: false, timeoutId: null,
+            init: function() {
+                const AudioContext = window.AudioContext || window.webkitAudioContext;
+                if (!this.ctx) this.ctx = new AudioContext();
+            },
+            resume: function() {
+                if (this.ctx && this.ctx.state === 'suspended') return this.ctx.resume();
+                return Promise.resolve();
+            },
+            playTone: function(freq, type, duration, startTime = 0, vol = 0.2) {
+                if (!this.ctx) return;
+                const osc = this.ctx.createOscillator();
+                const gain = this.ctx.createGain();
+                osc.type = type;
+                osc.frequency.setValueAtTime(freq, this.ctx.currentTime + startTime);
+                gain.gain.setValueAtTime(0, this.ctx.currentTime + startTime);
+                gain.gain.linearRampToValueAtTime(vol, this.ctx.currentTime + startTime + 0.05);
+                gain.gain.exponentialRampToValueAtTime(0.01, this.ctx.currentTime + startTime + duration);
+                osc.connect(gain);
+                gain.connect(this.ctx.destination);
+                osc.start(this.ctx.currentTime + startTime);
+                osc.stop(this.ctx.currentTime + startTime + duration);
+            },
+            playHitEffect: function() { 
+                if (!this.ctx) return;
+                const osc = this.ctx.createOscillator();
+                const gain = this.ctx.createGain();
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(400, this.ctx.currentTime);
+                osc.frequency.exponentialRampToValueAtTime(800, this.ctx.currentTime + 0.2);
+                gain.gain.setValueAtTime(0.2, this.ctx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.01, this.ctx.currentTime + 0.2);
+                osc.connect(gain);
+                gain.connect(this.ctx.destination);
+                osc.start();
+                osc.stop(this.ctx.currentTime + 0.2);
+            },
+            playArmorHit: function() { 
+                if (!this.ctx) return;
+                const osc = this.ctx.createOscillator();
+                const gain = this.ctx.createGain();
+                osc.type = 'square';
+                osc.frequency.setValueAtTime(100, this.ctx.currentTime);
+                osc.frequency.exponentialRampToValueAtTime(50, this.ctx.currentTime + 0.1);
+                gain.gain.setValueAtTime(0.3, this.ctx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.01, this.ctx.currentTime + 0.1);
+                osc.connect(gain);
+                gain.connect(this.ctx.destination);
+                osc.start();
+                osc.stop(this.ctx.currentTime + 0.1);
+            },
+            playLevelUp: function() {
+                if (!this.ctx) return;
+                [523, 659, 783, 1046].forEach((freq, i) => {
+                    this.playTone(freq, 'triangle', 0.3, i * 0.1, 0.3);
+                });
+            },
+            playHitHouse: function() {
+                if (!this.ctx) return;
+                this.playTone(200, 'triangle', 0.4, 0, 0.4);
+                this.playTone(150, 'triangle', 0.4, 0.1, 0.4);
+            },
+            startBGM: function() { this.isPlaying = true; this.loopBGM(); },
+            stopBGM: function() { this.isPlaying = false; if (this.timeoutId) clearTimeout(this.timeoutId); },
+            loopBGM: function() {
+                if (!this.isPlaying || !this.ctx) return;
+                const tempo = 0.2;
+                const melody = [392, 440, 523, 440, 587, 523, 440, 392]; 
+                melody.forEach((note, index) => {
+                    this.playTone(note, 'sine', 0.1, index * tempo, 0.1);
+                    if (index % 2 === 0) this.playTone(note/2, 'triangle', 0.2, index * tempo, 0.05);
+                });
+                this.timeoutId = setTimeout(() => { if(this.isPlaying) this.loopBGM(); }, melody.length * tempo * 1000);
+            }
+        };
+
+        // --- GAME LOGIC ---
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+        const startScreen = document.getElementById('startScreen');
+        const gameOverScreen = document.getElementById('gameOverScreen');
+        const scoreDisplay = document.getElementById('scoreDisplay');
+        const levelDisplay = document.getElementById('levelDisplay');
+        const livesDisplay = document.getElementById('livesDisplay');
+        const finalScoreDisplay = document.getElementById('finalScore');
+        const finalLevelDisplay = document.getElementById('finalLevel');
+        const aiResponse = document.getElementById('aiResponse');
+        const aiText = document.getElementById('aiText');
+        const motivationalText = document.getElementById('motivationalText');
+        const levelUpNotif = document.getElementById('levelUpNotif');
+
+        let gameActive = false;
+        let score = 0;
+        let level = 1;
+        let lives = 3;
+        let enemies = [];
+        let particles = [];
+        let lastTime = 0;
+        let spawnTimer = 0;
+        let spawnInterval = 1500;
+        
+        const HOUSE_SIZE = 70;
+        const ENEMY_SIZE = 50;
+        const LEVEL_THRESHOLDS = [0, 10, 25, 45, 70, 100, 135, 175, 220, 270];
+
+        const LEVEL_CONFIG = {
+            1: { types: [{t:'🥥', hp:1, s:1.0}] },
+            2: { types: [{t:'🥥', hp:1, s:1.2}] },
+            3: { types: [{t:'🥥', hp:1, s:1.2}, {t:'🦀', hp:2, s:0.8}] },
+            4: { types: [{t:'🥥', hp:1, s:1.3}, {t:'🦀', hp:2, s:0.9}] },
+            5: { types: [{t:'🥥', hp:1, s:1.4}, {t:'🦀', hp:2, s:1.0}] },
+            6: { types: [{t:'🥥', hp:1, s:1.5}, {t:'🦑', hp:3, s:0.7}] },
+            7: { types: [{t:'🥥', hp:1, s:1.6}, {t:'🦀', hp:2, s:1.2}, {t:'🦑', hp:3, s:0.9}] },
+            8: { types: [{t:'🥥', hp:1, s:1.8}, {t:'🦑', hp:3, s:1.1}] },
+            9: { types: [{t:'🥥', hp:1, s:1.8}, {t:'🌋', hp:5, s:0.6}] },
+            10: { types: [{t:'🥥', hp:1, s:2.0}, {t:'🦀', hp:2, s:1.5}, {t:'🦑', hp:3, s:1.3}, {t:'🌋', hp:5, s:0.8}] }
+        };
+
+        function resize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resize);
+        resize();
+
+        class Island {
+            constructor() { this.x = canvas.width / 2; this.y = canvas.height / 2; }
+            draw() {
+                const grad = ctx.createRadialGradient(this.x, this.y, 10, this.x, this.y, 60);
+                grad.addColorStop(0, 'rgba(255, 255, 255, 0.3)');
+                grad.addColorStop(1, 'rgba(255, 255, 255, 0)');
+                ctx.fillStyle = grad;
+                ctx.beginPath(); ctx.arc(this.x, this.y, 60, 0, Math.PI*2); ctx.fill();
+                ctx.font = `${HOUSE_SIZE}px Arial`;
+                ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+                ctx.fillText('🏝️', this.x, this.y);
+            }
+        }
+
+        class Enemy {
+            constructor() {
+                const config = LEVEL_CONFIG[level] || LEVEL_CONFIG[10];
+                const typeData = config.types[Math.floor(Math.random() * config.types.length)];
+                
+                this.type = typeData.t;
+                this.hp = typeData.hp;
+                this.maxHp = typeData.hp;
+                this.speedMult = typeData.s;
+
+                const edge = Math.floor(Math.random() * 4);
+                const buffer = 50;
+                if (edge === 0) { this.x = Math.random() * canvas.width; this.y = -buffer; }
+                else if (edge === 1) { this.x = canvas.width + buffer; this.y = Math.random() * canvas.height; }
+                else if (edge === 2) { this.x = Math.random() * canvas.width; this.y = canvas.height + buffer; }
+                else { this.x = -buffer; this.y = Math.random() * canvas.height; }
+
+                const dx = (canvas.width / 2) - this.x;
+                const dy = (canvas.height / 2) - this.y;
+                const angle = Math.atan2(dy, dx);
+                this.vx = Math.cos(angle); this.vy = Math.sin(angle);
+                
+                let baseSpeed = 60 + (level * 5);
+                this.speed = baseSpeed * this.speedMult;
+                
+                this.size = ENEMY_SIZE;
+                this.wiggle = 0;
+                this.markedForDeletion = false;
+                this.hitEffectTimer = 0;
+            }
+            
+            takeDamage() {
+                this.hp--;
+                this.hitEffectTimer = 10;
+                this.size = ENEMY_SIZE * 1.2;
+                return this.hp <= 0;
+            }
+
+            update(dt) {
+                this.x += this.vx * this.speed * dt;
+                this.y += this.vy * this.speed * dt;
+                this.wiggle += dt * 8;
+                if (this.size > ENEMY_SIZE) this.size -= dt * 50;
+                if (this.hitEffectTimer > 0) this.hitEffectTimer--;
+                if (Math.hypot(this.x - canvas.width/2, this.y - canvas.height/2) < 40) {
+                    this.markedForDeletion = true;
+                    takePlayerDamage();
+                }
+            }
+            
+            draw() {
+                ctx.save(); 
+                ctx.translate(this.x, this.y);
+                ctx.rotate(Math.sin(this.wiggle) * 0.15);
+                if (this.hitEffectTimer > 0) ctx.filter = 'sepia(1) saturate(1000%) hue-rotate(-50deg)';
+                ctx.font = `${this.size}px Arial`; 
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.fillText(this.type, 0, 0);
+                if (this.maxHp > 1) {
+                    ctx.filter = 'none';
+                    const dotSize = 6;
+                    const width = this.maxHp * (dotSize + 2);
+                    let startX = -width / 2;
+                    for(let i=0; i<this.maxHp; i++) {
+                        ctx.beginPath();
+                        ctx.arc(startX + i * (dotSize+2), -30, dotSize/2, 0, Math.PI*2);
+                        ctx.fillStyle = i < this.hp ? '#e74c3c' : '#555';
+                        ctx.fill();
+                    }
+                }
+                ctx.restore();
+            }
+        }
+
+        class Splash {
+            constructor(x, y) {
+                this.x = x; this.y = y;
+                this.size = Math.random() * 4 + 2;
+                const angle = Math.random() * Math.PI * 2;
+                const speed = Math.random() * 150 + 50;
+                this.vx = Math.cos(angle) * speed; this.vy = Math.sin(angle) * speed;
+                this.life = 1.0;
+            }
+            update(dt) { this.x += this.vx * dt; this.y += this.vy * dt; this.life -= dt * 2; }
+            draw() {
+                ctx.globalAlpha = Math.max(0, this.life); ctx.fillStyle = '#81ecec';
+                ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI*2); ctx.fill();
+                ctx.globalAlpha = 1.0;
+            }
+        }
+
+        async function fetchAIStrategy() {
+            const system = `Anda adalah Samudra bijak. Pemain sedang di Level ${level}. Berikan 1 kalimat strategi singkat.`;
+            const text = await callGemini("Berikan aku strategi!", system);
+            aiText.innerText = text;
+            aiResponse.classList.remove('hidden');
+        }
+
+        async function fetchGameOverAI() {
+            const system = `Anda adalah Gramma Tala. Pemain kalah di Level ${level} dengan Skor ${score}.`;
+            const text = await callGemini(`Saya kalah.`, system);
+            motivationalText.innerText = text;
+        }
+
+        function checkLevelUp() {
+            if (level >= 10) return;
+            if (score >= LEVEL_THRESHOLDS[level]) {
+                level++;
+                updateHUD();
+                AudioSys.playLevelUp();
+                levelUpNotif.innerText = `LEVEL ${level}`;
+                levelUpNotif.classList.add('level-up-anim');
+                setTimeout(() => levelUpNotif.classList.remove('level-up-anim'), 1500);
+                spawnInterval = Math.max(400, 1500 - (level * 100));
+            }
+        }
+
+        function startGame() {
+            AudioSys.init();
+            AudioSys.resume().then(() => AudioSys.startBGM());
+            score = 0; level = 1; lives = 3; enemies = []; particles = [];
+            spawnTimer = 0; spawnInterval = 1500;
+            gameActive = true; lastTime = performance.now();
+            updateHUD();
+            startScreen.classList.add('hidden');
+            gameOverScreen.classList.add('hidden');
+            requestAnimationFrame(gameLoop);
+        }
+
+        function takePlayerDamage() {
+            lives--;
+            AudioSys.playHitHouse();
+            canvas.style.filter = "brightness(1.5) hue-rotate(90deg)";
+            setTimeout(() => canvas.style.filter = "none", 100);
+            updateHUD();
+            if (lives <= 0) {
+                gameActive = false;
+                AudioSys.stopBGM();
+                finalScoreDisplay.innerText = score;
+                finalLevelDisplay.innerText = level;
+                gameOverScreen.classList.remove('hidden');
+                fetchGameOverAI();
+            }
+        }
+
+        function updateHUD() {
+            scoreDisplay.innerText = `SKOR: ${score}`;
+            levelDisplay.innerText = `LEVEL ${level}`;
+            livesDisplay.innerText = "💙".repeat(lives);
+        }
+
+        function handleInput(x, y) {
+            if (!gameActive) return;
+            for (let i = enemies.length - 1; i >= 0; i--) {
+                const e = enemies[i];
+                if (Math.hypot(e.x - x, e.y - y) < e.size + 10) {
+                    const isDead = e.takeDamage();
+                    if (isDead) {
+                        enemies.splice(i, 1);
+                        AudioSys.playHitEffect();
+                        for(let j=0; j<10; j++) particles.push(new Splash(e.x, e.y));
+                        score++;
+                        checkLevelUp();
+                        updateHUD();
+                    } else {
+                        AudioSys.playArmorHit();
+                        for(let j=0; j<3; j++) particles.push(new Splash(e.x, e.y));
+                    }
+                    break;
+                }
+            }
+        }
+
+        const island = new Island();
+
+        function gameLoop(timestamp) {
+            if (!gameActive) return;
+            const dt = (timestamp - lastTime) / 1000;
+            lastTime = timestamp;
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.strokeStyle = 'rgba(255,255,255,0.1)';
+            for(let i=0; i<5; i++) {
+                ctx.beginPath();
+                ctx.arc(canvas.width/2, canvas.height/2, 100 + i*80 + Math.sin(timestamp/1000 + i)*10, 0, Math.PI*2);
+                ctx.stroke();
+            }
+            spawnTimer += dt * 1000;
+            if (spawnTimer > spawnInterval) {
+                enemies.push(new Enemy());
+                spawnTimer = 0;
+            }
+            enemies = enemies.filter(e => !e.markedForDeletion);
+            enemies.forEach(e => { e.update(dt); e.draw(); });
+            particles = particles.filter(p => p.life > 0);
+            particles.forEach(p => { p.update(dt); p.draw(); });
+            island.draw();
+            requestAnimationFrame(gameLoop);
+        }
+
+        canvas.addEventListener('mousedown', (e) => handleInput(e.clientX, e.clientY));
+        canvas.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            for (let i = 0; i < e.touches.length; i++) handleInput(e.touches[i].clientX, e.touches[i].clientY);
+        }, {passive: false});
+
+        document.getElementById('startBtn').onclick = startGame;
+        document.getElementById('restartBtn').onclick = startGame;
+        document.getElementById('aiOracleBtn').onclick = (e) => {
+            e.stopPropagation();
+            aiText.innerHTML = '<div class="loader"></div> Membaca bintang...';
+            fetchAIStrategy();
+        };
+    </script>
+</body>
+</html>
