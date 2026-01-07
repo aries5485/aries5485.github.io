@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Motunui Defense</title>
+    <title>Motunui Defense - Online</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body {
             margin: 0;
             overflow: hidden;
-            background-color: #006994; /* Ocean Blue */
+            background-color: #006994;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             touch-action: none;
             user-select: none;
@@ -58,7 +58,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 43, 61, 0.9);
+            background: rgba(0, 43, 61, 0.95);
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -88,7 +88,6 @@
             transform: translateY(4px);
             box-shadow: 0 2px 0 #e67e22;
         }
-        /* Prank Button specific style */
         #acceptBtn {
             position: absolute;
             transition: all 0.1s ease-out;
@@ -111,7 +110,6 @@
             color: #f1c40f;
             margin: 10px 0;
         }
-        /* Level Up Notification */
         #levelUpNotif {
             position: absolute;
             top: 40%;
@@ -129,7 +127,6 @@
             opacity: 1 !important;
             transform: translate(-50%, -60%) scale(1.2) !important;
         }
-
         .footer-credit {
             position: absolute;
             bottom: 20px;
@@ -137,6 +134,67 @@
             font-size: 12px;
             letter-spacing: 1px;
         }
+        /* Leaderboard Styles */
+        .leaderboard-box {
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid #81ecec;
+            border-radius: 15px;
+            padding: 15px;
+            width: 85%;
+            max-width: 350px;
+            height: 250px; /* Fixed height */
+            overflow-y: auto;
+            margin-top: 15px;
+            margin-bottom: 40px;
+        }
+        .leaderboard-title {
+            color: #81ecec;
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 10px;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+            padding-bottom: 5px;
+        }
+        .score-item {
+            display: flex;
+            align-items: center;
+            color: white;
+            font-size: 14px;
+            margin-bottom: 5px;
+            padding: 6px 10px;
+            background: rgba(0,0,0,0.3);
+            border-radius: 8px;
+        }
+        .score-item:nth-child(1) { color: #ffd700; border: 1px solid #ffd700; } 
+        .score-item:nth-child(2) { color: #e0e0e0; border: 1px solid #e0e0e0; } 
+        .score-item:nth-child(3) { color: #cd7f32; border: 1px solid #cd7f32; } 
+
+        .name-input {
+            background: rgba(255, 255, 255, 0.9);
+            border: 4px solid #f1c40f;
+            border-radius: 10px;
+            padding: 10px;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+            text-align: center;
+            font-size: 24px;
+            color: #333;
+            width: 100%;
+            max-width: 280px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+        /* Loading Spinner */
+        .spinner {
+            border: 4px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top: 4px solid #fff;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
     </style>
 </head>
 <body>
@@ -157,27 +215,39 @@
     <!-- Start Screen -->
     <div id="startScreen">
         <h1 class="title">🏝️ MOTUNUI DEFENSE 🌀</h1>
-        <div class="bg-yellow-500/20 border-2 border-yellow-500 p-4 rounded-xl mb-6 text-center max-w-xs">
-            <p class="text-yellow-400 font-bold animate-pulse">🎁 EVENT KHUSUS!</p>
-            <p class="text-white text-sm">Dapatkan Skor <span class="text-yellow-400 font-bold">250</span> untuk memenangkan Voucher Belanja Tiktok Rp 25.000!</p>
-        </div>
-        <p class="text-white text-center px-4 mb-4">
-            Lindungi pulau dari serangan monster!<br>
-            <span class="text-yellow-300 text-sm">Info: Monster besar butuh beberapa kali klik!</span>
-        </p>
         
-        <button class="btn" id="startBtn">MULAI BERMAIN</button>
+        <div class="bg-yellow-500/20 border-2 border-yellow-500 p-3 rounded-xl mb-2 text-center max-w-xs">
+            <p class="text-yellow-400 font-bold animate-pulse text-sm">🎁 EVENT KHUSUS!</p>
+            <p class="text-white text-xs">Skor <span class="text-yellow-400 font-bold">250</span> = Voucher Tiktok Rp 25.000!</p>
+        </div>
+
+        <button class="btn mb-4" id="startBtn">MULAI BERMAIN</button>
+
+        <div class="leaderboard-box">
+            <div class="leaderboard-title">🌍 GLOBAL TOP 10</div>
+            <div id="leaderboardList">
+                <div class="spinner"></div> <!-- Loading state default -->
+            </div>
+        </div>
 
         <div class="footer-credit">Created by Ricky Maulana - 2026</div>
     </div>
 
-    <!-- Normal Game Over Screen -->
+    <!-- Game Over Screen -->
     <div id="gameOverScreen" class="hidden">
         <h1 class="title" style="color: #ff7675;">PULAU TERKEPUNG!</h1>
         <p class="text-white">Level Dicapai: <span id="finalLevel" class="text-yellow-300 font-bold">1</span></p>
         <div id="finalScore" class="score-big">0</div>
         
-        <button class="btn" id="restartBtn">COBA LAGI</button>
+        <div class="flex flex-col items-center mt-4 w-full px-4">
+            <p class="text-white mb-2 text-sm opacity-80">Masukkan Nama (Max 10 Huruf):</p>
+            <input type="text" id="playerName" class="name-input" maxlength="10" placeholder="NAMA KAMU">
+            
+            <button class="btn bg-green-500 border-green-200 shadow-green-800 w-full max-w-xs" id="submitScoreBtn">SIMPAN KE GLOBAL</button>
+            <div id="submitStatus" class="text-white text-sm mt-2"></div>
+            
+            <button class="btn bg-gray-500 border-gray-400 shadow-gray-700 w-full max-w-xs mt-4 text-sm py-2" id="restartBtn">MAIN LAGI (TANPA SIMPAN)</button>
+        </div>
     </div>
 
     <!-- Prank Screen -->
@@ -205,8 +275,118 @@
         </div>
     </div>
 
-    <script>
-        // --- AUDIO SYSTEM ---
+    <!-- FIREBASE & GAME LOGIC -->
+    <script type="module">
+        // Import Firebase dari CDN
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
+        import { getFirestore, collection, addDoc, query, orderBy, limit, getDocs } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+
+        // --- KONFIGURASI FIREBASE ---
+        // GANTI BAGIAN INI DENGAN CONFIG DARI FIREBASE CONSOLE ANDA
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyBUlgcFkz3xvVBFcmtqn2pESAAakbbvhvU",
+  authDomain: "motunui-scores.firebaseapp.com",
+  projectId: "motunui-scores",
+  storageBucket: "motunui-scores.firebasestorage.app",
+  messagingSenderId: "959471552086",
+  appId: "1:959471552086:web:3f4fbfb4136b7610201df7",
+  measurementId: "G-7HW6BVWFWW"
+};
+
+        // Initialize Firebase
+        let db;
+        try {
+            const app = initializeApp(firebaseConfig);
+            db = getFirestore(app);
+            console.log("Firebase initialized");
+        } catch (e) {
+            console.error("Firebase config missing or invalid. Online features disabled.");
+        }
+
+        // --- LEADERBOARD SYSTEM (Firebase) ---
+        const leaderboardList = document.getElementById('leaderboardList');
+        const submitStatus = document.getElementById('submitStatus');
+
+        async function fetchLeaderboard() {
+            if (!db) {
+                leaderboardList.innerHTML = '<div class="text-center text-red-400 text-sm py-4">Database belum disetting</div>';
+                return;
+            }
+
+            leaderboardList.innerHTML = '<div class="spinner"></div>';
+            
+            try {
+                const q = query(collection(db, "scores"), orderBy("score", "desc"), limit(10));
+                const querySnapshot = await getDocs(q);
+                
+                leaderboardList.innerHTML = '';
+                
+                if (querySnapshot.empty) {
+                    leaderboardList.innerHTML = '<div class="text-center text-gray-400 text-sm py-4">Belum ada skor global</div>';
+                    return;
+                }
+
+                let rank = 1;
+                querySnapshot.forEach((doc) => {
+                    const item = doc.data();
+                    const div = document.createElement('div');
+                    div.className = 'score-item';
+                    div.innerHTML = `
+                        <span class="w-8 font-bold text-center">${rank}</span>
+                        <span class="flex-1 text-left px-2 font-mono truncate">${item.name}</span>
+                        <span class="font-bold">${item.score}</span>
+                    `;
+                    leaderboardList.appendChild(div);
+                    rank++;
+                });
+            } catch (error) {
+                console.error("Error getting documents: ", error);
+                leaderboardList.innerHTML = '<div class="text-center text-red-400 text-sm py-4">Gagal memuat skor online</div>';
+            }
+        }
+
+        async function uploadScore(name, score) {
+            if (!db) {
+                alert("Database belum disetting!");
+                return;
+            }
+
+            const submitBtn = document.getElementById('submitScoreBtn');
+            submitBtn.disabled = true;
+            submitBtn.innerText = "MENYIMPAN...";
+            
+            try {
+                const safeName = name.trim() === "" ? "PELAUT" : name.trim();
+                await addDoc(collection(db, "scores"), {
+                    name: safeName.toUpperCase(),
+                    score: score,
+                    date: new Date().toISOString()
+                });
+                
+                // Success
+                submitStatus.innerText = "Tersimpan!";
+                setTimeout(() => {
+                    gameOverScreen.classList.add('hidden');
+                    startScreen.classList.remove('hidden');
+                    fetchLeaderboard(); // Refresh list
+                    submitBtn.disabled = false;
+                    submitBtn.innerText = "SIMPAN KE GLOBAL";
+                    submitStatus.innerText = "";
+                }, 1000);
+
+            } catch (e) {
+                console.error("Error adding document: ", e);
+                submitStatus.innerText = "Gagal menyimpan. Cek koneksi.";
+                submitBtn.disabled = false;
+                submitBtn.innerText = "COBA LAGI";
+            }
+        }
+
+        // Panggil fetch saat load
+        fetchLeaderboard();
+
+        // --- AUDIO SYSTEM (Same as before) ---
         const AudioSys = {
             ctx: null, isPlaying: false, timeoutId: null,
             init: function() {
@@ -301,6 +481,7 @@
         const declineBtn = document.getElementById('declineBtn');
         const yakinBtn = document.getElementById('yakinBtn');
         const cobaTerusBtn = document.getElementById('cobaTerusBtn');
+        const playerNameInput = document.getElementById('playerName');
 
         let gameActive = false;
         let score = 0;
@@ -354,7 +535,6 @@
             constructor() {
                 const config = LEVEL_CONFIG[level] || LEVEL_CONFIG[10];
                 const typeData = config.types[Math.floor(Math.random() * config.types.length)];
-                
                 this.type = typeData.t;
                 this.hp = typeData.hp;
                 this.maxHp = typeData.hp;
@@ -470,6 +650,13 @@
             requestAnimationFrame(gameLoop);
         }
 
+        function showGameOver() {
+            finalScoreDisplay.innerText = score;
+            finalLevelDisplay.innerText = level;
+            gameOverScreen.classList.remove('hidden');
+            playerNameInput.value = '';
+        }
+
         function takePlayerDamage() {
             lives--;
             AudioSys.playHitHouse();
@@ -480,13 +667,10 @@
                 gameActive = false;
                 AudioSys.stopBGM();
                 
-                // --- LOGIKA PRANK ---
                 if (score >= 250) {
                     prankScreen.classList.remove('hidden');
                 } else {
-                    finalScoreDisplay.innerText = score;
-                    finalLevelDisplay.innerText = level;
-                    gameOverScreen.classList.remove('hidden');
+                    showGameOver();
                 }
             }
         }
@@ -557,8 +741,6 @@
             acceptBtn.style.position = 'fixed';
             acceptBtn.style.left = randomX + 'px';
             acceptBtn.style.top = randomY + 'px';
-            
-            // Tambahkan sedikit efek suara lucu saat tombol pindah
             AudioSys.playTone(800 + Math.random() * 400, 'sine', 0.1, 0, 0.1);
         }
 
@@ -578,30 +760,37 @@
             moveAcceptBtn();
         });
 
-        // Decline shows pop-up prank
-        declineBtn.onclick = () => {
+        document.getElementById('declineBtn').onclick = () => {
             confirmModal.classList.remove('hidden');
         };
 
-        // Modal buttons logic
-        yakinBtn.onclick = () => {
+        document.getElementById('yakinBtn').onclick = () => {
             confirmModal.classList.add('hidden');
             prankScreen.classList.add('hidden');
-            startScreen.classList.remove('hidden');
+            showGameOver();
         };
 
-        cobaTerusBtn.onclick = () => {
+        document.getElementById('cobaTerusBtn').onclick = () => {
             confirmModal.classList.add('hidden');
         };
 
+        document.getElementById('submitScoreBtn').onclick = () => {
+            const name = playerNameInput.value;
+            uploadScore(name, score);
+        };
+
+        document.getElementById('restartBtn').onclick = () => {
+            startGame();
+        }
+
+        document.getElementById('startBtn').onclick = startGame;
+        
         canvas.addEventListener('mousedown', (e) => handleInput(e.clientX, e.clientY));
         canvas.addEventListener('touchstart', (e) => {
             e.preventDefault();
             for (let i = 0; i < e.touches.length; i++) handleInput(e.touches[i].clientX, e.touches[i].clientY);
         }, {passive: false});
 
-        document.getElementById('startBtn').onclick = startGame;
-        document.getElementById('restartBtn').onclick = startGame;
     </script>
 </body>
 </html>
