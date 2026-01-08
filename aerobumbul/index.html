@@ -1,23 +1,28 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Sky Defender 1945</title>
+    <title>Aerobumbul 2026</title>
     <style>
         body {
             margin: 0;
             padding: 0;
             background-color: #000;
-            overflow: hidden; /* Mencegah scroll */
-            touch-action: none; /* Mencegah zoom/scroll default pada mobile */
+            overflow: hidden;
+            /* Mencegah scroll */
+            touch-action: none;
+            /* Mencegah zoom/scroll default pada mobile */
             font-family: 'Courier New', Courier, monospace;
         }
+
         canvas {
             display: block;
             margin: 0 auto;
             background-color: #222;
         }
+
         #ui-layer {
             position: absolute;
             top: 0;
@@ -29,6 +34,7 @@
             flex-direction: column;
             justify-content: space-between;
         }
+
         .hud-top {
             display: flex;
             justify-content: space-between;
@@ -38,7 +44,9 @@
             text-shadow: 2px 2px 0 #000;
             font-weight: bold;
         }
-        #start-screen, #game-over-screen {
+
+        #start-screen,
+        #game-over-screen {
             position: absolute;
             top: 0;
             left: 0;
@@ -53,8 +61,20 @@
             z-index: 10;
             pointer-events: auto;
         }
-        h1 { font-size: 40px; margin-bottom: 10px; color: #ffcc00; text-align: center; }
-        p { font-size: 18px; text-align: center; margin: 5px; }
+
+        h1 {
+            font-size: 40px;
+            margin-bottom: 10px;
+            color: #ffcc00;
+            text-align: center;
+        }
+
+        p {
+            font-size: 18px;
+            text-align: center;
+            margin: 5px;
+        }
+
         .btn {
             margin-top: 20px;
             padding: 15px 30px;
@@ -67,26 +87,35 @@
             font-family: inherit;
             font-weight: bold;
         }
-        .btn:active { background: #c0392b; }
-        .hidden { display: none !important; }
+
+        .btn:active {
+            background: #c0392b;
+        }
+
+        .hidden {
+            display: none !important;
+        }
     </style>
 </head>
+
 <body>
 
     <!-- HUD / UI -->
     <div id="ui-layer">
         <div class="hud-top">
             <div id="score-display">SCORE: 0</div>
+            <div id="time-display">TIME: 3:00</div>
             <div id="lives-display">LIVES: 3</div>
         </div>
     </div>
 
     <!-- Start Screen -->
     <div id="start-screen">
-        <h1>SKY DEFENDER</h1>
+        <h1>AEROBUMBUL 2026</h1>
         <p>Tap & Drag untuk Menggerakkan Pesawat</p>
         <p>Hindari Tabrakan & Tembak Musuh</p>
         <button class="btn" id="start-btn">MULAI MISI</button>
+        <p style="position: absolute; bottom: 20px; font-size: 14px; color: #aaa;">Created by Ricky Maulana - 2026</p>
     </div>
 
     <!-- Game Over Screen -->
@@ -102,7 +131,7 @@
         // --- KONFIGURASI GAME ---
         const canvas = document.getElementById('gameCanvas');
         const ctx = canvas.getContext('2d');
-        
+
         // Asset Images
         const imgPlayer = new Image(); imgPlayer.src = 'plane1.png';
         const imgEnemy = new Image(); imgEnemy.src = 'bomber.png';
@@ -114,7 +143,8 @@
         let lives = 3;
         let frameCount = 0;
         let animationId;
-        
+        let gameEndTime; // Variable for timer
+
         // Ukuran Canvas Responsif
         function resizeCanvas() {
             canvas.width = window.innerWidth;
@@ -171,24 +201,24 @@
         }
 
         function startBGM() {
-            if(bgmInterval) clearInterval(bgmInterval);
+            if (bgmInterval) clearInterval(bgmInterval);
             // Musik loop sederhana (Bassline ritmis)
             let note = 0;
             bgmInterval = setInterval(() => {
-                if(!gameRunning || !audioCtx) return;
+                if (!gameRunning || !audioCtx) return;
                 const osc = audioCtx.createOscillator();
                 const gain = audioCtx.createGain();
                 osc.connect(gain);
                 gain.connect(audioCtx.destination);
-                
+
                 // Pola nada: C2, C2, E2, G2
-                const freqs = [65.41, 65.41, 82.41, 98.00]; 
+                const freqs = [65.41, 65.41, 82.41, 98.00];
                 osc.frequency.value = freqs[note % 4];
                 osc.type = 'sine';
-                
+
                 gain.gain.setValueAtTime(0.05, audioCtx.currentTime);
                 gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.2);
-                
+
                 osc.start();
                 osc.stop(audioCtx.currentTime + 0.2);
                 note++;
@@ -204,21 +234,21 @@
         // 1. Background Scroller
         const background = {
             y: 0,
-            speed: 2,
-            draw: function() {
+            speed: 1,
+            draw: function () {
                 // Gambar dua kali atau lebih untuk looping mulus dan menutupi layar panjang
                 if (imgBg.complete && imgBg.naturalHeight !== 0) {
                     // Skala gambar agar fit width layar
                     const scale = canvas.width / imgBg.width;
                     const h = imgBg.height * scale;
-                    
+
                     // Pastikan y tidak melebihi h (terutama saat resize)
                     if (this.y >= h) this.y = this.y % h;
 
                     // Gambar tile dari atas (y - h) sampai menutupi bawah layar
                     // Kita mulai dari this.y - h untuk memastikan area atas tertutup
                     let drawY = this.y - h;
-                    
+
                     while (drawY < canvas.height) {
                         ctx.drawImage(imgBg, 0, drawY, canvas.width, h);
                         drawY += h;
@@ -239,19 +269,19 @@
             y: 0,
             width: 60,
             height: 60,
-            speed: 0, 
+            speed: 0,
             lastShot: 0,
             shootDelay: 15, // Frame delay
             active: true,
-            
-            init: function() {
+
+            init: function () {
                 this.x = canvas.width / 2 - this.width / 2;
                 this.y = canvas.height - 150;
                 this.active = true;
                 this.lastShot = 0;
             },
 
-            draw: function() {
+            draw: function () {
                 if (!this.active) return;
                 if (imgPlayer.complete && imgPlayer.naturalHeight !== 0) {
                     ctx.drawImage(imgPlayer, this.x, this.y, this.width, this.height);
@@ -259,21 +289,21 @@
                     // Fallback: Segitiga hijau
                     ctx.fillStyle = '#0f0';
                     ctx.beginPath();
-                    ctx.moveTo(this.x + this.width/2, this.y);
+                    ctx.moveTo(this.x + this.width / 2, this.y);
                     ctx.lineTo(this.x + this.width, this.y + this.height);
                     ctx.lineTo(this.x, this.y + this.height);
                     ctx.fill();
                 }
             },
 
-            update: function() {
+            update: function () {
                 if (!this.active) return;
                 // Auto Fire
                 if (frameCount - this.lastShot > this.shootDelay) {
                     this.shoot();
                     this.lastShot = frameCount;
                 }
-                
+
                 // Batas Layar
                 if (this.x < 0) this.x = 0;
                 if (this.x > canvas.width - this.width) this.x = canvas.width - this.width;
@@ -281,12 +311,12 @@
                 if (this.y > canvas.height - this.height) this.y = canvas.height - this.height;
             },
 
-            shoot: function() {
+            shoot: function () {
                 bullets.push(new Bullet(this.x + this.width / 2 - 5, this.y));
                 playSound('shoot');
             },
-            
-            moveTo: function(targetX, targetY) {
+
+            moveTo: function (targetX, targetY) {
                 // Geser posisi pesawat agar jari ada di tengah pesawat (sedikit offset ke bawah agar terlihat)
                 this.x = targetX - this.width / 2;
                 this.y = targetY - this.height / 2 - 50; // Offset Y agar jari tidak menutupi pesawat
@@ -295,21 +325,51 @@
 
         // 3. Bullet Class
         class Bullet {
-            constructor(x, y) {
+            constructor(x, y, isEnemy = false, velocity = null) {
                 this.x = x;
                 this.y = y;
-                this.width = 10;
-                this.height = 20;
-                this.speed = 10;
+                this.isEnemy = isEnemy;
+                if (this.isEnemy) {
+                    this.width = 12;
+                    this.height = 12; // Bulat (persegi untuk hitbox)
+                } else {
+                    this.width = 10;
+                    this.height = 20;
+                }
+                this.speed = 10; // Default speed for player
+                this.velocity = velocity; // Object {x, y}
                 this.markedForDeletion = false;
             }
             update() {
-                this.y -= this.speed;
-                if (this.y < 0) this.markedForDeletion = true;
+                if (this.isEnemy) {
+                    if (this.velocity) {
+                        this.x += this.velocity.x;
+                        this.y += this.velocity.y;
+                    } else {
+                        // Fallback jika tidak ada velocity
+                        this.y += this.speed;
+                    }
+
+                    // Hapus jika keluar layar
+                    if (this.y > canvas.height || this.x < 0 || this.x > canvas.width) {
+                        this.markedForDeletion = true;
+                    }
+                } else {
+                    this.y -= this.speed;
+                    if (this.y < 0) this.markedForDeletion = true;
+                }
             }
             draw() {
-                ctx.fillStyle = '#ffcc00';
-                ctx.fillRect(this.x, this.y, this.width, this.height);
+                if (this.isEnemy) {
+                    ctx.beginPath();
+                    ctx.arc(this.x + this.width / 2, this.y + this.height / 2, this.width / 2, 0, Math.PI * 2);
+                    ctx.fillStyle = '#ff0000';
+                    ctx.fill();
+                    ctx.closePath();
+                } else {
+                    ctx.fillStyle = '#ffcc00';
+                    ctx.fillRect(this.x, this.y, this.width, this.height);
+                }
             }
         }
 
@@ -322,10 +382,61 @@
                 this.y = -this.height; // Mulai dari atas layar
                 this.speed = Math.random() * 3 + 2; // Kecepatan acak 2 - 5
                 this.markedForDeletion = false;
+                this.lastShot = frameCount;
+
+                // Difficulty Scaling: Semakin tinggi score, semakin sering menembak
+                let minInterval = 300;
+                let maxInterval = 600; // Awal: Sangat jarang (5 - 10 detik)
+
+                if (score > 500) {
+                    minInterval = 200;
+                    maxInterval = 400;
+                }
+                if (score > 1500) {
+                    minInterval = 150;
+                    maxInterval = 300;
+                }
+                if (score > 3000) {
+                    minInterval = 100;
+                    maxInterval = 200; // Hard: 1.6 - 3.3 detik
+                }
+
+                this.shootInterval = Math.random() * (maxInterval - minInterval) + minInterval;
             }
             update() {
                 this.y += this.speed;
                 if (this.y > canvas.height) this.markedForDeletion = true;
+
+                // Logika Menembak
+                if (frameCount - this.lastShot > this.shootInterval) {
+                    this.shoot();
+                    this.lastShot = frameCount;
+                }
+            }
+            shoot() {
+                if (player.active) {
+                    // Hitung vektor arah ke pemain
+                    const startX = this.x + this.width / 2;
+                    const startY = this.y + this.height;
+                    const targetX = player.x + player.width / 2;
+                    const targetY = player.y + player.height / 2;
+
+                    const dx = targetX - startX;
+                    const dy = targetY - startY;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+
+                    // Normalisasi vektor dan kalikan dengan speed lambat
+                    const bulletSpeed = 1; // Kecepatan peluru musuh lambat
+                    const velocity = {
+                        x: (dx / distance) * bulletSpeed,
+                        y: (dy / distance) * bulletSpeed
+                    };
+
+                    bullets.push(new Bullet(startX - 5, startY, true, velocity));
+                } else {
+                    // Jika player mati, tembak lurus ke bawah pelan
+                    bullets.push(new Bullet(this.x + this.width / 2 - 5, this.y + this.height, true, { x: 0, y: 2 }));
+                }
             }
             draw() {
                 if (imgEnemy.complete && imgEnemy.naturalHeight !== 0) {
@@ -355,7 +466,7 @@
             draw() {
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(255, 165, 0, ${1 - this.radius/this.maxRadius})`;
+                ctx.fillStyle = `rgba(255, 165, 0, ${1 - this.radius / this.maxRadius})`;
                 ctx.fill();
             }
         }
@@ -373,7 +484,7 @@
             isDragging = true;
             const touch = e.touches[0];
             player.moveTo(touch.clientX, touch.clientY);
-        }, {passive: false});
+        }, { passive: false });
 
         canvas.addEventListener('touchmove', (e) => {
             if (isDragging) {
@@ -381,7 +492,7 @@
                 const touch = e.touches[0];
                 player.moveTo(touch.clientX, touch.clientY);
             }
-        }, {passive: false});
+        }, { passive: false });
 
         canvas.addEventListener('touchend', () => { isDragging = false; });
 
@@ -401,32 +512,52 @@
         // --- LOGIKA GAME LOOP ---
 
         function checkCollisions() {
-            // Bullet vs Enemy
+            // Bullet vs Objects
             bullets.forEach(bullet => {
-                enemies.forEach(enemy => {
-                    if (!bullet.markedForDeletion && !enemy.markedForDeletion) {
+                if (bullet.markedForDeletion) return;
+
+                if (bullet.isEnemy) {
+                    // Cek Peluru Musuh vs Pemain
+                    if (player.active) {
+                        const padding = 10;
                         if (
-                            bullet.x < enemy.x + enemy.width &&
-                            bullet.x + bullet.width > enemy.x &&
-                            bullet.y < enemy.y + enemy.height &&
-                            bullet.y + bullet.height > enemy.y
+                            bullet.x < player.x + player.width - padding &&
+                            bullet.x + bullet.width > player.x + padding &&
+                            bullet.y < player.y + player.height - padding &&
+                            bullet.y + bullet.height > player.y + padding
                         ) {
-                            // Hit!
-                            enemy.markedForDeletion = true;
                             bullet.markedForDeletion = true;
-                            score += 100;
-                            document.getElementById('score-display').innerText = "SCORE: " + score;
-                            playSound('explosion');
-                            explosions.push(new Explosion(enemy.x + enemy.width/2, enemy.y + enemy.height/2));
+                            takeDamage();
+                            explosions.push(new Explosion(player.x + player.width / 2, player.y + player.height / 2));
                         }
                     }
-                });
+                } else {
+                    // Cek Peluru Pemain vs Musuh
+                    enemies.forEach(enemy => {
+                        if (!enemy.markedForDeletion) {
+                            if (
+                                bullet.x < enemy.x + enemy.width &&
+                                bullet.x + bullet.width > enemy.x &&
+                                bullet.y < enemy.y + enemy.height &&
+                                bullet.y + bullet.height > enemy.y
+                            ) {
+                                // Hit!
+                                enemy.markedForDeletion = true;
+                                bullet.markedForDeletion = true;
+                                score += 100;
+                                document.getElementById('score-display').innerText = "SCORE: " + score;
+                                playSound('explosion');
+                                explosions.push(new Explosion(enemy.x + enemy.width / 2, enemy.y + enemy.height / 2));
+                            }
+                        }
+                    });
+                }
             });
 
-            // Player vs Enemy
+            // Player vs Enemy (Tabrakan Badan)
             enemies.forEach(enemy => {
                 if (!enemy.markedForDeletion && player.active) {
-                     // Hitbox Player sedikit lebih kecil dari gambar agar adil
+                    // Hitbox Player sedikit lebih kecil dari gambar agar adil
                     const padding = 10;
                     if (
                         player.x + padding < enemy.x + enemy.width &&
@@ -436,7 +567,7 @@
                     ) {
                         enemy.markedForDeletion = true;
                         takeDamage();
-                        explosions.push(new Explosion(enemy.x + enemy.width/2, enemy.y + enemy.height/2));
+                        explosions.push(new Explosion(enemy.x + enemy.width / 2, enemy.y + enemy.height / 2));
                     }
                 }
             });
@@ -446,7 +577,7 @@
             lives--;
             playSound('hit');
             document.getElementById('lives-display').innerText = "LIVES: " + lives;
-            
+
             // Efek layar merah sekilas
             const flash = document.createElement('div');
             flash.style.position = 'absolute';
@@ -462,11 +593,15 @@
         }
 
         function spawnEnemies() {
-            // Spawn setiap 60 frame (sekitar 1 detik)
-            // Semakin tinggi skor, semakin cepat spawnnya
-            let spawnRate = 60;
-            if (score > 1000) spawnRate = 45;
-            if (score > 3000) spawnRate = 30;
+            // Spawn Rate Dinamis Berdasarkan Score (Versi Santai)
+            // Awal: 180 frame (~3 detik)
+            // Hard: 90 frame (~1.5 detik)
+
+            let spawnRate = 180; // Default (Sangat Santai)
+
+            if (score > 500) spawnRate = 150;
+            if (score > 1500) spawnRate = 120;
+            if (score > 3000) spawnRate = 90;
 
             if (frameCount % spawnRate === 0) {
                 enemies.push(new Enemy());
@@ -476,9 +611,21 @@
         function update() {
             if (!gameRunning) return;
 
+            // --- TIMER LOGIC ---
+            const timeLeft = gameEndTime - Date.now();
+            if (timeLeft <= 0) {
+                document.getElementById('time-display').innerText = "TIME: 0:00";
+                gameOver();
+                return;
+            }
+            // Update Timer Display
+            const minutes = Math.floor(timeLeft / 60000);
+            const seconds = Math.floor((timeLeft % 60000) / 1000);
+            document.getElementById('time-display').innerText = `TIME: ${minutes}:${seconds.toString().padStart(2, '0')}`;
+
             frameCount++;
             player.update();
-            
+
             // Update Bullets
             bullets.forEach(b => b.update());
             bullets = bullets.filter(b => !b.markedForDeletion);
@@ -497,7 +644,7 @@
 
         function draw() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            
+
             background.draw();
             player.draw();
             bullets.forEach(b => b.draw());
@@ -526,13 +673,15 @@
             enemies = [];
             explosions = [];
             frameCount = 0;
-            
+
             document.getElementById('score-display').innerText = "SCORE: 0";
             document.getElementById('lives-display').innerText = "LIVES: 3";
+            document.getElementById('time-display').innerText = "TIME: 3:00";
             document.getElementById('start-screen').classList.add('hidden');
             document.getElementById('game-over-screen').classList.add('hidden');
-            
+
             gameRunning = true;
+            gameEndTime = Date.now() + (3 * 60 * 1000); // 3 Menit dari sekarang
             player.init();
             gameLoop();
         }
@@ -551,4 +700,5 @@
 
     </script>
 </body>
+
 </html>
