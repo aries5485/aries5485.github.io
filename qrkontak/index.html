@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Kontak Generator</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- QRCode Generator Library (Support SVG) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        /* Animasi Transisi */
+        .fade-in { animation: fadeIn 0.3s ease-in-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #f1f5f9; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col">
+
+    <!-- Navbar -->
+    <nav class="bg-white border-b border-slate-200 sticky top-0 z-50">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex items-center gap-2 cursor-pointer" onclick="showHome()">
+                    <div class="bg-indigo-600 p-2 rounded-lg text-white">
+                        <i data-lucide="qr-code" class="w-6 h-6"></i>
+                    </div>
+                    <span class="font-bold text-xl tracking-tight text-slate-900">QR Kontak</span>
+                </div>
+                <div class="flex space-x-4">
+                    <button onclick="showHome()" id="nav-create" class="px-3 py-2 rounded-md text-sm font-medium text-indigo-600 bg-indigo-50 transition-colors">
+                        Buat Baru
+                    </button>
+                    <button onclick="showSaved()" id="nav-saved" class="px-3 py-2 rounded-md text-sm font-medium text-slate-600 hover:text-indigo-600 hover:bg-slate-50 transition-colors">
+                        Tersimpan
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="flex-grow container mx-auto px-4 py-8 max-w-5xl">
+        
+        <!-- View: Create / Edit -->
+        <div id="create-view" class="fade-in grid grid-cols-1 lg:grid-cols-12 gap-8">
+            
+            <!-- Left Column: Form -->
+            <div class="lg:col-span-7 space-y-6">
+                <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-sm border border-slate-100">
+                    <div class="flex justify-between items-center mb-6">
+                        <h2 class="text-xl font-semibold text-slate-900" id="form-title">Informasi Kontak</h2>
+                        <button onclick="resetForm()" class="text-xs text-slate-400 hover:text-red-500 transition-colors">Reset Form</button>
+                    </div>
+                    
+                    <form id="contactForm" onsubmit="handleGenerate(event)" class="space-y-4">
+                        <input type="hidden" id="contactId">
+                        
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium text-slate-700 mb-1">Nama Lengkap</label>
+                                <input type="text" id="fullName" required placeholder="Cth: Budi Santoso" 
+                                    class="w-full rounded-lg border-slate-300 border px-4 py-2.5 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all text-sm">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-slate-700 mb-1">Nomor Handphone</label>
+                                <input type="tel" id="phone" required placeholder="Cth: 08123456789" 
+                                    class="w-full rounded-lg border-slate-300 border px-4 py-2.5 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all text-sm">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium text-slate-700 mb-1">Jabatan / Posisi</label>
+                                <input type="text" id="jobTitle" placeholder="Cth: Manager Pemasaran" 
+                                    class="w-full rounded-lg border-slate-300 border px-4 py-2.5 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all text-sm">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-slate-700 mb-1">Website</label>
+                                <input type="url" id="website" placeholder="Cth: https://perusahaan.com" 
+                                    class="w-full rounded-lg border-slate-300 border px-4 py-2.5 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all text-sm">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-slate-700 mb-1">Alamat Lengkap</label>
+                            <textarea id="address" rows="3" placeholder="Nama Jalan, Kota, Provinsi" 
+                                class="w-full rounded-lg border-slate-300 border px-4 py-2.5 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all text-sm resize-none"></textarea>
+                        </div>
+
+                        <div class="pt-4">
+                            <button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-3 px-4 rounded-xl shadow-lg shadow-indigo-200 transition-all flex justify-center items-center gap-2 transform active:scale-[0.98]">
+                                <i data-lucide="qr-code"></i>
+                                Buat Kode QR
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Right Column: Preview -->
+            <div class="lg:col-span-5">
+                <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-sm border border-slate-100 sticky top-24 h-fit text-center">
+                    <h2 class="text-xl font-semibold text-slate-900 mb-2">Preview QR Code</h2>
+                    <p class="text-slate-500 text-sm mb-6">QR Code Anda akan muncul di bawah ini.</p>
+
+                    <!-- QR Placeholder / Result -->
+                    <div id="qr-container" class="bg-slate-50 border-2 border-dashed border-slate-300 rounded-xl w-full aspect-square flex items-center justify-center mb-6 overflow-hidden relative group">
+                        <div id="placeholder-text" class="text-center p-6">
+                            <i data-lucide="scan-line" class="w-12 h-12 mx-auto text-slate-300 mb-2"></i>
+                            <span class="text-slate-400 text-sm">Input data untuk generate</span>
+                        </div>
+                        <div id="qr-output" class="hidden w-full h-full flex items-center justify-center p-4">
+                            <!-- SVG will be injected here -->
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons (Hidden by default) -->
+                    <div id="action-buttons" class="hidden space-y-3">
+                        <button onclick="downloadSVG()" class="w-full bg-white border border-slate-200 hover:border-indigo-600 hover:text-indigo-600 text-slate-700 font-medium py-2.5 px-4 rounded-lg transition-colors flex justify-center items-center gap-2">
+                            <i data-lucide="download"></i>
+                            Download SVG
+                        </button>
+                        <button onclick="saveToStorage()" class="w-full bg-slate-900 hover:bg-slate-800 text-white font-medium py-2.5 px-4 rounded-lg transition-colors flex justify-center items-center gap-2 shadow-md">
+                            <i data-lucide="save"></i>
+                            Simpan ke Daftar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- View: Saved List -->
+        <div id="saved-view" class="hidden fade-in">
+            <div class="flex justify-between items-end mb-6">
+                <div>
+                    <h2 class="text-2xl font-bold text-slate-900">Kontak Tersimpan</h2>
+                    <p class="text-slate-500 text-sm mt-1">Kelola QR code yang pernah Anda buat.</p>
+                </div>
+            </div>
+
+            <div id="saved-list-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Items will be injected here via JS -->
+            </div>
+
+            <!-- Empty State -->
+            <div id="empty-state" class="hidden text-center py-16 bg-white rounded-2xl border border-dashed border-slate-300">
+                <div class="bg-indigo-50 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i data-lucide="folder-open" class="w-8 h-8 text-indigo-500"></i>
+                </div>
+                <h3 class="text-lg font-medium text-slate-900">Belum ada QR Code</h3>
+                <p class="text-slate-500 mb-6 max-w-xs mx-auto">Mulai buat kartu nama digital Anda sekarang dan simpan di sini.</p>
+                <button onclick="showHome()" class="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-2.5 rounded-lg font-medium transition-colors">
+                    Buat QR Code Baru
+                </button>
+            </div>
+        </div>
+
+    </main>
+    
+    <footer class="bg-white border-t border-slate-200 mt-auto py-6">
+        <div class="container mx-auto px-4 text-center text-slate-400 text-sm">
+            &copy; 2026 QR Kontak Generator By Ricky Maulana
+        </div>
+    </footer>
+
+    <script>
+        // --- Initialization ---
+        lucide.createIcons();
+        let currentQRData = null; // Menyimpan string SVG saat ini
+        let currentVCard = null;  // Menyimpan string vCard saat ini
+
+        // --- Navigation Logic ---
+        function showHome() {
+            document.getElementById('create-view').classList.remove('hidden');
+            document.getElementById('saved-view').classList.add('hidden');
+            
+            // Update Tab Active State
+            document.getElementById('nav-create').className = "px-3 py-2 rounded-md text-sm font-medium text-indigo-600 bg-indigo-50 transition-colors";
+            document.getElementById('nav-saved').className = "px-3 py-2 rounded-md text-sm font-medium text-slate-600 hover:text-indigo-600 hover:bg-slate-50 transition-colors";
+        }
+
+        function showSaved() {
+            document.getElementById('create-view').classList.add('hidden');
+            document.getElementById('saved-view').classList.remove('hidden');
+            
+            // Update Tab Active State
+            document.getElementById('nav-create').className = "px-3 py-2 rounded-md text-sm font-medium text-slate-600 hover:text-indigo-600 hover:bg-slate-50 transition-colors";
+            document.getElementById('nav-saved').className = "px-3 py-2 rounded-md text-sm font-medium text-indigo-600 bg-indigo-50 transition-colors";
+            
+            renderSavedList();
+        }
+
+        // --- Core Functions ---
+
+        function handleGenerate(e) {
+            e.preventDefault();
+
+            // 1. Ambil Data
+            const data = {
+                id: document.getElementById('contactId').value || Date.now().toString(),
+                fullName: document.getElementById('fullName').value,
+                phone: document.getElementById('phone').value,
+                jobTitle: document.getElementById('jobTitle').value,
+                website: document.getElementById('website').value,
+                address: document.getElementById('address').value,
+                date: new Date().toISOString()
+            };
+
+            // 2. Buat String vCard (Format Standar Kontak)
+            // Menggunakan versi 3.0 agar kompatibel dengan banyak device
+            const vCard = `BEGIN:VCARD
+VERSION:3.0
+FN:${data.fullName}
+TEL;TYPE=CELL:${data.phone}
+TITLE:${data.jobTitle}
+URL:${data.website}
+ADR;TYPE=WORK:;;${data.address.replace(/,/g, ';')};;;;
+END:VCARD`;
+
+            currentVCard = vCard;
+
+            // 3. Generate QR Code (TypeNumber 0 = auto detect, ErrorCorrection L = Low)
+            try {
+                const typeNumber = 0;
+                const errorCorrectionLevel = 'L';
+                const qr = qrcode(typeNumber, errorCorrectionLevel);
+                qr.addData(vCard);
+                qr.make();
+                
+                // Buat tag SVG. cell size 8, margin 2
+                const svgTag = qr.createSvgTag(8, 2); 
+                currentQRData = svgTag;
+
+                // 4. Tampilkan Hasil
+                const outputDiv = document.getElementById('qr-output');
+                outputDiv.innerHTML = svgTag;
+                
+                // Style adjustment for the SVG inside
+                const svgEl = outputDiv.querySelector('svg');
+                svgEl.setAttribute('width', '100%');
+                svgEl.setAttribute('height', '100%');
+                svgEl.classList.add('text-slate-900'); // QR color
+
+                // UI Toggle
+                document.getElementById('placeholder-text').classList.add('hidden');
+                document.getElementById('qr-output').classList.remove('hidden');
+                document.getElementById('action-buttons').classList.remove('hidden');
+                document.getElementById('action-buttons').classList.add('fade-in');
+
+                // Smooth scroll to preview on mobile
+                if(window.innerWidth < 1024) {
+                    document.getElementById('qr-container').scrollIntoView({ behavior: 'smooth' });
+                }
+
+            } catch (err) {
+                alert("Terjadi kesalahan saat membuat QR Code. Pastikan data tidak terlalu panjang.");
+                console.error(err);
+            }
+        }
+
+        function downloadSVG() {
+            if (!currentQRData) return;
+
+            // Membuat Blob dari string SVG
+            const blob = new Blob([currentQRData], { type: "image/svg+xml;charset=utf-8" });
+            const url = URL.createObjectURL(blob);
+            
+            // Nama file
+            const name = document.getElementById('fullName').value.replace(/\s+/g, '_') || 'contact';
+            
+            // Trigger download
+            const downloadLink = document.createElement("a");
+            downloadLink.href = url;
+            downloadLink.download = `qr_kontak_${name}.svg`;
+            document.body.appendChild(downloadLink);
+            downloadLink.click();
+            document.body.removeChild(downloadLink);
+        }
+
+        // --- Local Storage Logic ---
+
+        function getContacts() {
+            return JSON.parse(localStorage.getItem('qr_contacts') || '[]');
+        }
+
+        function saveToStorage() {
+            const idInput = document.getElementById('contactId');
+            let isEdit = false;
+            
+            const newData = {
+                id: idInput.value || Date.now().toString(),
+                fullName: document.getElementById('fullName').value,
+                phone: document.getElementById('phone').value,
+                jobTitle: document.getElementById('jobTitle').value,
+                website: document.getElementById('website').value,
+                address: document.getElementById('address').value,
+                lastUpdated: new Date().toLocaleDateString('id-ID')
+            };
+
+            let contacts = getContacts();
+            
+            // Cek apakah ID sudah ada (Update) atau belum (Create)
+            const existingIndex = contacts.findIndex(c => String(c.id) === String(newData.id));
+            
+            if (existingIndex >= 0) {
+                contacts[existingIndex] = newData;
+                isEdit = true;
+            } else {
+                contacts.unshift(newData); // Tambah ke awal
+            }
+
+            localStorage.setItem('qr_contacts', JSON.stringify(contacts));
+            
+            // Feedback Visual
+            const btn = event.currentTarget;
+            const originalContent = btn.innerHTML;
+            btn.innerHTML = `<i data-lucide="check" class="w-4 h-4"></i> Tersimpan!`;
+            btn.classList.replace('bg-slate-900', 'bg-green-600');
+            
+            setTimeout(() => {
+                btn.innerHTML = originalContent;
+                btn.classList.replace('bg-green-600', 'bg-slate-900');
+                lucide.createIcons();
+                showSaved(); // Pindah ke halaman list
+            }, 1000);
+        }
+
+        function renderSavedList() {
+            const contacts = getContacts();
+            const container = document.getElementById('saved-list-container');
+            const emptyState = document.getElementById('empty-state');
+
+            container.innerHTML = '';
+
+            if (contacts.length === 0) {
+                container.classList.add('hidden');
+                emptyState.classList.remove('hidden');
+                return;
+            }
+
+            container.classList.remove('hidden');
+            emptyState.classList.add('hidden');
+
+            contacts.forEach(contact => {
+                const card = document.createElement('div');
+                card.className = "bg-white p-5 rounded-xl border border-slate-200 hover:shadow-md transition-shadow relative group";
+                // Gunakan String() pada ID untuk memastikan konsistensi
+                card.innerHTML = `
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="bg-indigo-50 text-indigo-600 rounded-lg p-3">
+                            <i data-lucide="user" class="w-6 h-6"></i>
+                        </div>
+                        <div class="flex gap-2">
+                             <button type="button" onclick="deleteContact('${contact.id}')" class="text-slate-400 hover:text-red-500 p-1 rounded transition-colors" title="Hapus">
+                                <i data-lucide="trash-2" class="w-4 h-4"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <h3 class="font-bold text-slate-900 truncate">${contact.fullName}</h3>
+                    <p class="text-sm text-slate-500 mb-4 truncate">${contact.jobTitle || 'Tidak ada jabatan'}</p>
+                    
+                    <div class="space-y-2 text-sm text-slate-600 mb-5">
+                        <div class="flex items-center gap-2">
+                            <i data-lucide="phone" class="w-3 h-3 text-slate-400"></i>
+                            <span class="truncate">${contact.phone}</span>
+                        </div>
+                        ${contact.website ? `
+                        <div class="flex items-center gap-2">
+                            <i data-lucide="globe" class="w-3 h-3 text-slate-400"></i>
+                            <span class="truncate text-indigo-500">${contact.website}</span>
+                        </div>` : ''}
+                    </div>
+
+                    <button type="button" onclick="editContact('${contact.id}')" class="w-full bg-white border border-slate-200 text-slate-700 hover:border-indigo-500 hover:text-indigo-600 font-medium py-2 rounded-lg text-sm transition-colors">
+                        Edit & Generate
+                    </button>
+                `;
+                container.appendChild(card);
+            });
+            lucide.createIcons();
+        }
+
+        // Fungsi deleteContact diperbarui agar lebih robust terhadap tipe data ID
+        function deleteContact(id) {
+            if(confirm('Yakin ingin menghapus kontak ini?')) {
+                let contacts = getContacts();
+                // Filter menggunakan konversi string untuk memastikan pencocokan yang tepat
+                contacts = contacts.filter(c => String(c.id) !== String(id));
+                localStorage.setItem('qr_contacts', JSON.stringify(contacts));
+                renderSavedList();
+            }
+        }
+
+        // Fungsi editContact diperbarui agar lebih robust
+        function editContact(id) {
+            const contacts = getContacts();
+            // Find menggunakan konversi string
+            const contact = contacts.find(c => String(c.id) === String(id));
+            
+            if (contact) {
+                // Populate Form
+                document.getElementById('contactId').value = contact.id;
+                document.getElementById('fullName').value = contact.fullName;
+                document.getElementById('phone').value = contact.phone;
+                document.getElementById('jobTitle').value = contact.jobTitle;
+                document.getElementById('website').value = contact.website;
+                document.getElementById('address').value = contact.address;
+
+                // Update UI Title
+                document.getElementById('form-title').innerText = "Edit Kontak";
+                
+                // Reset Preview Area to default state (user needs to click Generate again to verify)
+                resetPreviewArea();
+
+                // Switch View
+                showHome();
+            }
+        }
+
+        function resetForm() {
+            document.getElementById('contactForm').reset();
+            document.getElementById('contactId').value = '';
+            document.getElementById('form-title').innerText = "Informasi Kontak";
+            resetPreviewArea();
+        }
+
+        function resetPreviewArea() {
+            document.getElementById('placeholder-text').classList.remove('hidden');
+            document.getElementById('qr-output').classList.add('hidden');
+            document.getElementById('action-buttons').classList.add('hidden');
+            currentQRData = null;
+        }
+
+        // Initialize view
+        showHome();
+
+    </script>
+</body>
+</html>
