@@ -206,20 +206,25 @@
             y: 0,
             speed: 2,
             draw: function() {
-                // Gambar dua kali untuk looping mulus
-                // Jika gambar gagal load, gunakan warna biru laut
+                // Gambar dua kali atau lebih untuk looping mulus dan menutupi layar panjang
                 if (imgBg.complete && imgBg.naturalHeight !== 0) {
                     // Skala gambar agar fit width layar
                     const scale = canvas.width / imgBg.width;
                     const h = imgBg.height * scale;
                     
-                    ctx.drawImage(imgBg, 0, this.y, canvas.width, h);
-                    ctx.drawImage(imgBg, 0, this.y - h, canvas.width, h);
+                    // Pastikan y tidak melebihi h (terutama saat resize)
+                    if (this.y >= h) this.y = this.y % h;
+
+                    // Gambar tile dari atas (y - h) sampai menutupi bawah layar
+                    // Kita mulai dari this.y - h untuk memastikan area atas tertutup
+                    let drawY = this.y - h;
+                    
+                    while (drawY < canvas.height) {
+                        ctx.drawImage(imgBg, 0, drawY, canvas.width, h);
+                        drawY += h;
+                    }
 
                     this.y += this.speed;
-                    if (this.y >= h) {
-                        this.y = 0;
-                    }
                 } else {
                     // Fallback
                     ctx.fillStyle = "#005580";
