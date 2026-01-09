@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bumbul Crispy - Tahu & Otak-Otak Renyah</title>
+    
+    <!-- Tailwind CSS (via CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            yellow: '#FBBF24', // Amber 400
+                            orange: '#F97316', // Orange 500
+                            red: '#DC2626',    // Red 600
+                            dark: '#1F2937',   // Gray 800
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Styles for aesthetics */
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .hero-pattern {
+            background-color: #FFF7ED; /* Orange 50 */
+            background-image: radial-gradient(#F97316 0.5px, transparent 0.5px), radial-gradient(#F97316 0.5px, #FFF7ED 0.5px);
+            background-size: 20px 20px;
+            background-position: 0 0, 10px 10px;
+            opacity: 1;
+        }
+
+        .crispy-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        /* Checkbox styling */
+        .flavor-checkbox:checked + label {
+            background-color: #F97316;
+            color: white;
+            border-color: #F97316;
+        }
+
+        .flavor-checkbox:checked + label i {
+            color: white;
+        }
+
+        /* Animation Keyframes */
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(3deg); }
+            50% { transform: translateY(-20px) rotate(0deg); }
+            100% { transform: translateY(0px) rotate(3deg); }
+        }
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="text-gray-800 antialiased bg-gray-50">
+
+    <!-- Navigation -->
+    <nav class="glass-nav fixed w-full z-50 transition-all duration-300">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center gap-2">
+                    <i class="fa-solid fa-fire text-brand-orange text-2xl"></i>
+                    <span class="font-bold text-2xl tracking-tight text-brand-dark">Bumbul<span class="text-brand-orange">Crispy</span></span>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#home" class="text-gray-600 hover:text-brand-orange font-medium transition">Beranda</a>
+                    <a href="#menu" class="text-gray-600 hover:text-brand-orange font-medium transition">Menu</a>
+                    <a href="#flavors" class="text-gray-600 hover:text-brand-orange font-medium transition">Varian Rasa</a>
+                    <a href="#order" class="bg-brand-orange text-white px-5 py-2 rounded-full font-semibold hover:bg-orange-600 transition shadow-lg transform hover:scale-105">
+                        Pesan Sekarang
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gray-600 hover:text-brand-orange focus:outline-none">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu Panel -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 absolute w-full shadow-lg">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 flex flex-col items-center">
+                <a href="#home" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-brand-orange hover:bg-gray-50 rounded-md w-full text-center mobile-link">Beranda</a>
+                <a href="#menu" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-brand-orange hover:bg-gray-50 rounded-md w-full text-center mobile-link">Menu</a>
+                <a href="#flavors" class="block px-3 py-2 text-base font-medium text-gray-700 hover:text-brand-orange hover:bg-gray-50 rounded-md w-full text-center mobile-link">Varian Rasa</a>
+                <a href="#order" class="block px-3 py-2 text-base font-medium text-white bg-brand-orange rounded-md w-full text-center mt-2 mobile-link">Pesan Sekarang</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-pattern pt-28 pb-16 lg:pt-36 lg:pb-24 overflow-hidden relative">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <!-- Decorative Blobs -->
+            <div class="absolute top-0 right-0 -mr-20 -mt-20 w-72 h-72 bg-yellow-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-pulse"></div>
+            <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-72 h-72 bg-orange-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-pulse delay-1000"></div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
+                
+                <!-- Text Content -->
+                <div class="text-center lg:text-left">
+                    <span class="inline-block py-1 px-3 rounded-full bg-white text-brand-orange text-sm font-bold mb-4 border border-orange-200 shadow-sm">
+                        🔥 Jajanan Kekinian Paling Hits di Bekasi
+                    </span>
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-brand-dark leading-tight mb-6">
+                        Kriuknya <span class="text-brand-orange">Bikin Nagih</span>, Rasanya Juara!
+                    </h1>
+                    <p class="text-lg text-gray-600 mb-8 max-w-lg mx-auto lg:mx-0">
+                        Nikmati sensasi <strong>Tahu Crispy</strong> dan <strong>Otak-Otak Crispy</strong> dengan racikan bumbu spesial dari Bumbul Crispy. Cocok buat temen nonton, kerja, atau nyantai.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                        <a href="#order" class="bg-brand-red text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-red-700 transition shadow-xl flex items-center justify-center gap-2 transform hover:-translate-y-1">
+                            <i class="fa-brands fa-whatsapp"></i> Pesan Yuk!
+                        </a>
+                        <a href="#menu" class="bg-white text-brand-dark border-2 border-gray-200 px-8 py-4 rounded-full font-bold text-lg hover:border-brand-orange hover:text-brand-orange transition flex items-center justify-center">
+                            Lihat Menu
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Hero Image -->
+                <div class="relative mx-auto lg:ml-auto w-full max-w-md lg:max-w-full flex justify-center">
+                     <!-- Menggunakan gambar gorengan umum yang berkualitas tinggi -->
+                    <img src="hero.jpg" 
+                         alt="Aneka Gorengan Crispy" 
+                         class="relative rounded-3xl shadow-2xl border-4 border-white animate-float w-full object-cover h-80 lg:h-96 max-w-lg">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-brand-dark mb-4">Menu Andalan Kami</h2>
+                <div class="w-24 h-1 bg-brand-orange mx-auto rounded-full"></div>
+                <p class="mt-4 text-gray-500">Digoreng dadakan, anget-anget, kriuk-kriuk!</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                <!-- Menu Item 1: Tahu Crispy -->
+                <div class="crispy-card bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100 flex flex-col group">
+                    <div class="h-64 overflow-hidden relative">
+                        <!-- Gambar Tahu Goreng (GAMBAR PERTAMA) -->
+                        <img src="1000172389.jpg" 
+                             alt="Tahu Crispy" 
+                             onerror="this.onerror=null; this.src='https://placehold.co/600x400?text=Tahu+Crispy';"
+                             class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
+                        <div class="absolute top-4 right-4 bg-brand-yellow text-brand-dark font-bold px-3 py-1 rounded-full text-sm shadow-md">
+                            Best Seller
+                        </div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-2xl font-bold text-brand-dark">Tahu Crispy</h3>
+                            <span class="text-brand-orange font-bold text-xl">Rp 1.000<span class="text-sm text-gray-400 font-normal">/pcs</span></span>
+                        </div>
+                        <p class="text-gray-600 mb-6">Potongan tahu lembut dibalut tepung rahasia yang super renyah. Ditaburi bumbu pilihan yang meresap sampai ke dalam.</p>
+                        <button onclick="selectMenu('Tahu Crispy')" class="mt-auto w-full py-3 bg-gray-100 text-brand-dark font-semibold rounded-xl hover:bg-brand-orange hover:text-white transition">
+                            Pilih Menu Ini
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Menu Item 2: Otak-Otak Crispy -->
+                <div class="crispy-card bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100 flex flex-col group">
+                    <div class="h-64 overflow-hidden relative">
+                        <!-- Gambar Otak-Otak (GAMBAR KEDUA) -->
+                        <img src="1000172390.jpg" 
+                             alt="Otak Otak Crispy" 
+                             onerror="this.onerror=null; this.src='https://placehold.co/600x400?text=Otak-Otak+Crispy';"
+                             class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-2xl font-bold text-brand-dark">Otak-Otak Crispy</h3>
+                            <span class="text-brand-orange font-bold text-xl">Rp 1.000<span class="text-sm text-gray-400 font-normal">/pcs</span></span>
+                        </div>
+                        <p class="text-gray-600 mb-6">Otak-otak ikan asli yang digoreng garing di luar tapi tetap kenyal di dalam. Gurih ikannya kerasa banget!</p>
+                        <button onclick="selectMenu('Otak-Otak Crispy')" class="mt-auto w-full py-3 bg-gray-100 text-brand-dark font-semibold rounded-xl hover:bg-brand-orange hover:text-white transition">
+                            Pilih Menu Ini
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Flavor Section -->
+    <section id="flavors" class="py-16 bg-gradient-to-br from-orange-50 to-yellow-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div class="order-2 md:order-1 relative">
+                    <!-- Gambar Bumbu Bubuk -->
+                    <img src="https://images.unsplash.com/photo-1596040033229-a9821ebd058d?q=80&w=800&auto=format&fit=crop" 
+                         alt="Bumbu Tabur" 
+                         onerror="this.onerror=null; this.src='https://placehold.co/600x800?text=Bumbu+Tabur';"
+                         class="rounded-3xl shadow-xl w-full h-80 object-cover border-4 border-white">
+                     <!-- Floating Badge -->
+                     <div class="absolute -bottom-6 -right-6 bg-white p-4 rounded-xl shadow-lg border border-gray-100 hidden md:block">
+                        <p class="font-bold text-brand-orange text-lg">Gratis Mix!</p>
+                        <p class="text-xs text-gray-500">Campur sesuka hati</p>
+                     </div>
+                </div>
+                <div class="order-1 md:order-2">
+                    <h2 class="text-3xl md:text-4xl font-bold text-brand-dark mb-6">Racik Bumbumu Sendiri!</h2>
+                    <p class="text-lg text-gray-700 mb-6">
+                        Di Bumbul Crispy, kamu adalah bosnya! Pilih satu rasa atau <strong>MIX (CAMPUR)</strong> ketiganya untuk ledakan rasa yang maksimal.
+                    </p>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-center p-4 bg-white rounded-xl shadow-sm border-l-4 border-yellow-400 hover:shadow-md transition">
+                            <div class="bg-yellow-100 p-3 rounded-full mr-4 text-yellow-600">
+                                <i class="fa-solid fa-candy-cane"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg">Manis</h4>
+                                <p class="text-sm text-gray-500">Gurih dengan sentuhan manis yang pas.</p>
+                            </div>
+                        </div>
+
+                        <!-- REVISI IKON DI SINI -->
+                        <div class="flex items-center p-4 bg-white rounded-xl shadow-sm border-l-4 border-blue-400 hover:shadow-md transition">
+                            <div class="bg-blue-100 p-3 rounded-full mr-4 text-blue-600">
+                                <i class="fa-solid fa-utensil-spoon"></i> <!-- Diganti dari fa-salt-shaker -->
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg">Asin (Original)</h4>
+                                <p class="text-sm text-gray-500">Rasa klasik asin gurih penyedap rasa.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center p-4 bg-white rounded-xl shadow-sm border-l-4 border-red-500 hover:shadow-md transition">
+                            <div class="bg-red-100 p-3 rounded-full mr-4 text-red-600">
+                                <i class="fa-solid fa-pepper-hot"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg">Pedas</h4>
+                                <p class="text-sm text-gray-500">Buat kamu pecinta pedas nampol!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Order / Contact Section -->
+    <section id="order" class="py-20 relative bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-brand-dark rounded-3xl p-8 md:p-12 shadow-2xl relative overflow-hidden text-center md:text-left">
+                <!-- Background decorative elements -->
+                <div class="absolute top-0 right-0 -mr-10 -mt-10 w-64 h-64 bg-brand-orange opacity-20 rounded-full blur-3xl"></div>
+                <div class="absolute bottom-0 left-0 -ml-10 -mb-10 w-48 h-48 bg-brand-red opacity-20 rounded-full blur-3xl"></div>
+                
+                <h2 class="text-3xl font-bold text-white mb-2 relative z-10">Mau Pesan? Gampang Banget!</h2>
+                <p class="text-gray-300 mb-8 relative z-10">Isi form di bawah, otomatis tersambung ke WhatsApp kami.</p>
+
+                <!-- Order Form Builder -->
+                <div class="bg-white rounded-2xl p-6 md:p-8 shadow-lg relative z-10 text-left border border-gray-100">
+                    <form id="orderForm" onsubmit="sendToWhatsapp(event)">
+                        
+                        <!-- Nama -->
+                        <div class="mb-5">
+                            <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Nama Pemesan</label>
+                            <input type="text" id="name" required placeholder="Contoh: Chibul" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-brand-orange focus:border-transparent outline-none transition bg-gray-50 focus:bg-white">
+                        </div>
+
+                        <!-- Menu Select -->
+                        <div class="mb-5">
+                            <label for="menuSelect" class="block text-sm font-medium text-gray-700 mb-1">Pilih Menu</label>
+                            <div class="relative">
+                                <select id="menuSelect" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-brand-orange focus:border-transparent outline-none transition bg-gray-50 focus:bg-white appearance-none">
+                                    <option value="Tahu Crispy">Tahu Crispy</option>
+                                    <option value="Otak-Otak Crispy">Otak-Otak Crispy</option>
+                                    <option value="Campur (Tahu + Otak-otak)">Campur (Tahu + Otak-otak)</option>
+                                </select>
+                                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-700">
+                                    <i class="fa-solid fa-chevron-down text-xs"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Jumlah -->
+                        <div class="mb-5">
+                            <label for="quantity" class="block text-sm font-medium text-gray-700 mb-1">Jumlah Porsi</label>
+                            <input type="number" id="quantity" value="1" min="1" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-brand-orange focus:border-transparent outline-none transition bg-gray-50 focus:bg-white">
+                        </div>
+
+                        <!-- Flavors Checkboxes -->
+                        <div class="mb-6">
+                            <span class="block text-sm font-medium text-gray-700 mb-3">Request Bumbu (Boleh pilih lebih dari satu)</span>
+                            <div class="grid grid-cols-3 gap-3">
+                                <div>
+                                    <input type="checkbox" id="sweet" value="Manis" class="flavor-checkbox hidden">
+                                    <label for="sweet" class="block text-center border border-gray-300 rounded-lg p-3 cursor-pointer hover:bg-orange-50 transition select-none text-sm font-medium h-full flex flex-col items-center justify-center gap-1">
+                                        <i class="fa-solid fa-candy-cane text-gray-400 mb-1"></i>
+                                        Manis
+                                    </label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" id="salty" value="Asin" class="flavor-checkbox hidden">
+                                    <label for="salty" class="block text-center border border-gray-300 rounded-lg p-3 cursor-pointer hover:bg-orange-50 transition select-none text-sm font-medium h-full flex flex-col items-center justify-center gap-1">
+                                        <i class="fa-solid fa-utensil-spoon text-gray-400 mb-1"></i>
+                                        Asin
+                                    </label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" id="spicy" value="Pedas" class="flavor-checkbox hidden">
+                                    <label for="spicy" class="block text-center border border-gray-300 rounded-lg p-3 cursor-pointer hover:bg-orange-50 transition select-none text-sm font-medium h-full flex flex-col items-center justify-center gap-1">
+                                        <i class="fa-solid fa-fire text-gray-400 mb-1"></i>
+                                        Pedas
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <button type="submit" class="w-full bg-green-500 text-white font-bold py-4 rounded-xl hover:bg-green-600 transition shadow-lg flex justify-center items-center gap-2 text-lg transform active:scale-95">
+                            <i class="fa-brands fa-whatsapp text-2xl"></i> Kirim Pesanan
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12 border-t border-gray-800">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center md:text-left">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <!-- Brand -->
+                <div class="flex flex-col items-center md:items-start">
+                    <div class="flex items-center gap-2 mb-3">
+                         <i class="fa-solid fa-fire text-brand-orange text-2xl"></i>
+                         <h3 class="text-2xl font-bold text-white">Bumbul<span class="text-brand-orange">Crispy</span></h3>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed max-w-xs">Jajanan renyah, hati sumringah. Teman ngemil terbaikmu di Bekasi.</p>
+                </div>
+                
+                <!-- Contact -->
+                <div class="flex flex-col items-center md:items-start">
+                    <h4 class="text-lg font-semibold mb-4 text-white border-b-2 border-brand-orange inline-block pb-1">Hubungi Kami</h4>
+                    <p class="text-gray-400 text-sm mb-2 flex items-center hover:text-white transition"><i class="fa-brands fa-whatsapp mr-3 text-green-500"></i> 08373179637</p>
+                    <p class="text-gray-400 text-sm flex items-center hover:text-white transition"><i class="fa-solid fa-location-dot mr-3 text-brand-orange"></i> Bekasi, Jawa Barat</p>
+                </div>
+
+                <!-- Social -->
+                <div class="flex flex-col items-center md:items-start">
+                    <h4 class="text-lg font-semibold mb-4 text-white border-b-2 border-brand-orange inline-block pb-1">Ikuti Kami</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-brand-orange hover:text-white text-gray-400 transition transform hover:scale-110"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-brand-orange hover:text-white text-gray-400 transition transform hover:scale-110"><i class="fa-brands fa-tiktok"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-brand-orange hover:text-white text-gray-400 transition transform hover:scale-110"><i class="fa-brands fa-facebook-f"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-10 pt-8 text-center">
+                <p class="text-gray-500 text-sm">&copy; 2026 Bumbul Crispy. Dibuat dengan <i class="fa-solid fa-heart text-red-500 mx-1"></i> di Bekasi.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // Mobile Menu Toggle
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when a link is clicked
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.add('hidden');
+            });
+        });
+
+        // Function to select menu from cards
+        function selectMenu(menuName) {
+            const select = document.getElementById('menuSelect');
+            select.value = menuName;
+            // Scroll to order section
+            document.getElementById('order').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // WhatsApp Logic
+        function sendToWhatsapp(e) {
+            e.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const menu = document.getElementById('menuSelect').value;
+            const quantity = document.getElementById('quantity').value;
+            
+            // Get selected flavors
+            const checkboxes = document.querySelectorAll('.flavor-checkbox:checked');
+            let flavors = [];
+            checkboxes.forEach((checkbox) => {
+                flavors.push(checkbox.value);
+            });
+
+            // If no flavor selected, default to Original
+            const flavorString = flavors.length > 0 ? flavors.join(' + ') : 'Tanpa Bumbu (Original)';
+
+            const phoneNumber = '628373179637'; // International format
+            
+            // Format pesan
+            const message = `Halo Bumbul Crispy! 👋%0A%0ASaya mau pesan:%0A%0A👤 *Nama:* ${name}%0A🍽️ *Menu:* ${menu}%0A📦 *Jumlah:* ${quantity} Porsi%0A🌶️ *Bumbu:* ${flavorString}%0A%0AMohon diproses ya, terima kasih!`;
+
+            const url = `https://wa.me/${phoneNumber}?text=${message}`;
+
+            window.open(url, '_blank');
+        }
+    </script>
+</body>
+</html>
