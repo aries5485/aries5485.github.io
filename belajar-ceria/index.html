@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Belajar Eja Ceria - Anak Pintar</title>
+    
+    <!-- React & ReactDOM -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    
+    <!-- Babel for JSX -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Fredoka -->
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <style>
+        body {
+            font-family: 'Fredoka', sans-serif;
+            background-color: #F0F9FF;
+            overflow-x: hidden;
+            touch-action: manipulation;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .card-shadow {
+            box-shadow: 0 4px 0px #00000020;
+            transition: all 0.1s;
+        }
+        .card-shadow:active {
+            transform: translateY(4px);
+            box-shadow: 0 0px 0px #00000020;
+        }
+
+        /* Animations */
+        @keyframes bounce-in {
+            0% { transform: scale(0.3); opacity: 0; }
+            50% { transform: scale(1.05); }
+            70% { transform: scale(0.9); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        .animate-bounce-in {
+            animation: bounce-in 0.5s ease-out forwards;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+        .animate-shake {
+            animation: shake 0.3s ease-in-out;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* Confetti */
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #f00;
+            animation: fall linear forwards;
+        }
+        @keyframes fall {
+            to { transform: translateY(100vh) rotate(720deg); }
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState, useEffect } = React;
+
+        // --- DATA SET (20 Animals + 20 Objects) ---
+        const GAME_DATA = [
+            // HEWAN (Animals)
+            { id: 1, name: "KUCING", type: "Hewan", keyword: "cat" },
+            { id: 2, name: "ANJING", type: "Hewan", keyword: "dog" },
+            { id: 3, name: "GAJAH", type: "Hewan", keyword: "elephant" },
+            { id: 4, name: "SINGA", type: "Hewan", keyword: "lion" },
+            { id: 5, name: "AYAM", type: "Hewan", keyword: "chicken" },
+            { id: 6, name: "BEBEK", type: "Hewan", keyword: "duck" },
+            { id: 7, name: "IKAN", type: "Hewan", keyword: "fish" },
+            { id: 8, name: "BURUNG", type: "Hewan", keyword: "bird" },
+            { id: 9, name: "MONYET", type: "Hewan", keyword: "monkey" },
+            { id: 10, name: "KELINCI", type: "Hewan", keyword: "rabbit" },
+            { id: 11, name: "SAPI", type: "Hewan", keyword: "cow" },
+            { id: 12, name: "KUDA", type: "Hewan", keyword: "horse" },
+            { id: 13, name: "ZEBRA", type: "Hewan", keyword: "zebra" },
+            { id: 14, name: "JERAPAH", type: "Hewan", keyword: "giraffe" },
+            { id: 15, name: "PANDA", type: "Hewan", keyword: "panda" },
+            { id: 16, name: "HARIMAU", type: "Hewan", keyword: "tiger" },
+            { id: 17, name: "PENYU", type: "Hewan", keyword: "turtle" },
+            { id: 18, name: "LEBAH", type: "Hewan", keyword: "bee" },
+            { id: 19, name: "SEMUT", type: "Hewan", keyword: "ant" },
+            { id: 20, name: "ULAR", type: "Hewan", keyword: "snake" },
+            // BENDA (Objects)
+            { id: 21, name: "BUKU", type: "Benda", keyword: "book" },
+            { id: 22, name: "MEJA", type: "Benda", keyword: "table" },
+            { id: 23, name: "KURSI", type: "Benda", keyword: "chair" },
+            { id: 24, name: "BOLA", type: "Benda", keyword: "ball" },
+            { id: 25, name: "TAS", type: "Benda", keyword: "backpack" },
+            { id: 26, name: "TOPI", type: "Benda", keyword: "hat" },
+            { id: 27, name: "BAJU", type: "Benda", keyword: "t-shirt" },
+            { id: 28, name: "SEPATU", type: "Benda", keyword: "shoe" },
+            { id: 29, name: "MOBIL", type: "Benda", keyword: "car" },
+            { id: 30, name: "SEPEDA", type: "Benda", keyword: "bicycle" },
+            { id: 31, name: "RUMAH", type: "Benda", keyword: "house" },
+            { id: 32, name: "POHON", type: "Benda", keyword: "tree" },
+            { id: 33, name: "BUNGA", type: "Benda", keyword: "flower" },
+            { id: 34, name: "JAM", type: "Benda", keyword: "clock" },
+            { id: 35, name: "PENSIL", type: "Benda", keyword: "pencil" },
+            { id: 36, name: "GELAS", type: "Benda", keyword: "glass" },
+            { id: 37, name: "PIRING", type: "Benda", keyword: "plate" },
+            { id: 38, name: "SENDOK", type: "Benda", keyword: "spoon" },
+            { id: 39, name: "KUNCI", type: "Benda", keyword: "key" },
+            { id: 40, name: "LAMPU", type: "Benda", keyword: "lamp" }
+        ];
+
+        // --- AUDIO ENGINE ---
+        const playSound = (type) => {
+            const AudioContext = window.AudioContext || window.webkitAudioContext;
+            if (!AudioContext) return;
+            
+            const ctx = new AudioContext();
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
+            
+            osc.connect(gain);
+            gain.connect(ctx.destination);
+
+            const now = ctx.currentTime;
+
+            if (type === 'drag') {
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(600, now);
+                osc.frequency.exponentialRampToValueAtTime(800, now + 0.1);
+                gain.gain.setValueAtTime(0.2, now);
+                gain.gain.exponentialRampToValueAtTime(0.01, now + 0.1);
+                osc.start(now);
+                osc.stop(now + 0.1);
+            } else if (type === 'drop') {
+                osc.type = 'triangle';
+                osc.frequency.setValueAtTime(800, now);
+                gain.gain.setValueAtTime(0.2, now);
+                gain.gain.exponentialRampToValueAtTime(0.01, now + 0.1);
+                osc.start(now);
+                osc.stop(now + 0.1);
+            } else if (type === 'correct') {
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(500, now);
+                osc.frequency.setValueAtTime(800, now + 0.1);
+                osc.frequency.setValueAtTime(1200, now + 0.2);
+                gain.gain.setValueAtTime(0.1, now);
+                gain.gain.linearRampToValueAtTime(0.2, now + 0.1);
+                gain.gain.exponentialRampToValueAtTime(0.01, now + 0.6);
+                osc.start(now);
+                osc.stop(now + 0.6);
+            } else if (type === 'wrong') {
+                osc.type = 'sawtooth';
+                osc.frequency.setValueAtTime(150, now);
+                osc.frequency.linearRampToValueAtTime(100, now + 0.3);
+                gain.gain.setValueAtTime(0.2, now);
+                gain.gain.exponentialRampToValueAtTime(0.01, now + 0.3);
+                osc.start(now);
+                osc.stop(now + 0.3);
+            } else if (type === 'win') {
+                osc.type = 'square';
+                osc.frequency.setValueAtTime(400, now);
+                osc.frequency.linearRampToValueAtTime(800, now + 0.2);
+                osc.frequency.setValueAtTime(800, now + 0.2);
+                osc.frequency.linearRampToValueAtTime(1200, now + 0.4);
+                gain.gain.setValueAtTime(0.1, now);
+                gain.gain.linearRampToValueAtTime(0, now + 1.0);
+                osc.start(now);
+                osc.stop(now + 1.0);
+            }
+        };
+
+        const speakText = (text) => {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'id-ID';
+                utterance.rate = 0.9;
+                utterance.pitch = 1.1;
+                window.speechSynthesis.speak(utterance);
+            }
+        };
+
+        // --- COMPONENTS ---
+
+        const Confetti = () => {
+            const [particles, setParticles] = useState([]);
+
+            useEffect(() => {
+                const colors = ['#EF476F', '#FFD166', '#06D6A0', '#118AB2'];
+                const newParticles = Array.from({ length: 50 }).map((_, i) => ({
+                    id: i,
+                    left: Math.random() * 100 + 'vw',
+                    bg: colors[Math.floor(Math.random() * colors.length)],
+                    delay: Math.random() * 2 + 's',
+                    duration: Math.random() * 3 + 2 + 's'
+                }));
+                setParticles(newParticles);
+            }, []);
+
+            return (
+                <div className="fixed inset-0 pointer-events-none z-50 overflow-hidden">
+                    {particles.map(p => (
+                        <div key={p.id} className="confetti" style={{
+                            left: p.left,
+                            backgroundColor: p.bg,
+                            animationDelay: p.delay,
+                            animationDuration: p.duration
+                        }} />
+                    ))}
+                </div>
+            );
+        };
+
+        const LetterCard = ({ char, isDraggable = true, onClick, isSelected }) => {
+            const handleDragStart = (e) => {
+                if (!isDraggable) return;
+                playSound('drag');
+                e.dataTransfer.setData("text/plain", char);
+                e.dataTransfer.effectAllowed = "copy";
+            };
+
+            return (
+                <div 
+                    draggable={isDraggable}
+                    onDragStart={handleDragStart}
+                    onClick={onClick}
+                    className={`
+                        w-10 h-10 sm:w-14 sm:h-14 md:w-16 md:h-16 
+                        flex items-center justify-center 
+                        text-xl sm:text-2xl md:text-3xl font-bold rounded-xl 
+                        cursor-pointer select-none transition-all
+                        ${isSelected 
+                            ? 'bg-yellow-300 ring-4 ring-yellow-500 scale-110 transform -translate-y-2' 
+                            : 'bg-white hover:bg-yellow-50 active:bg-yellow-200'
+                        }
+                        ${isDraggable ? 'card-shadow' : 'opacity-80'}
+                        text-slate-700 border-2 border-slate-200
+                    `}
+                >
+                    {char}
+                </div>
+            );
+        };
+
+        const DropBox = ({ char, index, onDrop, isActive, isLocked, onClick, isWrong }) => {
+            const handleDragOver = (e) => {
+                e.preventDefault();
+            };
+
+            const handleDrop = (e) => {
+                e.preventDefault();
+                const droppedChar = e.dataTransfer.getData("text/plain");
+                onDrop(droppedChar, index);
+            };
+
+            let bgColor = "bg-white/50";
+            if (isLocked) bgColor = "bg-green-100 border-green-400 text-green-700";
+            else if (isWrong) bgColor = "bg-red-100 border-red-400 animate-shake";
+            else if (isActive) bgColor = "bg-yellow-100 border-yellow-400";
+            else if (char) bgColor = "bg-white border-blue-300";
+
+            return (
+                <div 
+                    onDragOver={handleDragOver}
+                    onDrop={handleDrop}
+                    onClick={() => onClick(index)}
+                    className={`
+                        w-10 h-10 sm:w-14 sm:h-14 md:w-16 md:h-16 
+                        border-b-4 rounded-lg flex items-center justify-center
+                        text-2xl sm:text-3xl font-bold transition-all
+                        ${bgColor}
+                        ${!isLocked ? 'cursor-pointer hover:bg-white' : ''}
+                        border-slate-300 shadow-sm
+                    `}
+                >
+                    {char}
+                </div>
+            );
+        };
+
+        const App = () => {
+            const [level, setLevel] = useState(1);
+            const [score, setScore] = useState(0);
+            const [currentItem, setCurrentItem] = useState(null);
+            const [userAnswer, setUserAnswer] = useState([]);
+            const [lockedIndices, setLockedIndices] = useState([]); 
+            const [selectedLetter, setSelectedLetter] = useState(null); 
+            const [isCorrect, setIsCorrect] = useState(false);
+            const [wrongIndex, setWrongIndex] = useState(null); 
+            const [isImageLoading, setIsImageLoading] = useState(true); 
+            
+            const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+
+            const startLevel = () => {
+                setIsCorrect(false);
+                setSelectedLetter(null);
+                setWrongIndex(null);
+                setIsImageLoading(true); 
+                
+                const randomItem = GAME_DATA[Math.floor(Math.random() * GAME_DATA.length)];
+                setCurrentItem(randomItem);
+
+                const itemLength = randomItem.name.length;
+                let newAnswer = Array(itemLength).fill("");
+
+                const randomIndex = Math.floor(Math.random() * itemLength);
+                newAnswer[randomIndex] = randomItem.name[randomIndex];
+                
+                setUserAnswer(newAnswer);
+                setLockedIndices([randomIndex]);
+            };
+
+            useEffect(() => {
+                startLevel();
+            }, [level]);
+
+            const handleLetterClick = (char) => {
+                if (selectedLetter === char) {
+                    setSelectedLetter(null);
+                } else {
+                    setSelectedLetter(char);
+                    playSound('drag');
+                }
+            };
+
+            const fillBox = (char, index) => {
+                if (isCorrect) return; 
+                if (lockedIndices.includes(index)) return; 
+
+                const newAnswer = [...userAnswer];
+                newAnswer[index] = char;
+                setUserAnswer(newAnswer);
+                playSound('drop');
+                
+                setSelectedLetter(null);
+                setWrongIndex(null); 
+
+                const currentString = newAnswer.join("");
+                if (currentString === currentItem.name) {
+                    handleWin();
+                } else if (!newAnswer.includes("")) {
+                    playSound('wrong');
+                    setWrongIndex('all');
+                    setTimeout(() => setWrongIndex(null), 500);
+                }
+            };
+
+            const handleBoxClick = (index) => {
+                if (isCorrect) return; 
+
+                if (selectedLetter) {
+                    fillBox(selectedLetter, index);
+                } else {
+                    if (!lockedIndices.includes(index) && userAnswer[index]) {
+                        const newAnswer = [...userAnswer];
+                        newAnswer[index] = "";
+                        setUserAnswer(newAnswer);
+                        playSound('drag'); 
+                    }
+                }
+            };
+
+            const handleWin = () => {
+                setIsCorrect(true);
+                playSound('win');
+                speakText(`Hebat! Itu adalah ${currentItem.name}`);
+                setScore(s => s + 10);
+            };
+
+            const nextLevel = () => {
+                setLevel(l => l + 1);
+            };
+
+            if (!currentItem) return <div className="flex h-screen items-center justify-center font-bold text-xl text-blue-500">Memuat Permainan...</div>;
+
+            const imageUrl = `https://loremflickr.com/400/400/${currentItem.keyword}?lock=${currentItem.id}`;
+
+            return (
+                <div className="min-h-screen flex flex-col items-center pb-10 relative">
+                    {isCorrect && <Confetti />}
+
+                    {/* HEADER */}
+                    <header className="w-full bg-white shadow-sm p-4 flex justify-between items-center sticky top-0 z-10">
+                        <div className="flex items-center gap-2">
+                            <div className="bg-yellow-400 p-2 rounded-full text-white">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+                            </div>
+                            <div>
+                                <h1 className="text-xl font-bold text-slate-700 leading-tight">Belajar Eja</h1>
+                                <p className="text-xs text-slate-500 font-semibold">Level {level}</p>
+                            </div>
+                        </div>
+                        <div className="bg-blue-100 text-blue-700 px-4 py-1 rounded-full font-bold">
+                            Skor: {score}
+                        </div>
+                    </header>
+
+                    {/* MAIN STAGE */}
+                    <main className="flex-1 w-full max-w-3xl flex flex-col items-center px-4 pt-6 gap-6">
+                        
+                        {/* CARD IMAGE AREA */}
+                        <div className="bg-white p-4 rounded-3xl shadow-xl border-4 border-blue-100 flex flex-col items-center w-full max-w-md relative animate-float">
+                            <div className="absolute top-4 left-4 bg-purple-100 text-purple-600 px-3 py-1 rounded-full text-sm font-bold z-20">
+                                {currentItem.type}
+                            </div>
+                            
+                            {/* Image Container with Loading State */}
+                            <div className="relative w-48 h-48 mb-4">
+                                {isImageLoading && (
+                                    <div className="absolute inset-0 flex items-center justify-center bg-slate-50 rounded-xl z-10">
+                                        <div className="w-12 h-12 border-4 border-blue-200 border-t-blue-500 rounded-full animate-spin"></div>
+                                    </div>
+                                )}
+                                <img 
+                                    src={imageUrl} 
+                                    alt={currentItem.name}
+                                    className={`w-full h-full object-cover rounded-xl bg-slate-100 transition-opacity duration-300 ${isImageLoading ? 'opacity-0' : 'opacity-100'}`}
+                                    onLoad={() => setIsImageLoading(false)}
+                                    onError={(e) => {
+                                        e.target.onerror = null; 
+                                        e.target.src = "https://placehold.co/400x400?text=" + currentItem.name;
+                                        setIsImageLoading(false);
+                                    }}
+                                />
+                            </div>
+
+                            <button 
+                                onClick={() => {
+                                    playSound('drop');
+                                    speakText(currentItem.name);
+                                }}
+                                className="absolute bottom-4 right-4 bg-blue-500 hover:bg-blue-600 text-white p-3 rounded-full shadow-lg active:scale-95 transition-transform z-20"
+                                title="Dengarkan Suara"
+                            >
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+                            </button>
+                        </div>
+
+                        {/* ANSWER BOXES */}
+                        <div className="flex flex-wrap gap-2 justify-center py-4">
+                            {userAnswer.map((char, idx) => (
+                                <DropBox 
+                                    key={idx} 
+                                    index={idx}
+                                    char={char}
+                                    onDrop={fillBox}
+                                    isLocked={lockedIndices.includes(idx)}
+                                    isActive={selectedLetter && !char && !lockedIndices.includes(idx)}
+                                    onClick={handleBoxClick}
+                                    isWrong={wrongIndex === 'all' || wrongIndex === idx}
+                                />
+                            ))}
+                        </div>
+
+                        {/* INSTRUCTIONS */}
+                        {!isCorrect && (
+                            <div className="text-slate-400 text-sm font-semibold animate-pulse">
+                                {selectedLetter 
+                                    ? "Klik kotak kosong untuk menaruh huruf!" 
+                                    : "Klik atau geser huruf di bawah ke kotak kosong!"}
+                            </div>
+                        )}
+
+                        {/* LETTER BANK */}
+                        {!isCorrect && (
+                            <div className="w-full bg-white/50 backdrop-blur-sm p-4 rounded-2xl border border-slate-200">
+                                <div className="flex flex-wrap justify-center gap-2 sm:gap-3">
+                                    {alphabet.map((letter) => (
+                                        <LetterCard 
+                                            key={letter} 
+                                            char={letter} 
+                                            onClick={() => handleLetterClick(letter)}
+                                            isSelected={selectedLetter === letter}
+                                        />
+                                    ))}
+                                </div>
+                            </div>
+                        )}
+
+                        {/* SUCCESS MESSAGE */}
+                        {isCorrect && (
+                            <div className="bg-green-500 text-white p-6 rounded-2xl shadow-2xl text-center animate-bounce-in flex flex-col items-center gap-4 w-full max-w-sm">
+                                <h2 className="text-3xl font-bold">Hore! Benar!</h2>
+                                <p className="text-lg opacity-90">Jawabannya adalah {currentItem.name}</p>
+                                <div className="flex gap-2">
+                                    <button 
+                                        onClick={() => {
+                                            playSound('drop');
+                                            speakText(currentItem.name);
+                                        }}
+                                        className="bg-white/20 hover:bg-white/30 p-3 rounded-full"
+                                    >
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+                                    </button>
+                                    <button 
+                                        onClick={nextLevel}
+                                        className="bg-white text-green-600 px-8 py-3 rounded-full font-bold text-xl shadow-lg hover:scale-105 active:scale-95 transition-all"
+                                    >
+                                        Lanjut Level &rarr;
+                                    </button>
+                                </div>
+                            </div>
+                        )}
+
+                    </main>
+                    
+                    <footer className="text-center text-slate-400 text-xs mt-8 pb-4">
+                        Dibuat oleh Ricky Maulana dengan ❤️ untuk Pendidikan Anak
+                    </footer>
+                </div>
+            );
+        };
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>
